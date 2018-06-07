@@ -15,9 +15,13 @@
     <nav>
         <ul>
             <li>
-                <a id="nav-link-connexion" href="">Connexion</a>
+                <a id="nav-link-login" href="">Connexion</a>
+            </li>
+            <li>
+                <a id="nav-link-signup" href="">Inscription</a>
             </li>
         </ul>
     </nav>
 
-<?php require_once('template/connexion.php'); ?>
+<?php require_once('template/login.php'); ?>
+<?php require_once('template/signup.php'); ?>

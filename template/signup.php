@@ -1,6 +1,6 @@
 
 
-<div id="signup-overlay">
+<div id="signup-overlay" class="hidden">
     <form method="post">
         <label for="pseudo">Pseudo</label><br>
         <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Votre pseudo">
