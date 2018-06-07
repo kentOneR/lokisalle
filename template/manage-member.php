@@ -3,9 +3,9 @@
 if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action'] == "edit-member")) :
 
     // récupération des membres
-    if(isset($_GET['action']) && $_GET['action'] == 'update') {
-        $r = $pdo->prepare("SELECT * FROM membre WHERE id_membre = $_GET[id_membre]");
-        $r->execute(array($_GET[id_membre]));
+    if(isset($_GET['id_member'])) {
+        $r = $pdo->prepare("SELECT * FROM membre WHERE id_membre = ? ");
+        $r->execute(array($_GET['id_member']));
         $member = $r->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -14,35 +14,33 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
     $name = (isset($member['nom'])) ? $member['nom'] : '';
     $firstname = (isset($member['prenom'])) ? $member['prenom'] : '';
     $email = (isset($member['email'])) ? $member['email'] : '';
-    $sex = (isset($member['sexe'])) ? $member['sexe'] : '';
-    $city = (isset($member['ville'])) ? $member['ville'] : '';
-    $zipcode = (isset($member['cp'])) ? $member['cp'] : '';
-    $address = (isset($member['adresse'])) ? $member['adresse'] : '';
+    $sex = (isset($member['civilite'])) ? $member['civilite'] : '';
     $status = (isset($member['statut'])) ? $member['statut'] : '';
 
 ?>
     <h2>Gestion des membres</h2>
 
-    <form class="col-sm-6" method="post">
-        <label for="pseudo">Pseudo</label><br>
-        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Votre pseudo" value="<?= $pseudo ?>">
-        <label for="name">Nom</label>
-        <input type="text" class="form-control" name="name" id="name" placeholder="Votre nom" value="<?= $name?>">
-        <label for="firstname">Prénom</label>
-        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Votre prénom" value="<?= $firstname ?>">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" name="email" id="email" placeholder="Votre email" value="<?= $email ?>">
-        <label for="sexe">Sexe</label>
-        <select class="form-control" name="sexe" id="sexe">
+    <form class="col-sm-6" action="inc/function.member.php" method="post">
+        <input type="hidden" class="form-control" name="admin-id-member" id="admin-id-member" placeholder="Votre pseudo" value="<?= $id_member ?>">
+        <label for="adminpseudo">Pseudo</label><br>
+        <input type="text" class="form-control" name="adminpseudo" id="adminpseudo" placeholder="Votre pseudo" value="<?= $pseudo ?>">
+        <label for="adminname">Nom</label>
+        <input type="text" class="form-control" name="adminname" id="adminname" placeholder="Votre nom" value="<?= $name?>">
+        <label for="adminfirstname">Prénom</label>
+        <input type="text" class="form-control" name="adminfirstname" id="adminfirstname" placeholder="Votre prénom" value="<?= $firstname ?>">
+        <label for="adminemail">Email</label>
+        <input type="email" class="form-control" name="adminemail" id="adminemail" placeholder="Votre email" value="<?= $email ?>">
+        <label for="adminsexe">Sexe</label>
+        <select class="form-control" name="adminsexe" id="adminsexe">
             <option value="m" <?= ($sex == "m") ? ' selected' : '' ;?> >Homme</option>
             <option value="f" <?= ($sex == "f") ? ' selected' : '' ;?> >Femme</option>
         </select><br>
-        <label for="statut">Statut</label>
-        <select class="form-control" name="statut" id="statut">
+        <label for="adminstatut">Statut</label>
+        <select class="form-control" name="adminstatut" id="adminstatut">
             <option value="0" <?= ($status == 0) ? ' selected' : '' ;?> >Membre</option>
             <option value="1" <?= ($status == 1) ? ' selected' : '' ;?> >Admin</option>
         </select><br>
-        <input type="submit" class="btn btn-default" value="Valider">
+        <input type="submit" class="btn btn-default" name="managemember" id="managemember" value="Valider">
     </form>
 
 <?php elseif(isset($_GET['action']) && $_GET['action'] == "show-member"):
