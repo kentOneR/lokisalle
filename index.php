@@ -1,7 +1,8 @@
 <?php
     include_once('inc/header.php');
 
-    $roomReq = $pdo->query("SELECT * FROM salle");
+    $roomReq = $pdo->prepare("SELECT * FROM salle");
+    $roomReq->execute();
     $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -19,3 +20,5 @@
     <?php } ?>
 
 </div>
+
+<?php include_once('inc/footer.php'); ?>
