@@ -2,13 +2,13 @@
 
 require_once('init.inc.php');
 
-if(userConnect()) {
-    header('location:profil.php');
-    exit();
-}
+// if(userConnect()) {
+//     header('location:profil.php');
+//     exit();
+// }
 
 if($_POST){
-    $erreur = '';
+    $error = false;
 
     foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlentities(addslashes($value));
@@ -19,36 +19,34 @@ if($_POST){
     $firstname = $_POST['firstname'];
     $email = $_POST['email'];
     $sexe = $_POST['sexe'];
-    $city = $_POST['city'];
-    $zipcode = $_POST['zipcode'];
-    $address = $_POST['address'];
 
-
-    if(strlen($pseudo) <= 3 || strlen($pseudo) > 20) {
-        $erreur .= '<div class="alert alert-danger">Erreur taille pseudo</div>';
+    if(strlen($pseudo) <= 3 || strlen($pseudo) > 20) { ?>
+        <div class="alert alert-danger">Erreur taille pseudo</div>
+    <?php $error = true;
     }
-    $r = executeRequest("SELECT * FROM membre WHERE pseudo = '$pseudo'");
-    if($r->rowCount() >= 1) {
-        $erreur .= '<div class="alert alert-danger">Pseudo indisponible</div>';
+    $r = $pdo->prepare("SELECT * FROM membre WHERE pseudo = ? ");
+    $r->execute(array($pseudo));
+    if($r->rowCount() >= 1) { ?>
+       <div class="alert alert-danger">Pseudo indisponible</div>
+
+    <?php $error = true;
     }
 
 
-    if(empty($erreur)) {
-        executeRequest("INSERT INTO membre(pseudo, mdp, nom, prenom, email, sexe, ville, cp, adresse) VALUES (
+    if(!$error) {
+        $signupReq = $pdo->prepare("INSERT INTO membre(pseudo, mdp, nom, prenom, email, civilite) VALUES (
         '$pseudo', 
         '$password', 
         '$name',
         '$firstname',
         '$email',
-        '$sexe',
-        '$city',
-        '$zipcode',
-        '$address'
+        '$sexe'
         )");
-        $content .= '<div class="alert alert-success">Inscription validée! <a href="'.URL.'connexion.php">Cliquez ici pour vous connecter</a></div>';
+        $signupReq->execute(); ?>
+        <div class="alert alert-success">Inscription validée! <a href="'.URL.'connexion.php">Cliquez ici pour vous connecter</a></div>
+        <?php
     }
-    $content .= $erreur; // Affiche les erreurs
-}
 
+}
 
 ?>

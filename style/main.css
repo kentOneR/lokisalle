@@ -17,5 +17,6 @@
 #connexion-overlay form,
 #signup-overlay form {
     width: 320px;
+    padding: 15px;
     margin: 150px auto;
 }

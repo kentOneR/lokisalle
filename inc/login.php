@@ -24,10 +24,7 @@ if($_POST){
             $_SESSION['membre']['name'] = $membre['nom'];
             $_SESSION['membre']['firstname'] = $membre['prenom'];
             $_SESSION['membre']['email'] = $membre['email'];
-            $_SESSION['membre']['sexe'] = $membre['sexe'];
-            $_SESSION['membre']['city'] = $membre['ville'];
-            $_SESSION['membre']['zipcode'] = $membre['cp'];
-            $_SESSION['membre']['address'] = $membre['adresse'];
+            $_SESSION['membre']['sexe'] = $membre['civilite'];
             $_SESSION['membre']['statut'] = $membre['statut'];
   
         } else { ?>
