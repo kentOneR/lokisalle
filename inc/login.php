@@ -20,6 +20,7 @@ if($_POST){
 
             $erreur = false;
 
+            $_SESSION['membre']['id_membre'] = $membre['id_membre'];
             $_SESSION['membre']['pseudo'] = $membre['pseudo'];
             $_SESSION['membre']['name'] = $membre['nom'];
             $_SESSION['membre']['firstname'] = $membre['prenom'];

@@ -2,13 +2,13 @@
 
 if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
     session_destroy();
-    // unset($_SESSION['member']);
+    unset($_SESSION['member']);
 }
 
-if(userConnect()) {
-    header('location:profil.php');
-    exit();
-} 
+// if(userConnect()) {
+//     header('location:index.php');
+//     exit();
+// } 
 
 ?>
 

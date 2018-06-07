@@ -20,6 +20,11 @@
             <li>
                 <a id="nav-link-signup" href="">Inscription</a>
             </li>
+            <?php if(adminConnect()) : ?>
+                    <li>
+                        <a href="<?= URL ?>admin.php">Back-Office</a>
+                    </li>
+            <?php endif; ?>
         </ul>
     </nav>
 

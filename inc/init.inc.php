@@ -36,7 +36,7 @@ try {
 }
 
 // CONSTANTE
-define('URL', 'http://localhost/back_php_project/');
+define('URL', 'http://localhost/lokisalle/');
 
 
 // INCLUDE FUNCTION

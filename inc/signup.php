@@ -3,7 +3,7 @@
 require_once('init.inc.php');
 
 // if(userConnect()) {
-//     header('location:profil.php');
+//     header('location:index.php');
 //     exit();
 // }
 
