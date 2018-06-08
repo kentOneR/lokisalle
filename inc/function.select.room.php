@@ -2,16 +2,24 @@
 
 require_once('init.inc.php');
 
-if(isset($_POST)) {
-    if(isset($_POST['category'])){
-        $category = $_POST['category'];
-        $req = $pdo->prepare("SELECT * FROM salle WHERE categorie= ? ");
-        $req->execute(array($category));
-    } elseif(isset($_POST['city'])){
-        $city = $_POST['city'];
-        $req = $pdo->prepare("SELECT * FROM salle WHERE ville= ? ");
-        $req->execute(array($city));
-    }
+if(isset($_POST)){
+    $categories = json_decode($_POST["x"], false);
+    var_dump($categories);
+
+    
+
+} else {
+
+// if(isset($_POST)) {
+//     if(isset($_POST['category'])){
+//         $category = $_POST['category'];
+//         $req = $pdo->prepare("SELECT * FROM salle WHERE categorie= ? ");
+//         $req->execute(array($category));
+//     } elseif(isset($_POST['city'])){
+//         $city = $_POST['city'];
+//         $req = $pdo->prepare("SELECT * FROM salle WHERE ville= ? ");
+//         $req->execute(array($city));
+//     }
 
 
     foreach ($req as $key => $room) { ?>
@@ -26,5 +34,6 @@ if(isset($_POST)) {
         </a>
     <?php }
 }
+
 
 ?>

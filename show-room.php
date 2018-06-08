@@ -14,19 +14,25 @@ $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
   
   <!-- CATEGORIE -->
 
-    <ul id="select-category">Categorie
-    <li class="clickable" data-category="réunion">Réunion</li>
-    <li class="clickable" data-category="séminaire">Séminaire</li>
-    <li class="clickable" data-category="formation">Formation</li>
-    </ul>
+    <div id="select-category">Categorie
+      <input type="checkbox" name="category" value="réunion">
+      <label for="category">Réunion</label>
+      <input type="checkbox" name="category" value="séminaire">
+      <label for="category">Séminaire</label>
+      <input type="checkbox" name="category" value="formation">
+      <label for="category">Formation</label>
+    </div>
 
 <!-- VILLE -->
 
-    <ul id="select-city">Ville
-    <li class="clickable" data-city="paris">Paris</li>
-    <li class="clickable" data-city="lyon">Lyon</li>
-    <li class="clickable" data-city="marseille">Marseille</li>
-    </ul>
+    <div id="select-city">Ville
+      <input type="checkbox" name="city" value="paris">
+      <label for="category">Paris</label>
+      <input type="checkbox" name="city" value="lyon">
+      <label for="category">Lyon</label>
+      <input type="checkbox" name="city" value="marseille">
+      <label for="category">Marseille</label>
+    </div>
 
 <!-- CAPACITE -->
 

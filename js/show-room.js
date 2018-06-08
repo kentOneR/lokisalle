@@ -18,15 +18,27 @@
 
     var xhr = getXMLHttpRequest();
 
-    var selectCategoryEls = document.querySelectorAll('#select-category>li'),
-        selectCityEls = document.querySelectorAll('#select-city>li'),
+    var selectCategoryEls = document.querySelectorAll('#select-category>input'),
+        selectCityEls = document.querySelectorAll('#select-city>input'),
         roomContainerEl = document.getElementById('room-container');
 
     if (selectCategoryEls) {
+        var dataCategory = [];
         for (var i = 0; selectCategoryEls[i]; i++) {
-            selectCategoryEls[i].addEventListener('click', function (e) {
-                var dataCategory = e.target.getAttribute("data-category");
-                selectQuery("category", dataCategory);
+            selectCategoryEls[i].addEventListener('change', function (e) {
+                var checkbok = e.target;
+                if(checkbok.checked) {
+                    dataCategory.push(checkbok.value);
+                    console.log(dataCategory);
+                } else {
+                    var index = dataCategory.indexOf(checkbok.value);
+                    if (index > -1) {
+                    dataCategory.splice(index, 1);
+                    }
+                    console.log(dataCategory);
+                }
+                jsonCategory = JSON.stringify(dataCategory);
+                selectQuery("category", jsonCategory);
             });
         }
     }
@@ -41,7 +53,7 @@
     }
 
     function selectQuery(action, data) {
-        var params =  action +"=" + data;
+
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 roomContainerEl.innerHTML = this.responseText;
@@ -49,7 +61,7 @@
         }
         xhr.open('POST', 'inc/function.select.room.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.send(params);
+        xhr.send("x=" + data);
     }
 
 
