@@ -15,26 +15,32 @@
     <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <?php if(userConnect()) : ?>
-                    <li>
-                        <a href="profil.php">Mon compte</a>
+    <nav class="navbar navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Qui sommes nous</a>
                     </li>
-                    <li>
-                        <a href="index.php?action=logout">Deconnexion</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="show-room.php">Nos salles</a>
+                    </li>
+            <?php if(userConnect()) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.php">Mon compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=logout">Deconnexion</a>
                     </li>
             <?php else : ?>
-                    <li>
-                        <a id="nav-link-signup" href="">Inscription</a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link-signup" href="">Inscription</a>
                     </li>
-                    <li>
-                        <a id="nav-link-login" href="">Connexion</a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-link-login" href="">Connexion</a>
                     </li>
             <?php endif; ?>
             <?php if(adminConnect()) : ?>
-                    <li>
-                        <a href="admin.php">Back-Office</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.php">Back-Office</a>
                     </li>
             <?php endif; ?>
         </ul>

@@ -42,7 +42,6 @@
         // Construct the POST variables [username, password]
         var params = "pseudo=" + pseudoEl.value + "&"
             + "password=" + passwordEl.value + "&" + "name=" + nameEl.value + "&" + "firstname=" + firstNameEl.value + "&" + "email=" + emailEl.value + "&" + "sexe=" + sexEl.value;
-        console.log(params);
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 signupResultEl.innerHTML = this.responseText;

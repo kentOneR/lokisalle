@@ -36,7 +36,6 @@
     function checkLogin() {
         var params = "pseudo=" + pseudoCheckEl.value + "&"
             + "password=" + passwordCheckEl.value;
-        console.log(params);
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 loginResultEl.innerHTML = this.responseText;

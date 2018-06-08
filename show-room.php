@@ -1,32 +1,31 @@
 <?php require_once('inc/header.php'); 
 
 $roomReq = $pdo->prepare("SELECT * FROM salle");
-    $roomReq->execute();
-    $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
+$roomReq->execute();
+$roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
 
-<div class="colonne">
+<div class="column-search">
 
   <div class="gauche">
   
   <!-- CATEGORIE -->
 
-    <ul id="categorie">
-    <li class="ui-widget-header"><div>Categorie</div></li>
-    <li><div>Réunion</div></li>
-    <li><div>Bureau</div></li>
-    <li><div>Formation</div></li>
+    <ul id="select-category">Categorie
+    <li class="clickable" data-category="réunion">Réunion</li>
+    <li class="clickable" data-category="séminaire">Séminaire</li>
+    <li class="clickable" data-category="formation">Formation</li>
     </ul>
 
 <!-- VILLE -->
 
-    <ul id="ville">
-    <li class="ui-widget-header"><div>Ville</div></li>
-    <li><div>Réunion</div></li>
-    <li><div>Bureau</div></li>
-    <li><div>Formation</div></li>
+    <ul id="select-city">Ville
+    <li class="clickable" data-city="paris">Paris</li>
+    <li class="clickable" data-city="lyon">Lyon</li>
+    <li class="clickable" data-city="marseille">Marseille</li>
     </ul>
 
 <!-- CAPACITE -->
@@ -79,16 +78,20 @@ $roomReq = $pdo->prepare("SELECT * FROM salle");
  
 </div>
 
-<div class="room-container">
+<div id="room-container" class="room-container">
     <?php
     foreach ($roomReq as $key => $room) { ?>
+      <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
         <div class="room-wrapper" data-room-id="<?= $room['id_salle'] ?>">
             <h2> <?= $room['titre'] ?> </h2>
             <img src="img/room/<?= $room['photo'] ?>" alt="salle <?= $room['titre'] ?>">
             <p class="room-description"> <?= $room['description'] ?> </p>
-            <span class="price"></span>
+            <span class="price"> <?= $room['prix'] ?> €/jour </span>
+            <p>En savoir +</p>
         </div>
+      </a>
     <?php } ?>
+
 
 </div>
 
