@@ -19,7 +19,7 @@
     <p>Pseudo: <?= $memberReq['pseudo'] ?></p>
     <p>Nom: <?= $memberReq['nom'] ?></p>
     <p>Prenom: <?= $memberReq['prenom'] ?></p>
-    <p>Civilité: <?= $memberReq['civilite'] ?></p>
+    <p>Civilité: <?= ($memberReq['civilite'] == 'm') ? 'homme' : 'femme'; ?></p>
     <p>Email: <?= $memberReq['email'] ?></p>
 </div>
 <div class="address-wrapper">
