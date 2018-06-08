@@ -1,5 +1,15 @@
 <?php 
 
+// Suppression d'un membre
+if($_GET['action'] == 'delete-member' && isset($_GET['id_member'])){
+    var_dump($_GET['id_member']);
+    $deleteReq = $pdo->prepare("DELETE FROM membre WHERE id_membre = ?");
+    $deleteReq->execute(array($_GET['id_member']));
+
+    header('location:admin?action=show-member');
+
+}
+
 if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action'] == "edit-member")) :
 
     // récupération des membres
@@ -74,7 +84,6 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
             </tr>
         <?php } ?>
     </table>
-
 
 <?php endif; ?>
 

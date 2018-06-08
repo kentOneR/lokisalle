@@ -22,7 +22,7 @@
             </li>
             <?php if(adminConnect()) : ?>
                     <li>
-                        <a href="<?= URL ?>admin.php">Back-Office</a>
+                        <a href="admin.php">Back-Office</a>
                     </li>
             <?php endif; ?>
         </ul>
