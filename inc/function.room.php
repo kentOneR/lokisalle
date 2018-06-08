@@ -5,10 +5,11 @@ require_once('init.inc.php');
 if($_POST && isset($_SESSION['token']) && isset($token) && !empty($_SESSION['token']) && !empty($token)){
     $photoDB = '';
     if ($_SESSION['token'] == $token) {
-        if(isset($_POST) && isset($_POST['photo-old'])){
+        if(isset($_POST['photo-old'])){
             $photoDB = $_POST['photo-old'];
         }
         if(!empty($_FILES['photo']['name'])) {
+
             $error = false;
             $tempFile = $_FILES['photo']['tmp_name'];
             $actualSize = $_FILES['photo']['size'];
@@ -18,7 +19,7 @@ if($_POST && isset($_SESSION['token']) && isset($token) && !empty($_SESSION['tok
             $legalSize = "1000000"; // 1000000 Octets = 1 MO
 
             $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-            $photoName = $_POST['reference'].'_'.$newName.'.'.$extension;
+            $photoName = $_POST['title'].'_'.$newName.'.'.$extension;
             $photoFolder = $_SERVER['DOCUMENT_ROOT'].'/back_php_project\/photo\/'.$photoName;
             $photoDB = $photoName;
 
@@ -49,7 +50,7 @@ if($_POST && isset($_SESSION['token']) && isset($token) && !empty($_SESSION['tok
                 $_POST[$key] = htmlentities(addslashes($value));
             }
         }
-        if(isset($_POST['id-room'])){
+        if(isset($_POST['id-room']) && !empty($_POST['id-room'])){
             $idRoom = $_POST['id-room'];
             $roomReq = $pdo->prepare("UPDATE salle SET 
                 titre = '$_POST[title]',
@@ -64,7 +65,7 @@ if($_POST && isset($_SESSION['token']) && isset($token) && !empty($_SESSION['tok
             WHERE id_salle = ? ");
             $roomReq->execute(array($idRoom));
         } else {
-            $roomReq = $pdo->prepare("INSERT INTO salle( titre, description, photo, pays, ville, adresse, cp, capacity, categorie) VALUES
+            $roomReq = $pdo->prepare("INSERT INTO salle( titre, description, photo, pays, ville, adresse, cp, capacite, categorie) VALUES
             (:title, :description, :photo, :country, :city, :address, :cp, :capacity, :category)");
             $roomReq->execute(array(
                 "title" => $_POST['title'], 
@@ -78,7 +79,7 @@ if($_POST && isset($_SESSION['token']) && isset($token) && !empty($_SESSION['tok
                 "category" => $_POST['category']
             ));
         }
-        header('location:../admin?action=show-room');
+        // header('location:../admin?action=show-room');
     }
 } else {
 

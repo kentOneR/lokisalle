@@ -1,4 +1,15 @@
-<?php if(isset($_GET['action']) && $_GET['action'] == "show-room"):
+<?php 
+
+// Suppression d'un membre
+if(isset($_GET['action']) && $_GET['action'] == 'delete-room' && isset($_GET['id_room'])){
+    $deleteReq = $pdo->prepare("DELETE FROM salle WHERE id_salle = ?");
+    $deleteReq->execute(array($_GET['id_room']));
+
+    header('location:admin?action=show-member');
+
+}
+
+if(isset($_GET['action']) && $_GET['action'] == "show-room"):
     $r = $pdo->prepare("SELECT * FROM salle");
     $r->execute();
     $roomList = $r->fetchAll(PDO::FETCH_ASSOC);
@@ -59,7 +70,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-room" || $_GET['action'] =
 
 <h2>Gestion des salles</h2>
 
-<form class="col-sm-6" action="inc/function.room.php" method="post">
+<form class="col-sm-6" action="inc/function.room.php" method="post" enctype="multipart/form-data">
     <input type="hidden" class="form-control" name="id-room" id="id-room" value="<?= $id_room ?>">
     <label for="title">Titre</label><br>
     <input type="text" class="form-control" name="title" id="title" value="<?= $title ?>">

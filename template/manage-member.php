@@ -2,7 +2,6 @@
 
 // Suppression d'un membre
 if(isset($_GET['action']) && $_GET['action'] == 'delete-member' && isset($_GET['id_member'])){
-    var_dump($_GET['id_member']);
     $deleteReq = $pdo->prepare("DELETE FROM membre WHERE id_membre = ?");
     $deleteReq->execute(array($_GET['id_member']));
 
