@@ -26,6 +26,15 @@ img{
     margin: 150px auto;
 }
 
+.ui-menu { width: 200px; }
+.ui-widget-header { padding: 0.2em; 
+}
+.gauche {
+    padding: 4vh;
+    height: 900px;
+    float: left;
+}
+
 .map-responsive {
     overflow:hidden;
     padding-bottom:56.25%;
