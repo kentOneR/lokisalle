@@ -14,12 +14,21 @@
 <body>
     <nav>
         <ul>
-            <li>
-                <a id="nav-link-login" href="">Connexion</a>
-            </li>
-            <li>
-                <a id="nav-link-signup" href="">Inscription</a>
-            </li>
+            <?php if(userConnect()) : ?>
+                    <li>
+                        <a href="profil.php">Profil</a>
+                    </li>
+                    <li>
+                        <a href="index.php?action=logout">Deconnexion</a>
+                    </li>
+            <?php else : ?>
+                    <li>
+                        <a id="nav-link-signup" href="">Inscription</a>
+                    </li>
+                    <li>
+                        <a id="nav-link-login" href="">Connexion</a>
+                    </li>
+            <?php endif; ?>
             <?php if(adminConnect()) : ?>
                     <li>
                         <a href="admin.php">Back-Office</a>

@@ -2,7 +2,7 @@
 
 require_once('init.inc.php');
 
-if($_POST && isset($_SESSION['token']) && isset($token) && !empty($_SESSION['token']) && !empty($token)){
+if($_POST){
     $photoDB = '';
     if ($_SESSION['token'] == $token) {
         if(isset($_POST['photo-old'])){
@@ -79,7 +79,7 @@ if($_POST && isset($_SESSION['token']) && isset($token) && !empty($_SESSION['tok
                 "category" => $_POST['category']
             ));
         }
-        // header('location:../admin?action=show-room');
+        header('location:../admin?action=show-room');
     }
 } else {
 

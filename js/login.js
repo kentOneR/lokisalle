@@ -26,10 +26,12 @@
         passwordCheckEl = document.getElementById('check-password'),
         loginResultEl = document.getElementById('login-result');
 
-    connexionLinkEl.addEventListener('click', function (e) {
-        e.preventDefault();
-        connexionOverlayEl.classList.toggle("hidden");
-    });
+    if(connexionLinkEl){
+        connexionLinkEl.addEventListener('click', function (e) {
+            e.preventDefault();
+            connexionOverlayEl.classList.toggle("hidden");
+        });
+    }
 
     function checkLogin() {
         var params = "pseudo=" + pseudoCheckEl.value + "&"

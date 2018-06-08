@@ -5,7 +5,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'delete-room' && isset($_GET['id
     $deleteReq = $pdo->prepare("DELETE FROM salle WHERE id_salle = ?");
     $deleteReq->execute(array($_GET['id_room']));
 
-    header('location:admin?action=show-member');
+    header('location:admin?action=show-room');
 
 }
 

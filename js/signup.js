@@ -31,10 +31,12 @@
         sexEl = document.getElementById('sex'),
         signupResultEl = document.getElementById('signup-result');
 
-    signupLinkEl.addEventListener('click', function (e) {
-        e.preventDefault();
-        signupOverlayEl.classList.toggle("hidden");
-    });
+    if(signupLinkEl){
+        signupLinkEl.addEventListener('click', function (e) {
+            e.preventDefault();
+            signupOverlayEl.classList.toggle("hidden");
+        });
+    }
 
     function signup() {
         // Construct the POST variables [username, password]

@@ -1,14 +1,8 @@
 <?php 
 
-if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
+if(isset($_GET['action']) && $_GET['action'] == 'logout'){
     session_destroy();
-    unset($_SESSION['member']);
 }
-
-// if(userConnect()) {
-//     header('location:index.php');
-//     exit();
-// } 
 
 ?>
 

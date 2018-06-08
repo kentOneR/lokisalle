@@ -1,4 +1,8 @@
-<?php require_once('inc/header.php'); ?>
+<?php require_once('inc/header.php'); 
+
+if(adminConnect()) :
+
+?>
 
 <nav id="nav-admin">
     <ul>
@@ -12,5 +16,10 @@
 <?php require_once('template/manage-member.php'); ?>
 <?php require_once('template/manage-room.php'); ?>
 
+<?php else:
+
+    header('location:index.php');
+
+endif; ?>
 
 <?php require_once('inc/footer.php'); ?>
