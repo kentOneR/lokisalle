@@ -16,7 +16,7 @@
         <ul>
             <?php if(userConnect()) : ?>
                     <li>
-                        <a href="profil.php">Profil</a>
+                        <a href="profil.php">Mon compte</a>
                     </li>
                     <li>
                         <a href="index.php?action=logout">Deconnexion</a>
