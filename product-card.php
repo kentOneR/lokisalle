@@ -22,16 +22,22 @@
 <div class="room-additionnal-info">
     <h4>Informations complémentaire</h4>
     <div class="room-left-info">
-        <p>Arrivée:</p>
-        <p>Départ:</p>
-    </div>
-    <div class="room-middle-info">
         <p>Capacité: <?= $roomReq['capacite'] ?></p>
         <p>Catégorie: <?= $roomReq['categorie'] ?></p>
     </div>
-    <div class="room-right-info">
+    <div class="room-middle-info">
         <p>Adresse: <?= $roomReq['adresse'].', '.$roomReq['cp'].' '.$roomReq['ville'] ?></p>
         <p>Prix: <?= $roomReq['prix'] ?> €/jour</p>
+    </div>
+    <div class="room-right-info">
+        <form action="booking.php" method="post">
+            <input type="hidden" name='id-room' id='id-room' value="<?= $roomReq['id_salle'] ?>">
+            <label for="arrival-date">Date d'arrivée</label><br>
+            <input type="text" id="search-from" name="arrival-date" required><br>
+            <label for="departure-date">Date de départ</label><br>
+            <input type="text" id="search-to" name="departure-date" required>
+            <input type="submit" value="réserver" <?= (!userConnect()) ? 'disabled' : '' ?> >
+        </form>
     </div>
 </div>
 <h2>Autres salles</h2>

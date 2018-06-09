@@ -30,4 +30,13 @@ function adminConnect() {
     }
 }
 
+// FUNCTION CALCULATE PRICE
+
+function calcNbOfDays($a, $b){
+    $a = strtotime($a);
+    $b = strtotime($b);
+    $datediff = $b - $a;
+    return round($datediff / (60 * 60 * 24));
+}
+
 ?>
