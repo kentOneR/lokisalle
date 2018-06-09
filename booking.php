@@ -8,6 +8,8 @@
         $memberReq = $memberReq->fetchAll(PDO::FETCH_ASSOC);
         $memberReq = $memberReq[0];
         var_dump($memberReq);
+    } else {
+        header('location:index.php');
     }
     if(isset($_POST['id-room']) && !empty($_POST['id-room'])) {
         $roomReq = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ?");
