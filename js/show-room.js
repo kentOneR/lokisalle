@@ -20,47 +20,35 @@
 
     var selectCategoryEls = document.querySelectorAll('#select-category>input'),
         selectCityEls = document.querySelectorAll('#select-city>input'),
-        roomContainerEl = document.getElementById('room-container');
+        roomContainerEl = document.getElementById('room-container'),
+        roomWrapperEls = document.querySelectorAll('.room-wrapper');
 
     if (selectCategoryEls) {
-        var dataCategory = [];
         for (var i = 0; selectCategoryEls[i]; i++) {
             selectCategoryEls[i].addEventListener('change', function (e) {
-                var checkbok = e.target;
-                if(checkbok.checked) {
-                    dataCategory.push(checkbok.value);
-                    console.log(dataCategory);
-                } else {
-                    var index = dataCategory.indexOf(checkbok.value);
-                    if (index > -1) {
-                    dataCategory.splice(index, 1);
-                    }
-                    console.log(dataCategory);
-                }
-                //jsonCategory = JSON.stringify(dataCategory);
-                // selectQuery("category", jsonCategory);
+                var radio = e.target;
+                showElements(roomWrapperEls, 'data-category', radio.value);
             });
         }
     }
 
     if (selectCityEls) {
-        var dataCity = [];
         for (var i = 0; selectCityEls[i]; i++) {
             selectCityEls[i].addEventListener('change', function (e) {
-                var checkbok = e.target;
-                if(checkbok.checked) {
-                    dataCity.push(checkbok.value);
-                    console.log(dataCity);
-                } else {
-                    var index = dataCity.indexOf(checkbok.value);
-                    if (index > -1) {
-                    dataCity.splice(index, 1);
-                    }
-                    console.log(dataCity);
-                }
-                // jsonCategory = JSON.stringify(dataCategory);
-                // selectQuery("category", jsonCategory);
+                var radio = e.target;
+                showElements(roomWrapperEls, 'data-city', radio.value);
             });
+        }
+    }
+
+    function showElements(els, atr, value) {
+        for (var i = 0; els[i]; i++) {
+            var elValue = els[i].getAttribute(atr);
+            if (elValue === value) {
+                els[i].style.display = "block";
+            } else {
+                els[i].style.display = "none";
+            }
         }
     }
 

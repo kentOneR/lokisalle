@@ -10,27 +10,25 @@ $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="column-search">
 
-  <form action="" method="post">
-
     <!-- CATEGORIE -->
 
     <div id="select-category">Categorie
-      <input type="checkbox" name="category" value="réunion">
+      <input type="radio" name="category" value="réunion">
       <label for="category">Réunion</label>
-      <input type="checkbox" name="category" value="séminaire">
+      <input type="radio" name="category" value="séminaire">
       <label for="category">Séminaire</label>
-      <input type="checkbox" name="category" value="formation">
+      <input type="radio" name="category" value="formation">
       <label for="category">Formation</label>
     </div>
 
     <!-- VILLE -->
 
     <div id="select-city">Ville
-      <input type="checkbox" name="city" value="paris">
+      <input type="radio" name="city" value="Paris">
       <label for="category">Paris</label>
-      <input type="checkbox" name="city" value="lyon">
+      <input type="radio" name="city" value="Lyon">
       <label for="category">Lyon</label>
-      <input type="checkbox" name="city" value="marseille">
+      <input type="radio" name="city" value="Marseille">
       <label for="category">Marseille</label>
     </div>
 
@@ -58,6 +56,8 @@ $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- DATE PICKER -->
 
+  <form action="" method="post">
+
     <label for="from">Date d'arrivée</label>
     <br>
     <input type="text" id="search-from" name="from">
@@ -74,8 +74,8 @@ $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 <div id="room-container" class="room-container">
   <?php
     foreach ($roomReq as $key => $room) { ?>
-    <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
-      <div class="room-wrapper" data-room-id="<?= $room['id_salle'] ?>">
+      <div class="room-wrapper" data-room-id="<?= $room['id_salle'] ?>" data-category="<?= $room['categorie'] ?>" data-city="<?= $room['ville'] ?>">
+        <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
         <h2>
           <?= $room['titre'] ?>
         </h2>
@@ -86,8 +86,8 @@ $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
         <span class="price">
           <?= $room['prix'] ?> €/jour </span>
         <p>En savoir +</p>
+        </a>
       </div>
-    </a>
     <?php } ?>
 
 
