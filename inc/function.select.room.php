@@ -3,7 +3,7 @@
 require_once('init.inc.php');
 
 if(isset($_POST)){
-    $categories = json_decode($_POST["x"], false);
+    $categories = json_decode($_POST["select"], false);
     var_dump($categories);
 
     

@@ -37,17 +37,29 @@
                     }
                     console.log(dataCategory);
                 }
-                jsonCategory = JSON.stringify(dataCategory);
-                selectQuery("category", jsonCategory);
+                //jsonCategory = JSON.stringify(dataCategory);
+                // selectQuery("category", jsonCategory);
             });
         }
     }
 
     if (selectCityEls) {
+        var dataCity = [];
         for (var i = 0; selectCityEls[i]; i++) {
-            selectCityEls[i].addEventListener('click', function (e) {
-                var dataCity = e.target.getAttribute("data-city");
-                selectQuery("city", dataCity);
+            selectCityEls[i].addEventListener('change', function (e) {
+                var checkbok = e.target;
+                if(checkbok.checked) {
+                    dataCity.push(checkbok.value);
+                    console.log(dataCity);
+                } else {
+                    var index = dataCity.indexOf(checkbok.value);
+                    if (index > -1) {
+                    dataCity.splice(index, 1);
+                    }
+                    console.log(dataCity);
+                }
+                // jsonCategory = JSON.stringify(dataCategory);
+                // selectQuery("category", jsonCategory);
             });
         }
     }
@@ -61,7 +73,7 @@
         }
         xhr.open('POST', 'inc/function.select.room.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.send("x=" + data);
+        xhr.send("select=" + data);
     }
 
 
