@@ -20,7 +20,7 @@
     var formBookingEl = document.getElementById('book-room'),
         roomResultEl = document.getElementById('room-result')
         searchFromEl = document.getElementById('search-from'),
-        searchToEl = document.getElementById('search-from'),
+        searchToEl = document.getElementById('search-to'),
         idRoomEl = document.getElementById('id-room');
 
     if(formBookingEl){
@@ -35,7 +35,6 @@
         var params = "id-room=" + idRoomEl.value + "&arrival-date=" + searchFromEl.value + "&departure-date=" + searchToEl.value +"&booking=1";
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                window.location.href = 'booking.php?id-room=' + idRoomEl.value +'&arrival-date=' + searchFromEl.value + '&departure-date=' + searchToEl.value;
                 roomResultEl.innerHTML = this.responseText;
             }
         }

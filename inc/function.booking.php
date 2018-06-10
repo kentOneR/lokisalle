@@ -7,8 +7,11 @@ if(isset($_POST)) {
     if(isset($_POST['booking'])){
         if(roomAvailable($_POST['id-room'], $_POST['arrival-date'], $_POST['departure-date'])){
             // ADD TO SESSION
-            addToCart($_POST['id-room'], $_POST['arrival-date'], $_POST['departure-date']);
-        } else { ?>
+            addToBasket($_POST['id-room'], $_POST['arrival-date'], $_POST['departure-date']); ?>
+            <div class="alert alert-success" role="alert">
+                Cette salle est disponible, merci de <a href="booking.php?id-room=<?= $_POST['id-room'] ?>">confirmer la réservation.</a>
+            </div>
+        <?php } else { ?>
             <div class="alert alert-danger" role="alert">
                 Cette salle n'est plus disponible, merci de saisir de nouvelles dates ou de séletionner une <a href="show-room.php">autre salle.</a>
             </div>
@@ -27,7 +30,10 @@ if(isset($_POST)) {
                     "id_salle" => $_POST['id-room'], 
                     "date_arrivee" => $arrivalDate, 
                     "date_depart" => $departureDate
-                )); ?>
+                )); 
+                dropFromBask($_POST['id-room']);
+                
+                ?>
                 <div class="alert alert-danger" role="alert">
                     Merci! Votre réservation est confirmé. <a href="profil.php">Mes réservation</a>
                 </div>

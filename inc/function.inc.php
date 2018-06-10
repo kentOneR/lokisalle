@@ -63,19 +63,42 @@ function roomAvailable ($id, $a, $b) {
 function createBasket() {
     if(!isset($_SESSION['basket'])) {
         $_SESSION['basket'] = [];
-        $_SESSION['basket']['id_article'] = [];
-        $_SESSION['basket']['quantity'] = [];
-        $_SESSION['basket']['price'] = [];
+        $_SESSION['basket']['id-room'] = [];
+        $_SESSION['basket']['arrival'] = [];
+        $_SESSION['basket']['departure'] = [];
     }
 }
 
 // FUNCTION ADD TO BASKET
 
-function addToCart($idRoom, $arrival, $departure) {
+function addToBasket($idRoom, $arrival, $departure) {
     createBasket();
-    $_SESSION['basket']['id-room'][] = $idRoom;
-    $_SESSION['basket']['arrival'][] = $arrival;
-    $_SESSION['basket']['departure'][] = $departure;
+    $pos = array_search($idRoom, $_SESSION['basket']['id-room']);
+    if($pos !== false) {
+        // array_splice($_SESSION['basket']['id-room'], $pos, 1);
+        // array_splice($_SESSION['basket']['arrival'], $pos, 1);
+        // array_splice($_SESSION['basket']['departure'], $pos, 1);
+        $_SESSION['basket']['id-room'][$pos] = $idRoom;
+        $_SESSION['basket']['arrival'][$pos] = $arrival;
+        $_SESSION['basket']['departure'][$pos] = $departure;
+
+    } else {
+        $_SESSION['basket']['id-room'][] = $idRoom;
+        $_SESSION['basket']['arrival'][] = $arrival;
+        $_SESSION['basket']['departure'][] = $departure;
+    }
+
+}
+
+// FUNCTION DROP ARTICLE FROM BASKET
+
+function dropFromBasket($index){
+    $pos = array_search($index, $_SESSION['cart']['id_article']);
+    if($articlePosition !== false) {
+        array_splice($_SESSION['basket']['id-room'], $pos, 1);
+        array_splice($_SESSION['basket']['arrival'], $pos, 1);
+        array_splice($_SESSION['basket']['departure'], $pos, 1);
+    }
 }
 
 ?>
