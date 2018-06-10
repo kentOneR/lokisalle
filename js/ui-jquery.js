@@ -53,7 +53,6 @@ $(function () {
       } catch (error) {
         date = null;
       }
-
       return date;
     }
   });
