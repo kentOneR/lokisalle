@@ -7,13 +7,12 @@
         $memberReq->execute(array($id_member));
         $memberReq = $memberReq->fetchAll(PDO::FETCH_ASSOC);
         $memberReq = $memberReq[0];
-        var_dump($memberReq);
     } else {
         header('location:index.php');
     }
-    if(isset($_POST['id-room']) && !empty($_POST['id-room'])) {
+    if(isset($_GET['id-room']) && !empty($_GET['id-room'])) {
         $roomReq = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ?");
-        $roomReq->execute(array($_POST['id-room']));
+        $roomReq->execute(array($_GET['id-room']));
         $roomReq = $roomReq->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -51,21 +50,21 @@
         <p>Catégorie: <?= $roomReq['categorie'] ?></p>
     </div>
     <div class="room-middle-info">
-        <p>Date d'arrivée: <?= $_POST['arrival-date'] ?></p>
-        <p>Date de départ: <?= $_POST['departure-date'] ?></p>
+        <p>Date d'arrivée: <?= $_GET['arrival-date'] ?></p>
+        <p>Date de départ: <?= $_GET['departure-date'] ?></p>
     </div>
     <div class="room-right-info">
         <p>Adresse: <?= $roomReq['adresse'].', '.$roomReq['cp'].' '.$roomReq['ville'] ?></p>
-        <p>Prix total: <?= calcNbOfDays($_POST['arrival-date'], $_POST['departure-date']) * $roomReq['prix'] ?> €</p>
+        <p>Prix total: <?= calcNbOfDays($_GET['arrival-date'], $_GET['departure-date']) * $roomReq['prix'] ?> €</p>
     </div>
 </div>
 <div class="confirm-booking">
     <form action="inc/function.booking.php" method="post">
-        <input type="hidden" name="id-room" id="id-room" value="<?= $_POST['id-room'] ?>">
+        <input type="hidden" name="id-room" id="id-room" value="<?= $_GET['id-room'] ?>">
         <input type="hidden" name="id-member" id="id-member" value="<?= $id_member ?>">
-        <input type="hidden" name="arrival-date" id="arrival-date" value="<?= $_POST['arrival-date'] ?>">
-        <input type="hidden" name="departure-date" id="departure-date" value="<?= $_POST['departure-date'] ?>">
-        <input type="submit" value="Confirmer la réservation">
+        <input type="hidden" name="arrival-date" id="arrival-date" value="<?= $_GET['arrival-date'] ?>">
+        <input type="hidden" name="departure-date" id="departure-date" value="<?= $_GET['departure-date'] ?>">
+        <input type="submit" name="confirm" value="Confirmer la réservation">
     </form>
 </div>
 

@@ -39,4 +39,43 @@ function calcNbOfDays($a, $b){
     return round($datediff / (60 * 60 * 24));
 }
 
+// FUNCTION ROOM AVAILABLE
+function roomAvailable ($id, $a, $b) {
+    $arrivalDate = date('Y-m-d', strtotime($a));
+    $departureDate = date('Y-m-d', strtotime($b));
+    // CHECK IF ROOM AVAILABLE
+    try{
+        $checkReq = $GLOBALS['pdo']->prepare("SELECT * FROM commande WHERE id_salle= ? && date_depart >= ? && date_arrivee <= ? ");
+        $checkReq->execute(array($id, $arrivalDate, $departureDate));
+        if($checkReq->rowCount() > 0){
+            return false;
+        } else {
+            return true;
+        }
+
+    } catch(Exception $e) {
+        print_r($e);
+    }
+}
+
+// FUNCTION CREATE BASKET
+
+function createBasket() {
+    if(!isset($_SESSION['basket'])) {
+        $_SESSION['basket'] = [];
+        $_SESSION['basket']['id_article'] = [];
+        $_SESSION['basket']['quantity'] = [];
+        $_SESSION['basket']['price'] = [];
+    }
+}
+
+// FUNCTION ADD TO BASKET
+
+function addToCart($idRoom, $arrival, $departure) {
+    createBasket();
+    $_SESSION['basket']['id-room'][] = $idRoom;
+    $_SESSION['basket']['arrival'][] = $arrival;
+    $_SESSION['basket']['departure'][] = $departure;
+}
+
 ?>

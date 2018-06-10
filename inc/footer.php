@@ -16,6 +16,7 @@
     <script src="js/slider.js"></script>
     <script src="js/ui-jquery.js"></script>
     <script src="js/show-room.js"></script>
+    <script src="js/product-card.js"></script>
 
 
 
