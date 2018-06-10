@@ -36,7 +36,7 @@ if($_POST){
     <?php }
 
     if(!$erreur) { ?>
-        <div class="alert alert-success">Bravo vous êtes connnecté :)</div>
+        <div class="alert alert-success">Vous êtes connnecté</div>
     <?php }
 
 }

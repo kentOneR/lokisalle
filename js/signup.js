@@ -29,6 +29,10 @@
         firstNameEl = document.getElementById('firstname'),
         emailEl = document.getElementById('email'),
         sexEl = document.getElementById('sex'),
+        addressEl = document.getElementById('address'),
+        zipEl = document.getElementById('cp'),
+        cityEl = document.getElementById('city'),
+        countryEl = document.getElementById('country'),
         signupResultEl = document.getElementById('signup-result');
 
     if(signupLinkEl){
@@ -40,8 +44,8 @@
 
     function signup() {
         // Construct the POST variables [username, password]
-        var params = "pseudo=" + pseudoEl.value + "&"
-            + "password=" + passwordEl.value + "&" + "name=" + nameEl.value + "&" + "firstname=" + firstNameEl.value + "&" + "email=" + emailEl.value + "&" + "sexe=" + sexEl.value;
+        var params = "pseudo=" + pseudoEl.value + "&password=" + passwordEl.value + "&name=" + nameEl.value + "&firstname=" + firstNameEl.value + "&email=" + emailEl.value + "&sexe=" + sexEl.value
+        + "&address=" + addressEl.value + "&zip=" + zipEl.value + "&city=" + cityEl.value + "&country=" + countryEl.value;
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 signupResultEl.innerHTML = this.responseText;

@@ -35,7 +35,7 @@
                         <a class="nav-link" id="nav-link-signup" href="">Inscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-link-login" href="">Connexion</a>
+                        <a class="nav-link" id="nav-link-login" href="" data-toggle="modal" data-target="connexion-overlay">Connexion</a>
                     </li>
             <?php endif; ?>
             <?php if(adminConnect()) : ?>

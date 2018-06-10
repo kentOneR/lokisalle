@@ -8,6 +8,10 @@ img{
     height: auto;
 }
 
+form{
+    margin: 10px 0;
+}
+
 .hidden {
     display: none;
 }
@@ -28,8 +32,10 @@ img{
     z-index: 1000;
 }
 
-#connexion-overlay form,
-#signup-overlay form {
+#connexion-overlay .form-wrapper,
+#signup-overlay .form-wrapper {
+    background-color: #fff;
+    border-radius: 5px;
     width: 320px;
     padding: 15px;
     margin: 150px auto;
