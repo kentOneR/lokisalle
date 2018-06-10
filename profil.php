@@ -7,10 +7,19 @@
         $memberReq->execute(array($id_member));
         $memberReq = $memberReq->fetchAll(PDO::FETCH_ASSOC);
         $memberReq = $memberReq[0];
-        var_dump($memberReq);
+    } else {
+        header('location:index.php');
     }
 
 ?>
+
+<nav id="nav-admin">
+    <ul>
+        <li><a href="profil.php?action=edit-profil">Mettre à jour mon profil</a></li>
+        <li><a href="profil.php?action=pending-booking">Mes réservations en attente</a></li>
+        <li><a href="profil.php?action=confirm-booking">Mes réservations confirmées</a></li>
+    </ul>
+</nav>
 
 <h1>Mon compte</h1>
 
@@ -29,5 +38,8 @@
     <p>Ville: <?= $memberReq['ville'] ?></p>
     <p>Pays: <?= $memberReq['pays'] ?></p>
 </div>
+
+<?php include_once('template/pending-booking.php'); ?>
+<?php include_once('template/confirm-booking.php'); ?>
 
 <?php include_once('inc/footer.php'); ?>
