@@ -68,37 +68,6 @@
         </div>
     </nav>
 
-    <!-- Fin de Navigation -->
-    <!-- <nav class="navbar navbar-light bg-light">
-        <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Qui sommes nous</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="show-room.php">Nos salles</a>
-                    </li>
-            <?php if(userConnect()) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profil.php">Mon compte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=logout">Deconnexion</a>
-                    </li>
-            <?php else : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" id="nav-link-signup" href="">Inscription</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="nav-link-login" href="" data-toggle="modal" data-target="connexion-overlay">Connexion</a>
-                    </li>
-            <?php endif; ?>
-            <?php if(adminConnect()) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="admin.php">Back-Office</a>
-                    </li>
-            <?php endif; ?>
-        </ul>
-    </nav> -->
 
     <?php require_once('template/login.php'); ?>
     <?php require_once('template/signup.php'); ?>

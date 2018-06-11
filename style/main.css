@@ -127,3 +127,16 @@ h2{
 .col {
     padding-top: 6vh;
 }
+
+#select-category,
+#select-city{ 
+    height: 45px; 
+}
+
+.ui-widget.ui-widget-content{
+    margin-top: 15px;
+}
+
+#amount{
+    background-color: transparent;
+}

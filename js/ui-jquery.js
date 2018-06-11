@@ -15,7 +15,7 @@ $(function () {
 
   $(function () {
     var dateFormat = "dd-mm-yy",
-      from = $("#search-from")
+      from = $("#inputCheckIn")
         .datepicker({
           defaultDate: "+1w",
           dateFormat: "dd-mm-yy",
@@ -30,7 +30,7 @@ $(function () {
         .on("change", function () {
           to.datepicker("option", "minDate", getDate(this));
         }),
-      to = $("#search-to").datepicker({
+      to = $("#inputCheckOut").datepicker({
         defaultDate: "+1w",
         dateFormat: "dd-mm-yy",
         minDate: 1,

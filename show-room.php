@@ -60,11 +60,11 @@ $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 
     <label for="from">Date d'arrivée</label>
     <br>
-    <input type="text" id="search-from" name="from" autocomplete="off">
+    <input type="text" id="#inputCheckIn" name="from" autocomplete="off">
     <br>
     <label for="to">Date de départ</label>
     <br>
-    <input type="text" id="search-to" name="to" autocomplete="off">
+    <input type="text" id="#inputCheckOut" name="to" autocomplete="off">
 
 
   </form>
