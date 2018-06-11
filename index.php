@@ -11,7 +11,7 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
                 <!-- 1er slide -->
-                <div class="carousel-item active" style="background-image: url('img/room/slider01.jpg')">
+                <div class="carousel-item active" style="background-image: url('img/slider01.jpg')">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>Besoin d'un lieu pour vos événements?
                             <br>Réunions | séminaires | formations</h2>

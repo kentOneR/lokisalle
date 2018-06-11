@@ -68,6 +68,5 @@
         </div>
     </nav>
 
-
     <?php require_once('template/login.php'); ?>
     <?php require_once('template/signup.php'); ?>
