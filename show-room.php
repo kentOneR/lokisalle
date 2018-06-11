@@ -1,8 +1,47 @@
-<?php require_once('inc/header.php'); 
+<?php require_once('inc/header.php');
 
-$roomReq = $pdo->prepare("SELECT * FROM salle");
-$roomReq->execute();
-$roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
+
+if(isset($_POST)){
+
+  $category = $_POST['category'];
+  $city = $_POST['city'];
+  $price = $_POST['price'];
+  $capacity = ['capacity'];
+  $arrivalDate = date('Y-m-d', strtotime($_POST['arrival-date']));
+  $departureDate = date('Y-m-d', strtotime($_POST['departure-date']));
+
+  $roomReq = $pdo->prepare("SELECT * FROM salle s, commande c WHERE c.id_salle=s.id_salle && s.categorie = ? && s.ville = ? && s.capacite = ? && 
+  c.date_depart >= ? && c.date_arrivee <= ? ");
+  $roomReq->execute(array($category, $city, $capacity, $arrivalDate, $departureDate));
+  $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
+  var_dump($roomReq);
+  die();
+
+
+
+  function roomAvailable ($id, $a, $b) {
+    $arrivalDate = date('Y-m-d', strtotime($a));
+    $departureDate = date('Y-m-d', strtotime($b));
+    // CHECK IF ROOM AVAILABLE
+    try{
+        $checkReq = $GLOBALS['pdo']->prepare("SELECT * FROM commande WHERE id_salle= ? && date_depart >= ? && date_arrivee <= ? ");
+        $checkReq->execute(array($id, $arrivalDate, $departureDate));
+        if($checkReq->rowCount() > 0){
+            return false;
+        } else {
+            return true;
+        }
+
+    } catch(Exception $e) {
+        print_r($e);
+    }
+}
+
+} else {
+  $roomReq = $pdo->prepare("SELECT * FROM salle");
+  $roomReq->execute();
+  $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 ?>

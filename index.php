@@ -27,15 +27,15 @@
     <!-- FORMULAIRE -->
     <div class="container-fluid">
         <div class="row tm-banner-row" id="tm-section-search">
-            <form action="index.html" method="post" class="tm-search-form tm-section-pad-2">
+            <form action="show-room.php" method="post" class="tm-search-form tm-section-pad-2">
                 <div class="col-lg-12 text-center">
                     <h3 class="section-subheading text-muted">Trouvez la salle qui vous convient</h3>
                 </div>
                 <br>
                 <div class="form-row tm-search-form-row">
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                        <label for="select-category">Choisissez votre catégorie</label>
-                        <select name="category" type="text" class="form-control" id="select-category" placeholder="...">
+                        <label for="category">Choisissez votre catégorie</label>
+                        <select name="category" type="text" class="form-control" id="select-category" placeholder="..." required>
                             <option value="all" selected>Toutes les categories</option>
                             <option value="réunion">Réunion</option>
                             <option value="séminaire">Séminaire</option>
@@ -43,8 +43,8 @@
                         </select>
                     </div>
                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                        <label for="select-category">Choisissez votre ville</label>
-                        <select name="select-city" type="text" class="form-control" id="select-city" placeholder="...">
+                        <label for="city">Choisissez votre ville</label>
+                        <select name="city" type="text" class="form-control" id="select-city" placeholder="..." required>
                             <option value="all" selected>Toutes les villes</option>
                             <option value="Paris">Paris</option>
                             <option value="Lyon">Lyon</option>
@@ -56,7 +56,7 @@
                     <div class="form-group tm-form-group tm-form-group-1">
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                             <label for="inputAdult">Capacité</label>
-                            <select name="adult" class="form-control tm-select" id="inputAdult">
+                            <select name="capacity" class="form-control tm-select" id="inputAdult" required>
                                 <option value="10" selected>10</option>
                                 <option value="20">20</option>
                                 <option value="30">30</option>
@@ -70,19 +70,19 @@
                             </select>
                         </div>
                         <div class="form-group tm-form-group tm-form-group-pad col-9">
-                            <label for="amount">Prix</label>
-                            <input type="text" id="amount" readonly style="border:0;">
+                            <label for="price">Prix</label>
+                            <input type="text" id="price" name="price" readonly style="border:0;" required>
                             <div id="slider-range-min"></div>
                         </div>
                     </div>
                     <div class="form-group tm-form-group tm-form-group-1">
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                            <label for="inputCheckIn">Date d'arrivée</label>
-                            <input name="check-in" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
+                            <label for="arrival-date">Date d'arrivée</label>
+                            <input name="arrival-date" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
                         </div>
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                            <label for="inputCheckIn">Date de départ</label>
-                            <input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                            <label for="departure-date">Date de départ</label>
+                            <input name="departure-date" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
                         </div>
                     </div>
                 </div>

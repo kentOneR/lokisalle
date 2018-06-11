@@ -1,14 +1,14 @@
 $(function () {
     $("#slider-range-min").slider({
       range: "min",
-      value: 37,
+      value: 500,
       min: 1,
       max: 1000,
       slide: function (event, ui) {
-        $("#amount").val("€" + ui.value);
+        $("#price").val("€" + ui.value);
       }
     });
-    $("#amount").val("€" + $("#slider-range-min").slider("value"));
+    $("#price").val($("#slider-range-min").slider("value") +"€");
   });
 
   // DATE PICKER
