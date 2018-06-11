@@ -91,3 +91,39 @@ form{
     width:100%;
     position:absolute;
 }
+
+.navbar {
+    font-family: 'Quicksand', sans-serif;
+}
+h1, h3, h4, h5{
+    font-family:  'Quicksand', sans-serif;
+}  
+h2{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 5vh;
+}
+
+.carousel-caption{
+    font-size: 5.9vw;
+    bottom: 30%;
+    color: #ffffff;
+}
+#footer {
+    background: #05D1AF !important;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 5vh;
+    padding: 50px;
+    height: 500px;
+  }
+  #footer a {
+    font-family: 'Quicksand', sans-serif;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+  }
+  #services {
+    padding-top: 6vh;
+}
+.col {
+    padding-top: 6vh;
+}

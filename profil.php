@@ -36,7 +36,6 @@
     <p>Adresse: <?= $memberReq['adresse'] ?></p>
     <p>Code postale: <?= $memberReq['cp'] ?></p>
     <p>Ville: <?= $memberReq['ville'] ?></p>
-    <p>Pays: <?= $memberReq['pays'] ?></p>
 </div>
 
 <?php include_once('template/pending-booking.php'); ?>
