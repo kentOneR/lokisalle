@@ -97,4 +97,15 @@ function dropFromBasket($index){
     }
 }
 
+// DELETE ALL BASKET
+
+function deleteBasket($index){
+    $pos = array_search($index, $_SESSION['basket']['id-room']);
+    if($pos !== false) {
+        array_splice($_SESSION['basket']['id-room'], $pos, 1);
+        array_splice($_SESSION['basket']['arrival'], $pos, 1);
+        array_splice($_SESSION['basket']['departure'], $pos, 1);
+    }
+}
+
 ?>

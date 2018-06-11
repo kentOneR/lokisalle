@@ -45,6 +45,7 @@
 <script src="js/ui-jquery.js"></script>
 <script src="js/show-room.js"></script>
 <script src="js/product-card.js"></script>
+<script src="js/booking.js"></script>
 
 
 

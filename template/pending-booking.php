@@ -32,17 +32,12 @@ if(isset($_GET['action']) && $_GET['action'] == 'pending-booking') { ?>
             </tr>
     <?php } ?>
         <?php if(userConnect()) : ?>
-            <tr>
-                <td colspan="3"><input type="submit" value="Valider le panier" name="buy-basket" class="btn btn-default"></td>
-            </tr>
+        <a href="?action=clear-basket"><button class="btn btn-default">Valider le panier</button></a>
         <?php else : ?>
             <tr>
                 <td colspan="3">Veuillez vous <a href="connexion.php">connecter</a> ou vous <a href="subscribe.php">inscrire</a></td>
             </tr>
         <?php  endif; ?>
-        <tr>
-            <td><a href="?action=clear-basket">Vider le panier</a></td>
-        </tr>
     <?php endif; ?>
 </table>
 
