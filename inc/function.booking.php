@@ -31,7 +31,7 @@ if(isset($_POST)) {
                     "date_arrivee" => $arrivalDate, 
                     "date_depart" => $departureDate
                 )); 
-                dropFromBask($_POST['id-room']);
+                dropFromBasket($_POST['id-room']);
                 
                 ?>
                 <div class="alert alert-danger" role="alert">

@@ -10,6 +10,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
 <div id="connexion-overlay" class="hidden">
     <div class="form-wrapper">
         <h3>Connexion</h3>
+        <span id="close-login" class="close-it">&#10005;</span>
         <form id="connexion-form" method="post">
             <label for="check-pseudo">Pseudo</label><br>
             <input type="text" class="form-control" name="check-pseudo" id="check-pseudo" placeholder="Votre pseudo" autocomplete="your pseudo">

@@ -20,6 +20,13 @@ form{
     cursor: pointer;
 }
 
+.close-it{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
 #connexion-overlay,
 #signup-overlay {
     position: fixed;
@@ -34,12 +41,26 @@ form{
 
 #connexion-overlay .form-wrapper,
 #signup-overlay .form-wrapper {
+    position: relative;
     background-color: #fff;
     border-radius: 5px;
     width: 320px;
     padding: 15px;
     margin: 150px auto;
 }
+
+@media screen and (max-width: 640px){
+    #signup-overlay .form-wrapper {
+        margin: 30px auto;
+    }
+    #signup-form label{
+        display: none;
+    }
+    #signup-form input{
+        margin: 5px 0;
+    }
+}
+
 
 .ui-menu { width: 200px; }
 .ui-widget-header { padding: 0.2em; 

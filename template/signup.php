@@ -3,8 +3,9 @@
 <div id="signup-overlay" class="hidden">
     <div class="form-wrapper">
         <h3>Inscription</h3>
+        <span id="close-signup" class="close-it">&#10005;</span>
         <form id="signup-form" method="post">
-            <label for="pseudo">Pseudo</label><br>
+            <label for="pseudo">Pseudo</label>
             <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Votre pseudo" autocomplete="choose your pseudo" required>
             <label for="password">Mot de passe</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Votre mot de passe" autocomplete="choose your password" required>
@@ -25,8 +26,6 @@
             <input type="text" class="form-control" name="cp" id="cp" placeholder="Votre code postal" autocomplete="your zip code" required>
             <label for="city">Ville</label>
             <input type="text" class="form-control" name="city" id="city" placeholder="Votre ville" autocomplete="your city" required>
-            <label for="country">Pays</label>
-            <input type="text" class="form-control" name="country" id="country" placeholder="Votre pays" autocomplete="your country" required>
             <input type="submit" class="btn btn-default" value="Valider">
         </form>
         <div id="signup-result"></div>

@@ -22,7 +22,6 @@ if($_POST){
     $address = $_POST['address'];
     $zip = $_POST['zip'];
     $city = $_POST['city'];
-    $country = $_POST['country'];
 
     if(strlen($pseudo) <= 3 || strlen($pseudo) > 20) { ?>
         <div class="alert alert-danger">Erreur taille pseudo</div>
@@ -38,7 +37,7 @@ if($_POST){
 
 
     if(!$error) {
-        $signupReq = $pdo->prepare("INSERT INTO membre(pseudo, mdp, nom, prenom, email, civilite, adresse, cp, ville, pays) VALUES (
+        $signupReq = $pdo->prepare("INSERT INTO membre(pseudo, mdp, nom, prenom, email, civilite, adresse, cp, ville) VALUES (
         '$pseudo', 
         '$password', 
         '$name',
@@ -47,8 +46,7 @@ if($_POST){
         '$sexe',
         '$address',
         '$zip',
-        '$city',
-        '$country'
+        '$city'
         )");
         $signupReq->execute(); ?>
         <div class="alert alert-success">Inscription validée! <a href="'.URL.'connexion.php">Cliquez ici pour vous connecter</a></div>

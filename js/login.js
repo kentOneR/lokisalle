@@ -24,7 +24,8 @@
         connexionFormEl = document.getElementById('connexion-form'),
         pseudoCheckEl = document.getElementById('check-pseudo'),
         passwordCheckEl = document.getElementById('check-password'),
-        loginResultEl = document.getElementById('login-result');
+        loginResultEl = document.getElementById('login-result'),
+        closeLoginEl = document.getElementById('close-login');
 
     if(connexionLinkEl){
         connexionLinkEl.addEventListener('click', function (e) {
@@ -46,10 +47,16 @@
         xhr.send(params);
     }
 
-    connexionFormEl.addEventListener('submit', function (e) {
-        e.preventDefault();
-        checkLogin();
-    })
+    if(connexionFormEl){
+        connexionFormEl.addEventListener('submit', function (e) {
+            e.preventDefault();
+            checkLogin();
+        });
+        closeLoginEl.addEventListener('click', function(e){
+            connexionOverlayEl.classList.add("hidden");
+        });
+    }
+
 
 
 })();
