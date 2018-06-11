@@ -33,8 +33,8 @@ if(isset($_POST)) {
             dropFromBasket($_POST['id-room']);
                 
             ?>
-            <div class="alert alert-danger" role="alert">
-                    Merci! Votre réservation est confirmé. <a href="profil.php">Mes réservation</a>
+            <div class="alert alert-success" role="alert">
+                    Merci! Votre réservation est confirmé. <a href="profil.php?action=confirm-booking">Mes réservation</a>
             </div>
         <?php } else { ?>
         <div class="alert alert-danger" role="alert">

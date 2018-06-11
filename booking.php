@@ -70,7 +70,7 @@
         <input type="hidden" name="departure-date" id="departure-date" value="<?= $dateDeparture ?>">
         <input type="submit" name="confirm" value="Confirmer la réservation">
     </form>
-    <div class="confirm result"></div>
+    <div id="confirm-result"></div>
 </div>
 
 <?php include_once('inc/footer.php'); ?>
