@@ -8,7 +8,7 @@ $(function () {
         $("#price").val("€" + ui.value);
       }
     });
-    $("#price").val($("#slider-range-min").slider("value") +"€");
+    $("#price").val($("#slider-range-min").slider("value"));
   });
 
   // DATE PICKER
@@ -19,6 +19,7 @@ $(function () {
         .datepicker({
           defaultDate: "+1w",
           dateFormat: "dd-mm-yy",
+          defaultDate: +0,
           minDate: 0,
           firstDay: 1,
           dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
@@ -33,6 +34,7 @@ $(function () {
       to = $("#inputCheckOut").datepicker({
         defaultDate: "+1w",
         dateFormat: "dd-mm-yy",
+        defaultDate: +2,
         minDate: 1,
         firstDay: 1,
         dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],

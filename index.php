@@ -57,11 +57,11 @@
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                             <label for="inputAdult">Capacité</label>
                             <select name="capacity" class="form-control tm-select" id="inputAdult" required>
-                                <option value="10" selected>10</option>
+                                <option value="10">10</option>
                                 <option value="20">20</option>
                                 <option value="30">30</option>
                                 <option value="40">40</option>
-                                <option value="50">50</option>
+                                <option value="50" selected>50</option>
                                 <option value="60">60</option>
                                 <option value="70">70</option>
                                 <option value="80">80</option>
@@ -70,7 +70,7 @@
                             </select>
                         </div>
                         <div class="form-group tm-form-group tm-form-group-pad col-9">
-                            <label for="price">Prix</label>
+                            <label for="price">Prix (€)</label>
                             <input type="text" id="price" name="price" readonly style="border:0;" required>
                             <div id="slider-range-min"></div>
                         </div>
@@ -78,11 +78,11 @@
                     <div class="form-group tm-form-group tm-form-group-1">
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                             <label for="arrival-date">Date d'arrivée</label>
-                            <input name="arrival-date" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
+                            <input name="arrival-date" type="text" class="form-control" id="inputCheckIn" placeholder="Date arrivée" autocomplete="off"> 
                         </div>
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                             <label for="departure-date">Date de départ</label>
-                            <input name="departure-date" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                            <input name="departure-date" type="text" class="form-control" id="inputCheckOut" placeholder="Date départ" autocomplete="off">
                         </div>
                     </div>
                 </div>
