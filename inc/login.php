@@ -32,7 +32,7 @@ if($_POST){
             <div class="alert alert-danger">Erreur mot de passe</div>
         <?php }
     } else { ?>
-        <div class="alert alert-danger">Pseudo inconnu</div>
+        <div class="alert alert-danger">Erreur pseudo inconnu</div>
     <?php }
 
     if(!$erreur) { ?>
