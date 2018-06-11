@@ -68,22 +68,21 @@
         </div>
     </section>
 
-    <!--Fin  Services -->
+    <!--ROOMS SLIDER -->
+    <div id="rooms-slider">
+            <?php
+        $roomListReq = $pdo->prepare("SELECT * FROM salle");
+        $roomListReq->execute();
+        $roomListReq = $roomListReq->fetchAll(PDO::FETCH_ASSOC);
 
-    <div class="room-container">
-        <?php
-    foreach ($roomReq as $key => $room) { ?>
-            <div class="room-wrapper" data-room-id="<?= $room['id_salle'] ?>">
-                <h2>
-                    <?= $room['titre'] ?>
-                </h2>
-                <img src="img/room/<?= $room['photo'] ?>" alt="salle <?= $room['titre'] ?>">
-                <p class="room-description">
-                    <?= $room['description'] ?>
-                </p>
-                <span class="price"></span>
-            </div>
-            <?php } ?>
+    foreach ($roomListReq as $key => $room) { ?>
+                <div class="room-slide">
+                    <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
+                        <img src="img/room/<?= $room['photo'] ?>" alt="<?= $room['titre'] ?>">
+                    </a>
+                </div>
+                <?php } ?>
+        </div>
 
     </div>
 

@@ -48,11 +48,11 @@
                             <input type="hidden" name='id-room' id='id-room' value="<?= $roomReq['id_salle'] ?>">
                             <label for="arrival-date">Date d'arrivée</label>
                             <br>
-                            <input type="text" id="search-from" name="arrival-date" required autocomplete="off">
+                            <input type="text" id="inputBookIn" name="arrival-date" required autocomplete="off">
                             <br>
                             <label for="departure-date">Date de départ</label>
                             <br>
-                            <input type="text" id="search-to" name="departure-date" required autocomplete="off">
+                            <input type="text" id="inputBookOut" name="departure-date" required autocomplete="off">
                             <input type="submit" id="booking" name="booking" value="réserver" <?=( !userConnect()) ? 'disabled' : '' ?> >
                         </form>
                     </div>

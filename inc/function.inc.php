@@ -75,9 +75,6 @@ function addToBasket($idRoom, $arrival, $departure) {
     createBasket();
     $pos = array_search($idRoom, $_SESSION['basket']['id-room']);
     if($pos !== false) {
-        // array_splice($_SESSION['basket']['id-room'], $pos, 1);
-        // array_splice($_SESSION['basket']['arrival'], $pos, 1);
-        // array_splice($_SESSION['basket']['departure'], $pos, 1);
         $_SESSION['basket']['id-room'][$pos] = $idRoom;
         $_SESSION['basket']['arrival'][$pos] = $arrival;
         $_SESSION['basket']['departure'][$pos] = $departure;
@@ -87,14 +84,13 @@ function addToBasket($idRoom, $arrival, $departure) {
         $_SESSION['basket']['arrival'][] = $arrival;
         $_SESSION['basket']['departure'][] = $departure;
     }
-
 }
 
 // FUNCTION DROP ARTICLE FROM BASKET
 
 function dropFromBasket($index){
-    $pos = array_search($index, $_SESSION['cart']['id_article']);
-    if($articlePosition !== false) {
+    $pos = array_search($index, $_SESSION['basket']['id-room']);
+    if($pos !== false) {
         array_splice($_SESSION['basket']['id-room'], $pos, 1);
         array_splice($_SESSION['basket']['arrival'], $pos, 1);
         array_splice($_SESSION['basket']['departure'], $pos, 1);

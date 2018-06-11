@@ -19,8 +19,8 @@
 
     var formBookingEl = document.getElementById('book-room'),
         roomResultEl = document.getElementById('room-result')
-        searchFromEl = document.getElementById('inputCheckIn'),
-        searchToEl = document.getElementById('inputCheckOut'),
+        searchFromEl = document.getElementById('inputBookIn'),
+        searchToEl = document.getElementById('inputBookOut'),
         idRoomEl = document.getElementById('id-room');
 
     if(formBookingEl){
