@@ -27,10 +27,35 @@ form{
     cursor: pointer;
 }
 
+ul{
+    list-style-type: none;
+}
+
+#nav-admin{
+    background: #f1f1f1; 
+}
+
+#nav-admin>ul{
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1140px;
+    margin: 0 auto;
+    height: 50px;
+    padding: 12px;
+}
+
+#nav-admin>ul>li{
+    margin: 0 10px;
+}
+
+.admin-container{
+    max-width: 1140px;
+    margin: 50px auto;
+}
 .room-container{
     display: flex;
     flex-flow: row wrap;
-    max-width: 1240px;
+    max-width: 1140px;
     margin: 0 auto;
 }
 

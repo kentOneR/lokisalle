@@ -14,9 +14,11 @@ if(adminConnect()) :
     </ul>
 </nav>
 
-<?php require_once('template/manage-member.php'); ?>
-<?php require_once('template/manage-room.php'); ?>
-<?php require_once('template/manage-review.php'); ?>
+<div class="admin-container">
+    <?php require_once('template/manage-member.php'); ?>
+    <?php require_once('template/manage-room.php'); ?>
+    <?php require_once('template/manage-review.php'); ?>
+</div>
 
 <?php else:
 
