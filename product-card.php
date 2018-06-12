@@ -42,7 +42,7 @@
                     </div>
                     <div class="room-middle-info">
                         <p>Adresse:
-                            <?= $roomReq['adresse'].', '.$roomReq['cp'].' '.$roomReq['ville'] ?>
+                            <?= $roomReq['adresse'].' '.$roomReq['cp'].' '.$roomReq['ville'] ?>
                         </p>
                         <p>Prix:
                             <?= $roomReq['prix'] ?> €/jour</p>
@@ -76,7 +76,7 @@
             <div class="col-lg-6">
                 <h3>Localisation</h3>
                 <div class="map-responsive">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20996.89965735575!2d2.37898935!3d48.86559999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e394fef5115%3A0x3ba0440da060f971!2sRichelieu+-+Drouot!5e0!3m2!1sfr!2sfr!4v1528460018566"
+                    <iframe src="https://www.google.com/maps?q=<?= $roomReq['adresse'].' '.$roomReq['cp'].' '.$roomReq['ville'].' '.$roomReq['pays'] ?>&z=13&output=embed"
                         width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
@@ -101,9 +101,6 @@
                 <?php } ?>
             </div>
         </div>
-
-
-        <h3>Avis</h3>
 
         <h3>Autres salles</h3>
         <div id="rooms-slider">
