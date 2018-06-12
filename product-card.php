@@ -87,14 +87,18 @@
                 <?php } else {
                     foreach ($reviewReq as $key => $review) { ?>
                         <div class="review-wrapper">
-                            <p><?= $review['note'] ?></p>
+                            <?php for ($i=0; $i < $review['note']; $i++) { ?>
+                                   <i class="fas fa-star"></i>
+                            <?php } ?>
                             <p><?= $review['commentaire'] ?></p>
                             <span><?= $review['pseudo'] ?></span>
                             <span><?= $review['date_enregistrement'] ?></span>
                         </div>
                     <?php }
                 }
-                ?>
+                if(userConnect()) {?>
+                <a href="profil.php?action=add-review&id-room=<?= $roomReq['id_salle'] ?>">Laisser un avis</a>
+                <?php } ?>
             </div>
         </div>
 

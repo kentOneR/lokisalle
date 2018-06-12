@@ -47,6 +47,7 @@
 
     <?php include_once('template/pending-booking.php'); ?>
     <?php include_once('template/confirm-booking.php'); ?>
+    <?php include_once('template/add-review.php'); ?>
 </div>
 
 

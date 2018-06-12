@@ -82,6 +82,11 @@ ul{
     padding: 15px 25px;
 }
 
+.form-control {
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
 #connexion-overlay,
 #signup-overlay {
     position: fixed;

@@ -40,27 +40,15 @@
             <br>
             <div class="row text-center">
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                    </span>
                     <h4 class="service-heading">Rapide et efficace</h4>
                     <p class="text-muted">Réservez votre espace de travail en 3 clics
                         <br>parmis plus de 500 lieux vérifiés.</p>
                 </div>
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                    </span>
                     <h4 class="service-heading">Un service sur mesure</h4>
                     <p class="text-muted">A l'heure, à la journée ou à la semaine, trouvez la salle qui vous correspond.</p>
                 </div>
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-                    </span>
                     <h4 class="service-heading">Des tarifs accessibles</h4>
                     <p class="text-muted">Accedez à des locaux professionnels à des tarifs compétitifs grâce à notre réseau Lokisalle</p>
                 </div>
