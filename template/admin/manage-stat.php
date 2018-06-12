@@ -2,24 +2,23 @@
 
 if(isset($_GET['action']) && $_GET['action'] == 'stat'):
 
-// $topRoomRep =$pdo->prepare("SELECT s.id_salle, s.titre, a.note FROM salle s, avis a WHERE s.id_salle=a.id_salle ");
-// $topRoomRep->execute();
-// $topRoomRep = $topRoomRep->fetchAll(PDO::FETCH_ASSOC);
-// var_dump($topRoomRep);
-
+// TOP 5 BEST ROOMS BY REVIEW
 $topRoomReq = $pdo->prepare("SELECT a.id_salle, s.titre, ROUND(AVG(a.note), 1) as avg_note FROM avis a, salle s WHERE s.id_salle=a.id_salle GROUP BY id_salle ORDER BY avg_note DESC LIMIT 5");
 $topRoomReq->execute();
 $topRoomReq = $topRoomReq->fetchAll(PDO::FETCH_ASSOC);
 
+// TOP 5 BEST ROOMS BY NB ORDER
 $topOrderReq = $pdo->prepare("SELECT c.id_salle, s.titre, COUNT(c.id_commande) as nb_order FROM commande c, salle s WHERE s.id_salle=c.id_salle GROUP BY id_salle ORDER BY nb_order DESC LIMIT 5");
 $topOrderReq->execute();
 $topOrderReq = $topOrderReq->fetchAll(PDO::FETCH_ASSOC);
 
+// TOP 5 BEST MEMBERS BY NB OF ORDER
 $topMemberOrderReq = $pdo->prepare("SELECT c.id_membre, m.pseudo, COUNT(c.id_commande) as nb_order FROM commande c, membre m WHERE c.id_membre=m.id_membre GROUP BY id_membre ORDER BY nb_order DESC LIMIT 5");
 $topMemberOrderReq->execute();
 $topMemberOrderReq = $topMemberOrderReq->fetchAll(PDO::FETCH_ASSOC);
 
-$topMemberBuyReq = $pdo->prepare("SELECT c.id_membre, m.pseudo, COUNT(c.id_commande) as nb_order FROM commande c, membre m WHERE c.id_membre=m.id_membre GROUP BY id_membre ORDER BY nb_order DESC LIMIT 5");
+// TOP 5 BEST MEMBERS BY PRICE
+$topMemberBuyReq = $pdo->prepare("SELECT c.id_membre, m.pseudo, SUM((DATEDIFF(c.date_depart, c.date_arrivee)*s.prix)) as total_price FROM commande c, salle s, membre m WHERE s.id_salle=c.id_salle && m.id_membre=c.id_membre GROUP BY id_membre ORDER BY total_price DESC LIMIT 5");
 $topMemberBuyReq->execute();
 $topMemberBuyReq = $topMemberBuyReq->fetchAll(PDO::FETCH_ASSOC);
 
@@ -54,7 +53,7 @@ $topMemberBuyReq = $topMemberBuyReq->fetchAll(PDO::FETCH_ASSOC);
     </tr>
     <?php } ?>
 </table>
-<h5>Top 5 des membre qui ont passé le plus de commande</h5>
+<h5>Top 5 des membres par commande</h5>
 <table border="1" cellpadding="5">
     <tr>
         <th>id_membre</th>
@@ -66,6 +65,21 @@ $topMemberBuyReq = $topMemberBuyReq->fetchAll(PDO::FETCH_ASSOC);
         <th><?= $value['id_membre'] ?></th>
         <th><?= $value['pseudo'] ?></th>
         <th><?= $value['nb_order'] ?></th>
+    </tr>
+    <?php } ?>
+</table>
+<h5>Top 5 des membres par prix</h5>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>id_membre</th>
+        <th>pseudo</th>
+        <th>Prix total</th>
+    </tr>
+    <?php foreach ($topMemberBuyReq as $key => $value) { ?>
+    <tr>
+        <th><?= $value['id_membre'] ?></th>
+        <th><?= $value['pseudo'] ?></th>
+        <th><?= $value['total_price'] ?></th>
     </tr>
     <?php } ?>
 </table>
