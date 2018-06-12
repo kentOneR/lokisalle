@@ -6,6 +6,7 @@ if(adminConnect()) :
 
 <nav id="nav-admin">
     <ul>
+        <li><a href="admin.php?action=stat">Statistique</a></li>
         <li><a href="admin.php?action=show-member">Liste des membres</a></li>
         <li><a href="admin.php?action=add-member">Ajouter un membre</a></li>
         <li><a href="admin.php?action=show-room">Liste des salles</a></li>
@@ -16,10 +17,11 @@ if(adminConnect()) :
 </nav>
 
 <div class="admin-container">
-    <?php require_once('template/manage-member.php'); ?>
-    <?php require_once('template/manage-room.php'); ?>
-    <?php require_once('template/manage-order.php'); ?>
-    <?php require_once('template/manage-review.php'); ?>
+    <?php require_once('template/admin/manage-stat.php'); ?>
+    <?php require_once('template/admin/manage-member.php'); ?>
+    <?php require_once('template/admin/manage-room.php'); ?>
+    <?php require_once('template/admin/manage-order.php'); ?>
+    <?php require_once('template/admin/manage-review.php'); ?>
 </div>
 
 <?php else:

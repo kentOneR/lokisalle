@@ -37,7 +37,7 @@ class Crypting {
     private static $cipher  = MCRYPT_RIJNDAEL_128;
     
     // Clé de cryptage         
-    private static $key = "your_key";
+    private static $key = "MQWQWTerxSE4gJWZ";
     
     // Mode opératoire (traitement des blocs)
     private static $mode    = 'cbc';
