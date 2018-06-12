@@ -16,7 +16,7 @@ function userConnect() {
 function adminConnect() {
     if(userConnect()) {
         $id_membre = $_SESSION['membre']['id_membre'];
-        $userReq = $GLOBALS['pdo']->prepare("SELECT statut FROM membre WHERE id_membre= 1 ");
+        $userReq = $GLOBALS['pdo']->prepare("SELECT statut FROM membre WHERE id_membre= ? ");
         $userReq->execute(array($id_membre));
         $membre = $userReq->fetch(PDO::FETCH_ASSOC);
 
