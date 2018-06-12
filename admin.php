@@ -10,6 +10,7 @@ if(adminConnect()) :
         <li><a href="admin.php?action=add-member">Ajouter un membre</a></li>
         <li><a href="admin.php?action=show-room">Liste des salles</a></li>
         <li><a href="admin.php?action=add-room">Ajouter une salle</a></li>
+        <li><a href="admin.php?action=show-order">Liste des commandes</a></li>
         <li><a href="admin.php?action=show-review">Liste des avis</a></li>
     </ul>
 </nav>
@@ -17,6 +18,7 @@ if(adminConnect()) :
 <div class="admin-container">
     <?php require_once('template/manage-member.php'); ?>
     <?php require_once('template/manage-room.php'); ?>
+    <?php require_once('template/manage-order.php'); ?>
     <?php require_once('template/manage-review.php'); ?>
 </div>
 
