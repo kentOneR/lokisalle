@@ -4,6 +4,7 @@
         dots: true,
         infinite: true,
         speed: 300,
+        arrows: false,
         slidesToShow: 4,
         slidesToScroll: 4,
         centerPadding: 15,

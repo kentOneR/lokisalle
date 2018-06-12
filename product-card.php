@@ -4,6 +4,10 @@
         $roomReq = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ?");
         $roomReq->execute(array($_GET['id-room']));
         $roomReq = $roomReq->fetch(PDO::FETCH_ASSOC);
+
+        $reviewReq = $pdo->prepare("SELECT a.commentaire, a.note, a.date_enregistrement, m.pseudo FROM avis a, membre m WHERE a.id_salle = ? && a.id_membre = m.id_membre");
+        $reviewReq->execute(array($_GET['id-room']));
+        $reviewReq = $reviewReq->fetchAll(PDO::FETCH_ASSOC);
     }
 ?>
     <header>
@@ -68,12 +72,32 @@
                 </div>
             </div>
         </div>
-
-        <h3>Localisation</h3>
-        <div class="map-responsive">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20996.89965735575!2d2.37898935!3d48.86559999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e394fef5115%3A0x3ba0440da060f971!2sRichelieu+-+Drouot!5e0!3m2!1sfr!2sfr!4v1528460018566"
-                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Localisation</h3>
+                <div class="map-responsive">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20996.89965735575!2d2.37898935!3d48.86559999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e394fef5115%3A0x3ba0440da060f971!2sRichelieu+-+Drouot!5e0!3m2!1sfr!2sfr!4v1528460018566"
+                        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3>Avis</h3>
+                <?php if(empty($reviewReq)) { ?>
+                    <p>Aucun avis pour cette salle</p>
+                <?php } else {
+                    foreach ($reviewReq as $key => $review) { ?>
+                        <div class="review-wrapper">
+                            <p><?= $review['note'] ?></p>
+                            <p><?= $review['commentaire'] ?></p>
+                            <span><?= $review['pseudo'] ?></span>
+                            <span><?= $review['date_enregistrement'] ?></span>
+                        </div>
+                    <?php }
+                }
+                ?>
+            </div>
         </div>
+
 
         <h3>Avis</h3>
 
