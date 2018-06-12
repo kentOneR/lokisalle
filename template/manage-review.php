@@ -16,16 +16,17 @@ if(isset($_GET['action']) && $_GET['action'] == "show-review"):
             $column = $r->getColumnMeta($i); ?>
             <th><?=$column['name']?></th>
         <?php } ?>
-            <th>Modification</th>
-            <th>Suppression</th>
+            <th>action</th>
         </tr>
         <?php foreach ($reviewReq as $key => $review) { ?>
             <tr>
                 <?php foreach ($review as $key => $value) { ?>
                         <td> <?= $value ?></td>
                 <?php } ?>
-                <td><a href="?action=edit-review&id_review=<?= $review['id_avis'] ?>">Modif</a></td>
-                <td><a href="?action=delete-review&id_review=<?= $review['id_avis'] ?>" onClick="confirm(\'En êtes vous sur?\')">Suppr</a></td>
+                <td>
+                    <a href="?action=edit-review&id_review=<?= $review['id_avis'] ?>"><i class="far fa-edit"></i></a>
+                    <a href="?action=delete-review&id_review=<?= $review['id_avis'] ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
+                </td>
             </tr>
         <?php } ?>
     </table>

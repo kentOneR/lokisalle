@@ -68,8 +68,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
             <th><?=$column['name']?></th>
         <?php }
         } ?>
-            <th>Modification</th>
-            <th>Suppression</th>
+            <th>action</th>
         </tr>
         <?php foreach ($memberList as $key => $membre) { ?>
             <tr>
@@ -78,8 +77,10 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
                         <td> <?= $value ?></td>
                 <?php }
                 } ?>
-                <td><a href="?action=edit-member&id_member=<?= $membre['id_membre'] ?>">Modif</a></td>
-                <td><a href="?action=delete-member&id_member=<?= $membre['id_membre'] ?>" onClick="confirm(\'En êtes vous sur?\')">Suppr</a></td>
+                <td>
+                    <a href="?action=edit-member&id_member=<?= $membre['id_membre'] ?>"><i class="far fa-edit"></i></a>
+                    <a href="?action=delete-member&id_member=<?= $membre['id_membre'] ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
+                </td>
             </tr>
         <?php } ?>
     </table>

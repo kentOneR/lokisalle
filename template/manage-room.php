@@ -23,8 +23,7 @@ if(isset($_GET['action']) && $_GET['action'] == "show-room"):
             $column = $r->getColumnMeta($i); ?>
             <th><?=$column['name']?></th>
         <?php } ?>
-            <th>Modification</th>
-            <th>Suppression</th>
+            <th>action</th>
         </tr>
         <?php foreach ($roomList as $key => $room) { ?>
             <tr>
@@ -35,8 +34,10 @@ if(isset($_GET['action']) && $_GET['action'] == "show-room"):
                         <td> <?= $value ?></td>
                     <?php }
                     } ?>
-                <td><a href="?action=edit-room&id_room=<?= $room['id_salle'] ?>">Modif</a></td>
-                <td><a href="?action=delete-room&id_room=<?= $room['id_salle'] ?>" onClick="confirm(\'En êtes vous sur?\')">Suppr</a></td>
+                <td>
+                    <a href="?action=edit-room&id_room=<?= $room['id_salle'] ?>"><i class="far fa-edit"></i></a>
+                    <a href="?action=delete-room&id_room=<?= $room['id_salle'] ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
+                </td>
             </tr>
         <?php } ?>
     </table>
