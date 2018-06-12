@@ -31,4 +31,45 @@ if(isset($_GET['action']) && $_GET['action'] == "show-review"):
         <?php } ?>
     </table>
 
+<?php elseif(isset($_GET['action']) && $_GET['action'] == "edit-review"): 
+
+// Récupéation de l'avis
+if(isset($_GET['id_review'])) {
+    $r = $pdo->prepare("SELECT * FROM avis WHERE id_avis = ? ");
+    $r->execute(array($_GET['id_review']));
+    $thisReviewReq = $r->fetch(PDO::FETCH_ASSOC);
+}
+
+$idReview = (isset($thisReviewReq['id_avis'])) ? $thisReviewReq['id_avis'] : '';
+$idMember = (isset($thisReviewReq['id_membre'])) ? $thisReviewReq['id_membre'] : '';
+$idRoom = (isset($thisReviewReq['id_salle'])) ? $thisReviewReq['id_salle'] : '';
+$reviewTxt = (isset($thisReviewReq['commentaire'])) ? $thisReviewReq['commentaire'] : '';
+$reviewNote = (isset($thisReviewReq['note'])) ? $thisReviewReq['note'] : '';
+
+?>
+
+    <form class="col-sm-6" action="inc/function.review.php" method="post">
+        <input type="hidden" class="form-control" name="id-review" value="<?= $idReview ?>">
+        <label for="id-member">Id membre</label><br>
+        <input class="form-control" type="text" name="id-member" value="<?= $idMember ?>">
+        <label for="id-room">Id salle</label><br>
+        <input class="form-control" type="text" name="id-room" value="<?= $idRoom ?>">
+        <label for="note">Note</label><br>
+        <select class="form-control" name="note">
+            <option value="0" <?= ($reviewNote == 0) ? ' selected' : '' ;?> >0</option>
+            <option value="1" <?= ($reviewNote == 1) ? ' selected' : '' ;?> >1</option>
+            <option value="2" <?= ($reviewNote == 2) ? ' selected' : '' ;?> >2</option>
+            <option value="3" <?= ($reviewNote == 3) ? ' selected' : '' ;?> >3</option>
+            <option value="4" <?= ($reviewNote == 4) ? ' selected' : '' ;?> >4</option>
+            <option value="5" <?= ($reviewNote == 5) ? ' selected' : '' ;?> >5</option>
+        </select><br>
+        <label for="review">Commentaire</label><br>
+        <textarea name="review" class="form-control" cols="80" rows="5"><?= $reviewTxt ?></textarea>
+        <input type="submit" class="btn btn-default" name="edit-review" value="Valider">
+    </form>
+
+
+
+
+
 <?php endif; ?>

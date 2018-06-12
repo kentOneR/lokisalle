@@ -11,7 +11,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'delete-member' && isset($_GET['
 
 if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action'] == "edit-member")) :
 
-    // récupération des membres
+    // récupération du membre
     if(isset($_GET['id_member'])) {
         $r = $pdo->prepare("SELECT * FROM membre WHERE id_membre = ? ");
         $r->execute(array($_GET['id_member']));

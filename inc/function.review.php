@@ -2,7 +2,8 @@
 
 require_once('init.inc.php');
 
-if(isset($_POST)) {
+// AJOUT AVIS
+if(isset($_POST) && !isset($_POST['edit-review'])) {
     foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlentities(addslashes($value));
     }
@@ -18,6 +19,25 @@ if(isset($_POST)) {
     ));
 
     header('location:../product-card.php?id-room='.$_POST['id-room']);
+}
+
+// MODIFICATION ADMIN AVIS
+if(isset($_POST) && isset($_POST['edit-review'])){
+    foreach ($_POST as $key => $value) {
+        $_POST[$key] = htmlentities(addslashes($value));
+    }
+
+$editReviewReq = $pdo->prepare("UPDATE avis SET id_membre = :id_membre, id_salle = :id_salle, commentaire = :commentaire, note = :note WHERE id_avis = :id_avis");
+$editReviewReq->execute(array(
+    'id_membre' => $_POST['id-member'],
+    'id_salle' => $_POST['id-room'],
+    'commentaire' => $_POST['review'],
+    'note' => $_POST['note'],
+    'id_avis' => $_POST['id-review']
+));
+
+header('location:../admin.php?action=show-review');
+
 }
 
 
