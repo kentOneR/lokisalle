@@ -36,7 +36,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="presentation.html">Qui sommes-nous?</a>
+                        <a class="nav-link" href="intro.php">Qui sommes-nous?</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="show-room.php">Les salles</a>
