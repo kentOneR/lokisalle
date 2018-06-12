@@ -2,7 +2,7 @@
 if(isset($_GET['action'])):
 
     if($_GET['action'] == "show-order" || $_GET['action'] == "delete-order"){
-        $r = $pdo->prepare("SELECT * FROM commande");
+        $r = $pdo->prepare("SELECT c.*, s.prix FROM commande c, salle s WHERE c.id_salle=s.id_salle");
         $r->execute();
         $columnReview = $r->columnCount();
         $orderReq = $r->fetchAll(PDO::FETCH_ASSOC);
@@ -12,16 +12,22 @@ if(isset($_GET['action'])):
         <table border="1" cellpadding="5">
             <tr>
             <?php for ($i=0; $i < $columnReview  ; $i++) { 
-                $column = $r->getColumnMeta($i); ?>
+                $column = $r->getColumnMeta($i); 
+                if($column['name'] != 'prix') {?>
                 <th><?=$column['name']?></th>
-            <?php } ?>
+                <?php }
+            } ?>
+                <th>Prix total (€)</th>
                 <th>action</th>
             </tr>
             <?php foreach ($orderReq as $key => $order) { ?>
                 <tr>
-                    <?php foreach ($order as $key => $value) { ?>
+                    <?php foreach ($order as $key => $value) { 
+                        if($key != 'prix') {?>
                             <td><?= $value ?></td>
-                    <?php } ?>
+                        <?php }
+                    } ?>
+                    <td><?= calcNbOfDays($order['date_arrivee'], $order['date_depart']) * $order['prix'] ?></td>
                     <td>
                         <a href="?action=edit-order&id_order=<?= Crypting::crypt($order['id_commande']) ?>"><i class="far fa-edit"></i></a>
                         <a href="?action=delete-order&id_order=<?= Crypting::crypt($order['id_commande']) ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
@@ -32,45 +38,33 @@ if(isset($_GET['action'])):
 
     <?php } elseif($_GET['action'] == "delete-order"){
         $idOrder = Crypting::decrypt($_GET['id_order']);
-        $deleteReviewReq = $pdo->prepare("DELETE FROM commande WHERE id_commande = ?");
-        $deleteReviewReq->execute(array($idOrder));
+        $deleteOrderReq = $pdo->prepare("DELETE FROM commande WHERE id_commande = ?");
+        $deleteOrderwReq->execute(array($idOrder));
         
     }
-    elseif(isset($_GET['action']) && $_GET['action'] == "edit-review"){
+    elseif(isset($_GET['action']) && $_GET['action'] == "edit-order"){
 
         // Récupéation de l'avis
         if(isset($_GET['id_order'])) {
             $idOrder = Crypting::decrypt($_GET['id_order']);
             $r = $pdo->prepare("SELECT * FROM commande WHERE id_commande = ? ");
             $r->execute(array($idOrder));
-            $thisReviewReq = $r->fetch(PDO::FETCH_ASSOC);
+            $thisOrderReq = $r->fetch(PDO::FETCH_ASSOC);
         }
 
-    $idReview = (isset($thisReviewReq['id_commande'])) ? $thisReviewReq['id_commande'] : '';
-    $idMember = (isset($thisReviewReq['id_membre'])) ? $thisReviewReq['id_membre'] : '';
-    $idRoom = (isset($thisReviewReq['id_salle'])) ? $thisReviewReq['id_salle'] : '';
-    $orderTxt = (isset($thisReviewReq['commentaire'])) ? $thisReviewReq['commentaire'] : '';
-    $orderNote = (isset($thisReviewReq['note'])) ? $thisReviewReq['note'] : '';
     ?>
-
+    <h2>Modifier la commande id: <?= $thisOrderReq['id_commande'] ?></h2>
     <form class="col-sm-6" action="inc/function.review.php" method="post">
-        <input type="hidden" class="form-control" name="id-review" value="<?= $idReview ?>">
+        <input type="hidden" class="form-control" name="id-order" value="<?= $thisOrderReq['id_commande'] ?>">
         <label for="id-member">Id membre</label><br>
-        <input class="form-control" type="text" name="id-member" value="<?= $idMember ?>">
+        <input class="form-control" type="text" name="id-member" value="<?= $thisOrderReq['id_membre'] ?>">
         <label for="id-room">Id salle</label><br>
-        <input class="form-control" type="text" name="id-room" value="<?= $idRoom ?>">
-        <label for="note">Note</label><br>
-        <select class="form-control" name="note">
-            <option value="0" <?= ($orderNote == 0) ? ' selected' : '' ;?> >0</option>
-            <option value="1" <?= ($orderNote == 1) ? ' selected' : '' ;?> >1</option>
-            <option value="2" <?= ($orderNote == 2) ? ' selected' : '' ;?> >2</option>
-            <option value="3" <?= ($orderNote == 3) ? ' selected' : '' ;?> >3</option>
-            <option value="4" <?= ($orderNote == 4) ? ' selected' : '' ;?> >4</option>
-            <option value="5" <?= ($orderNote == 5) ? ' selected' : '' ;?> >5</option>
-        </select><br>
-        <label for="review">Commentaire</label><br>
-        <textarea name="review" class="form-control" cols="80" rows="5"><?= $orderTxt ?></textarea>
-        <input type="submit" class="btn btn-default" name="edit-review" value="Valider">
+        <input class="form-control" type="text" name="id-room" value="<?= $thisOrderReq['id_salle'] ?>">
+        <label for="arrival-date">Date arrivée</label><br>
+        <input class="form-control" type="text" name="arrival-date" value="<?= $thisOrderReq['date_arrivee'] ?>">
+        <label for="departure-date">Date arrivée</label><br>
+        <input class="form-control" type="text" name="departure-date" value="<?= $thisOrderReq['date_depart'] ?>">
+        <input type="submit" class="btn btn-default" name="edit-order" value="Valider">
     </form>
 
     <?php } ?>
