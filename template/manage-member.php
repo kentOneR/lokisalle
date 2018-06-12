@@ -3,7 +3,7 @@
 // Suppression d'un membre
 if(isset($_GET['action']) && $_GET['action'] == 'delete-member' && isset($_GET['id_member'])){
     $deleteReq = $pdo->prepare("DELETE FROM membre WHERE id_membre = ?");
-    $deleteReq->execute(array($_GET['id_member']));
+    $deleteReq->execute(array(Crypting::decrypt($_GET['id_member'])));
 
     header('location:admin?action=show-member');
 
@@ -14,7 +14,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
     // récupération du membre
     if(isset($_GET['id_member'])) {
         $r = $pdo->prepare("SELECT * FROM membre WHERE id_membre = ? ");
-        $r->execute(array($_GET['id_member']));
+        $r->execute(array(Crypting::decrypt($_GET['id_member'])));
         $member = $r->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -78,8 +78,8 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
                 <?php }
                 } ?>
                 <td>
-                    <a href="?action=edit-member&id_member=<?= $membre['id_membre'] ?>"><i class="far fa-edit"></i></a>
-                    <a href="?action=delete-member&id_member=<?= $membre['id_membre'] ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
+                    <a href="?action=edit-member&id_member=<?= Crypting::crypt($membre['id_membre']) ?>"><i class="far fa-edit"></i></a>
+                    <a href="?action=delete-member&id_member=<?= Crypting::crypt($membre['id_membre']) ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
         <?php } ?>
