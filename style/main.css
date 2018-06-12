@@ -121,6 +121,10 @@ ul{
     }
 }
 
+#rooms-slider,
+#services{
+    margin-bottom: 100px;
+}
 
 .ui-menu { width: 200px; }
 .ui-widget-header { padding: 0.2em; 
@@ -167,22 +171,19 @@ h2{
     bottom: 30%;
     color: #ffffff;
 }
-#footer {
+#footer{
     background: #05D1AF !important;
     font-family: 'Quicksand', sans-serif;
     line-height: 5vh;
     padding: 50px;
-    height: 500px;
-  }
-  #footer a {
+}
+#footer a {
     font-family: 'Quicksand', sans-serif;
     text-decoration: none !important;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
-  }
-  #services {
-    padding-top: 6vh;
 }
+
 .col {
     padding-top: 6vh;
 }
