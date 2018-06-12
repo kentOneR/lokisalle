@@ -4,6 +4,11 @@ require_once('init.inc.php');
 
 // Modification membre
 if(isset($_POST['managemember']) && !empty($_POST['admin-id-member'])) {
+    foreach ($_POST as $key => $value) {
+        $_POST[$key] = htmlentities(addslashes($value));
+    }
+
+
     $id_member = $_POST['admin-id-member'];
     $req = $pdo->prepare("UPDATE membre SET 
         pseudo = '$_POST[adminpseudo]',

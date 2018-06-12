@@ -3,6 +3,9 @@
 require_once('init.inc.php');
 
 if(isset($_POST)) {
+    foreach ($_POST as $key => $value) {
+        $_POST[$key] = htmlentities(addslashes($value));
+    }
     $idMembre = $_SESSION['membre']['id_membre'];
     $noteReview = $_POST['note'];
     ($noteReview > 5) ? $noteReview = 5 : (($noteReview < 0) ? $noteReview = 0 : $noteReview = $noteReview);
