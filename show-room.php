@@ -38,10 +38,10 @@ if(isset($_POST) && isset($_POST['search-room'])){
 <!-- FORMULAIRE -->
 <?php include_once('template/search-room-form.php'); ?>
 
-<div id="room-container" class="room-container">
+<div id="room-container" class="room-container d-flex flex-row flex-wrap">
   <?php
     foreach ($roomReq as $key => $room) { ?>
-      <div class="room-wrapper" data-room-id="<?= $room['id_salle'] ?>" data-category="<?= $room['categorie'] ?>" data-city="<?= $room['ville'] ?>">
+      <div class="room-wrapper col-sm-4 mt-3" data-room-id="<?= $room['id_salle'] ?>" data-category="<?= $room['categorie'] ?>" data-city="<?= $room['ville'] ?>">
         <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
         <h2>
           <?= $room['titre'] ?>

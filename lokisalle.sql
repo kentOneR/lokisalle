@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 juin 2018 à 15:09
+-- Généré le :  mer. 13 juin 2018 à 15:11
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `avis` (
   `note` int(1) NOT NULL,
   `date_enregistrement` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_avis`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `avis`
@@ -51,7 +51,8 @@ INSERT INTO `avis` (`id_avis`, `id_membre`, `id_salle`, `commentaire`, `note`, `
 (9, 5, 3, 'Pas mal', 4, '2018-06-12 16:02:33'),
 (10, 4, 3, 'parfait', 5, '2018-06-12 16:02:33'),
 (11, 8, 21, 'La salle est top', 5, '2018-06-12 16:07:14'),
-(12, 9, 20, 'Bien, sauf le projecteur', 4, '2018-06-12 16:07:14');
+(12, 9, 20, 'Bien, sauf le projecteur', 4, '2018-06-12 16:07:14'),
+(13, 7, 14, 'Salle parfaite pour nos besoins', 5, '2018-06-13 15:01:31');
 
 -- --------------------------------------------------------
 
@@ -156,20 +157,20 @@ INSERT INTO `salle` (`id_salle`, `titre`, `description`, `photo`, `pays`, `ville
 (2, 'Diderot', 'Spacieuse et lumineuse, cette salle surplombe le campus de l\'Universit&eacute; Paris Diderot.', '2_diderot.jpg', 'France', 'Paris', '38 avenue de France', 75013, 14, 'réunion', 65),
 (3, 'Nation', 'Face à la place de la Nation, cette salle met l\'accent sur la convivialité et la sérénité.', '3_nation.jpg', 'France', 'Paris', '3 avenue du Trône', 75020, 24, 'réunion', 78),
 (4, 'République', 'Dotée d\'une très grande capacité d\'accueil, il est possible d\'y organiser un grand rassemblement.', '4_republique.jpg', 'France', 'Paris', '5 place de la République', 75010, 32, 'formation', 90),
-(9, 'Reaumur', 'Nous disposons d\'une salle de r&eacute;union &eacute;quip&eacute;e pouvant accueillir jusqu\'&agrave; 4 personnes pour des rendez-vous d\'affaires, des formations, des entretiens, des r&eacute;unions...', '9_reaumur.jpg', 'France', 'Paris', 'Rue R&eacute;aumur', 75002, 6, 'réunion', 102),
-(10, 'Trevise', 'Nous disposons d\'une salle pouvant accueillir de 1 à 80 personnes.\r\nNotre salle est modulable en focntion des besoins.\r\nNous pouvons acceuillir 40 personnes individuellements ou un groupe pour une réunions.\r\nNotre salle peut accueillir des réceptions / coktails / conférences ETC...', '10_trevise.jpg', 'Fance', 'Lyon', 'Rue de Trévise', 75009, 55, 'réunion', 78),
-(13, 'Poissonnière ', 'Start-up, petite entreprise, vous cherchez des bureaux dans un environnement dynamique et convivial ? Nous avons actuellement plusieurs postes de travail disponibles dans nos locaux atypiques au cœur du \"Silicon Sentier\". Vous occuperez le premier étage de l\'open space avec quelques autres start-ups.', '13_poissonniere.jpg', 'France', 'Paris', 'Rue Poissonnière', 75002, 12, 'formation', 82),
-(14, 'Clery', 'Localisation centrale !\r\n12 postes disponibles immédiatement dans un espace réservé et lumineux\r\nL\'espace de travail est séparé du couloir de passage par des meubles qui font aussi office de rangement', '14_clery.jpg', 'France', 'Lyon', 'Rue de Cléry', 75002, 10, 'formation', 90),
-(15, 'République 1', 'Un ilôt un peu à l\'écart de 5 postes disponible dans un open space avec une ambiance studieuse et conviviale entre start-ups. \r\n\r\nUn grand espace commun avec salons, une grande table à manger, une cuisine avec deux micro-ondes, une table de ping-pong, salles de réunion réservables.\r\n\r\nInternet fibre / imprimante réseau / réfrigérateur\r\n\r\net des avantages au bar du  dessous pour les pot d\'équipe ! ', '15_republique1.jpg\r\n', 'France', 'Paris', 'Avenue de la République', 75011, 5, 'formation', 75),
-(16, 'Saint Marc', 'Le studio est situé entre les metros Grands Boulevards et Bourse, a coté du passage des Panoramas, super central, facile access. Immeuble avec gardien.\r\n\r\nLe space est trés claire et calme, avec une exposition nort degagé, fenetre sur les toits du Passage des Panoramas. L\'ambiance est creative. ', '16_saintmarc.jpg', 'France', 'Paris', 'Rue Saint-Marc', 75002, 12, 'formation', 55),
-(17, 'Charenton', 'Nous vous proposons de partager nos superbes locaux, tout neufs à Bastille !\r\n\r\nEn plein coeur de Paris, proximité immédiate de la place de la Bastille, nos espaces sont très lumineux. L\'ambiance est jeune est dynamique.\r\n\r\n', '17_charenton.jpg', 'France', 'Paris', 'Rue de Charenton', 75012, 4, 'formation', 44),
-(18, 'Chemin vert', 'Situé dans le 11ème arrondissement de Paris, \r\nNous ouvrons nos portes à toutes personnes désirant vivre une expérience de travail unique.\r\n\r\nDans un esprit atypique aux allures british, l\'espace favorise la créativité, la productivité et la collaboration entre les membres.\r\n\r\nVéritable lieu de vie, l\'espace est agencé de façon fonctionnel. Vous y trouverez des tables pour travailler efficacement et confortablement mais également un coin cosy/lecture avec des fauteuils pour vous détendre.', '18_cheminvert.jpg', 'France', 'Paris', 'Rue du Chemin Vert', 75011, 50, 'formation', 80),
-(19, 'Le Galion', 'Le Galion est une péniche restaurant de style XVème siècle - 3 mâts - 170 pieds (50 mètres). Amarré dans le bois de Boulogne, face à l\'hippodrome de Longchamp, récemment restauré, sa décoration toute en boiserie lui confère une ambiance chaleureuse, la modularité de ses salles, ainsi que son immense pont terrasse en font un espace idéal pour tous vos événements.', '19_legalion.jpg', 'France', 'Marseille', 'Quai Blanchard', 75002, 40, 'séminaire', 94),
-(20, 'Espace 109', 'Laissez-vous tenter par un lieu moderne sur 3 niveaux au coeur de la capitale. \r\n\r\nSITUÉ dans le 2e arrondissement, plus de 550 m2 d’espaces modulables et connectés pour tous vos évenements professionnels de 50 À 400 personnes. \r\n\r\nLes 3 niveaux sont reliés par un escalier en verre\r\n\r\nEspaces communicants très lumineux.\r\n\r\nPrivatisation de nos espaces, restauration intégrée, conseil technique adapté, internet haut débit, service sur-mesure, plan d’agencement fourni, belle hauteur sous-plafond', '20_espace109.jpg', 'France', 'Paris', '15 Boulevard Sébastopol', 75009, 50, 'séminaire', 120),
-(21, 'Cour saint Nicolas', 'Claire, calme et de style contemporain, la Cour Saint Nicolas offre un lieu unique à tous ceux qui souhaitent organiser séminaires et événements dans un environnement design, de standing, et culturel. La Cour Saint Nicolas est un lieu idéal pour la formation car les expositions permanentes éveillent les sens (meilleure perception), favorise et consolide la communication de groupe. A 10 minutes de la gare de Lyon, en plein cœur du quartier Bastille/ Faubourg Saint Antoine, à proximité du viaduc des ARTS, de la Coulée Verte et du Quartier Historique du marais, c\'est le lieu idéal pour joindre l\'utile à l\'agréable et prolonger les périodes de travail par des promenades culturelles et/ou des sorties branchées. ', '21_courssaintnicolas.jpg', 'France', 'Paris', 'Rue de Cahrenton', 75008, 40, 'séminaire', 110),
-(22, 'Ideal Artist House', 'Situé au cœur du 10éme arrondissement de Paris au bord du canal Saint-Martin et de son écluse, il bénéficie d\'une situation idéale pour vos événements professionnels (conférences, séminaires etc..). Ce Loft, indéniablement plus original et plus intime qu\'un club, vous propose 700m2 de surface tout aussi surprenants : coins, recoins, à chacun son espace, et peut accueillir jusqu\'à 250 invités.', '22_idealartisthouse.jpg', 'France', 'Paris', 'Rue de Lobeau', 75002, 40, 'séminaire', 130),
-(23, 'Bensai', 'À une encablure des Champs-Elysées, Bensaï est un nouveau restaurant cosy et élégant. Fort de ses deux chefs, thaï d\'un côté et japonais de l\'autre, nous vous proposons de donner une touche d\'originalité et d\'exotisme asiatique à vos événements.\r\n\r\nÀ l\'arrière des cuisines ouvertes, une salle privatisable d\'une quarantaine de couverts et à votre disposition pour vos repas d\'affaires, présentations produits et bien évidemment vos repas de groupe.', '23_bensai.jpg', 'France', 'Marseilles', 'Rue du faubourg saint Honoré', 75001, 50, 'séminaire', 140),
-(24, 'St Paul', 'Nous proposons à la location 2 salles de réunion \"Charlemagne\" (40 places)  et \"Prévôt\" (20 places). Ces salles sont équipées de vidéo projecteur, écran et paper board avec possibilités de pauses et de déjeuners dans notre restaurant.\r\n\r\nVous pourrez également profiter des différentes cours intérieures de l’auberge et bien évidemment de chambres privées ou à partager au sein de trois auberges situées à moins de 10mn l\'une de l’autre, sous réserve de disponibilités.', '24_saintpaul.jpg', 'France', 'Paris', 'rue de Fourcy', 75001, 80, 'séminaire', 120);
+(9, 'Reaumur', 'Nous disposons d\'une salle de r&eacute;union &eacute;quip&eacute;e pouvant accueillir jusqu\'&agrave; 4 personnes pour des rendez-vous d\'affaires.', '9_reaumur.jpg', 'France', 'Paris', 'Rue R&eacute;aumur', 75002, 6, 'réunion', 102),
+(10, 'Trevise', 'Nous disposons d\'une salle pouvant accueillir de 1 à 80 personnes. Notre salle est modulable en focntion des besoins.', '10_trevise.jpg', 'Fance', 'Lyon', 'Rue de Trévise', 75009, 55, 'réunion', 78),
+(13, 'Poissonnière ', 'Start-up, petite entreprise, vous cherchez des bureaux dans un environnement dynamique et convivial ? Nous avons actuellement plusieurs postes de travail disponibles.', '13_poissonniere.jpg', 'France', 'Paris', 'Rue Poissonnière', 75002, 12, 'formation', 82),
+(14, 'Clery', 'Localisation centrale! 12 postes disponibles immédiatement dans un espace réservé et lumineux.', '14_clery.jpg', 'France', 'Lyon', 'Rue de Cléry', 75002, 10, 'formation', 90),
+(15, 'République 1', 'Un ilôt un peu à l\'écart de 5 postes disponible dans un open space avec une ambiance studieuse et conviviale entre start-ups.', '15_republique1.jpg\r\n', 'France', 'Paris', 'Avenue de la République', 75011, 5, 'formation', 75),
+(16, 'Saint Marc', 'Le studio est situé entre les metros Grands Boulevards et Bourse, a coté du passage des Panoramas, super central, facile access. Immeuble avec gardien.', '16_saintmarc.jpg', 'France', 'Paris', 'Rue Saint-Marc', 75002, 12, 'formation', 55),
+(17, 'Charenton', 'En plein coeur de Paris, proximité immédiate de la place de la Bastille, nos espaces sont très lumineux. L\'ambiance est jeune est dynamique.\r\n\r\n', '17_charenton.jpg', 'France', 'Paris', 'Rue de Charenton', 75012, 4, 'formation', 44),
+(18, 'Chemin vert', 'Situé dans le 11ème arrondissement de Paris, nous ouvrons nos portes à toutes personnes désirant vivre une expérience de travail unique.', '18_cheminvert.jpg', 'France', 'Paris', 'Rue du Chemin Vert', 75011, 50, 'formation', 80),
+(19, 'Le Galion', 'Le Galion est une péniche restaurant de style XVème siècle - 3 mâts - 170 pieds (50 mètres).', '19_legalion.jpg', 'France', 'Marseille', 'Quai Blanchard', 75002, 40, 'séminaire', 94),
+(20, 'Espace 109', 'Situé dans le 2e arrondissement, plus de 550 m2 d’espaces modulables et connectés pour tous vos évenements professionnels de 50 À 100 personnes.', '20_espace109.jpg', 'France', 'Paris', '15 Boulevard Sébastopol', 75009, 100, 'séminaire', 120),
+(21, 'Cour saint Nicolas', 'Claire, calme et de style contemporain, la Cour Saint Nicolas offre un lieu unique à tous ceux qui souhaitent organiser séminaires et événements.', '21_courssaintnicolas.jpg', 'France', 'Paris', 'Rue de Cahrenton', 75008, 40, 'séminaire', 110),
+(22, 'Ideal Artist House', 'Situé au cœur du 10éme arrondissement de Paris au bord du canal Saint-Martin et de son écluse, il bénéficie d\'une situation idéale pour vos événements professionnels.', '22_idealartisthouse.jpg', 'France', 'Paris', 'Rue de Lobeau', 75002, 40, 'séminaire', 130),
+(23, 'Bensai', 'Fort de ses deux chefs, thaï d\'un côté et japonais de l\'autre, nous vous proposons de donner une touche d\'originalité et d\'exotisme asiatique à vos événements.', '23_bensai.jpg', 'France', 'Marseilles', 'Rue du faubourg saint Honoré', 75001, 50, 'séminaire', 140),
+(24, 'St Paul', 'Nous proposons à la location 2 salles de réunion \"Charlemagne\" (40 places)  et \"Prévôt\" (20 places). Ces salles sont équipées de vidéo projecteur, écran et paper board.', '24_saintpaul.jpg', 'France', 'Paris', 'rue de Fourcy', 75001, 80, 'séminaire', 120);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

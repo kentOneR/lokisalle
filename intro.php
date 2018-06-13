@@ -14,9 +14,6 @@
                 <p>Soucieux du bien être de vos collaborateurs, vous cherchez une solution efficace à la hauteur de vos exigences et de l'image de votre entreprise. N'attendez plus ! Inscrivez-vous sur notre site et réservez en quelques clics la salle qui répond à vos besoins.</p>
             </div>
         </section>
-
-        <?php include_once('template/room-slider.php'); ?>
-
     </div>
-
+    <?php include_once('template/room-slider.php'); ?>
     <?php include_once('inc/footer.php'); ?>

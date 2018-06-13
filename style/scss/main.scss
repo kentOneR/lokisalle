@@ -79,17 +79,6 @@ ul{
     margin: 0 10px;
 }
 
-.room-container{
-    display: flex;
-    flex-flow: row wrap;
-    margin: 0 auto;
-}
-
-.room-container .room-wrapper{
-    width: calc(33.333% - 40px);
-    margin: 20px;
-}
-
 .visual-header{
     background-image: url('../../img/product-card.jpg');
     background-size: cover;
@@ -205,12 +194,6 @@ h2{
 }
 
 @media screen and (max-width: 640px){
-    .main-container,
-    .admin-container,
-    .profil-container,
-    .room-container{
-        margin: 50px 15px;
-    }
     .tm-search-form {
         transform: none;
     }
@@ -222,6 +205,12 @@ h2{
     }
     #signup-form input{
         margin: 5px 0;
+    }
+    .room-main-picture{
+        margin: 10px -15px;
+    }
+    .map-responsive {
+        margin: 10px -15px;
     }
 }
 
