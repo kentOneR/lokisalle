@@ -68,7 +68,7 @@
         <input type="hidden" name="id-member" id="id-member" value="<?= $id_member ?>">
         <input type="hidden" name="arrival-date" id="arrival-date" value="<?= $dateArrival ?>">
         <input type="hidden" name="departure-date" id="departure-date" value="<?= $dateDeparture ?>">
-        <input type="submit" name="confirm" value="Confirmer la réservation">
+        <input class="form-control" type="submit" name="confirm" value="Confirmer la réservation">
     </form>
     <div id="confirm-result"></div>
 </div>

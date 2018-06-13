@@ -25,10 +25,18 @@
         pseudoCheckEl = document.getElementById('check-pseudo'),
         passwordCheckEl = document.getElementById('check-password'),
         loginResultEl = document.getElementById('login-result'),
-        closeLoginEl = document.getElementById('close-login');
+        closeLoginEl = document.getElementById('close-login'),
+        showLoginEl = document.getElementById('show-login');
 
     if(connexionLinkEl){
         connexionLinkEl.addEventListener('click', function (e) {
+            e.preventDefault();
+            connexionOverlayEl.classList.toggle("hidden");
+        });
+    }
+
+    if(showLoginEl){
+        showLoginEl.addEventListener('click', function (e) {
             e.preventDefault();
             connexionOverlayEl.classList.toggle("hidden");
         });

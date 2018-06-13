@@ -33,18 +33,21 @@
         zipEl = document.getElementById('cp'),
         cityEl = document.getElementById('city'),
         signupResultEl = document.getElementById('signup-result'),
-        closeSignupEl = document.getElementById('close-signup');
+        closeSignupEl = document.getElementById('close-signup'),
+        showSignupEl = document.getElementById('show-signup');
 
     if(signupLinkEl){
         signupLinkEl.addEventListener('click', function (e) {
             e.preventDefault();
             signupOverlayEl.classList.toggle("hidden");
         });
+    }
 
-        closeSignupEl.addEventListener('click', function(e){
-            signupOverlayEl.classList.add("hidden");
+    if(showSignupEl){
+        showSignupEl.addEventListener('click', function (e) {
+            e.preventDefault();
+            signupOverlayEl.classList.toggle("hidden");
         });
-
     }
 
     function signup() {
@@ -64,6 +67,10 @@
     signupFormEl.addEventListener('submit', function (e) {
         e.preventDefault();
         signup();
-    })
+    });
+
+    closeSignupEl.addEventListener('click', function(e){
+        signupOverlayEl.classList.add("hidden");
+    });
 
 })();

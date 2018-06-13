@@ -52,17 +52,17 @@
                             <input type="hidden" name='id-room' id='id-room' value="<?= $roomReq['id_salle'] ?>">
                             <label for="arrival-date"><i class="far fa-calendar-alt"></i> Arrivée</label>
                             <br>
-                            <input type="text" id="inputBookIn" name="arrival-date" required autocomplete="off">
+                            <input class="form-control" type="text" id="inputBookIn" name="arrival-date" required autocomplete="off">
                             <br>
                             <label for="departure-date"><i class="far fa-calendar-alt"></i> Départ</label>
                             <br>
-                            <input type="text" id="inputBookOut" name="departure-date" required autocomplete="off">
-                            <input type="submit" id="booking" name="booking" value="réserver" <?=( !userConnect()) ? 'disabled' : '' ?> >
+                            <input class="form-control" type="text" id="inputBookOut" name="departure-date" required autocomplete="off">
+                            <input class="form-control" type="submit" id="booking" name="booking" value="réserver" <?=( !userConnect()) ? 'disabled' : '' ?> >
                         </form>
                     </div>
                     <div id="room-result"></div>
                     <?php if(!userConnect()): ?>
-                    <div class="alert alert-danger" role="alert">Veuillez vous connecter ou vous inscrire</div>
+                    <div class="alert alert-danger" role="alert">Veuillez vous <a id="show-login" href="">connecter</a> ou vous <a id="show-signup" href="">inscrire</a></div>
                     <?php endif; ?>
                 </div>
             </div>
