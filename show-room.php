@@ -41,22 +41,26 @@ if(isset($_POST) && isset($_POST['search-room'])){
 <div id="room-container" class="room-container d-flex flex-row flex-wrap">
   <?php
     foreach ($roomReq as $key => $room) { ?>
-      <div class="room-wrapper col-sm-4 mt-3" data-room-id="<?= $room['id_salle'] ?>" data-category="<?= $room['categorie'] ?>" data-city="<?= $room['ville'] ?>">
-        <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
+      <div class="room-wrapper col-sm-6 col-lg-4 mt-3 p-sm-3" data-room-id="<?= $room['id_salle'] ?>" data-category="<?= $room['categorie'] ?>" data-city="<?= $room['ville'] ?>">
         <h2>
           <?= $room['titre'] ?>
         </h2>
-        <img src="img/room/<?= $room['photo'] ?>" alt="salle <?= $room['titre'] ?>">
-        <p class="room-description">
-          <?= $room['description'] ?>
-        </p>
-        <p><i class="fas fa-map-marker-alt"></i> <?= $room['adresse'].' '.$room['cp'].' '.$room['ville'] ?>
-        </p>
-        <span class="category"><i class="fas fa-tags"></i> <?= $room['categorie'] ?></span>
-        <span class="capacity"><i class="fas fa-user-friends"></i> <?= $room['capacite'] ?> places</span>
-        <span class="price"><i class="fas fa-euro-sign"></i> <?= $room['prix'] ?> €/jour </span>
-        <p>En savoir +</p>
-        </a>
+        <div class="img-responsive">
+          <img src="img/room/<?= $room['photo'] ?>" alt="salle <?= $room['titre'] ?>">
+        </div>
+        <div class="room-content">
+          <div class="room-description">
+            <p><?= $room['description'] ?></p>
+          </div>
+          <p><i class="fas fa-map-marker-alt"></i> <?= $room['adresse'].' '.$room['cp'].' '.$room['ville'] ?>
+          </p>
+          <span class="category"><i class="fas fa-tags"></i> <?= $room['categorie'] ?></span>
+          <span class="capacity"><i class="fas fa-user-friends"></i> <?= $room['capacite'] ?> places</span>
+          <span class="price"><i class="fas fa-euro-sign"></i> <?= $room['prix'] ?> €/jour </span>
+          <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
+          <button type="button" class="btn btn-dark col-6 mt-3 offset-6">Réserver</button>
+          </a>
+        </div>
       </div>
     <?php } ?>
 

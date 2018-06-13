@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 a{
     text-decoration: none;
     color: #000;
@@ -9,6 +13,16 @@ a:hover{
 img{
     width: 100%;
     height: auto;
+}
+.img-responsive{
+    overflow: hidden;
+    img{
+        transition: all .3s ease-in;
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+
 }
 
 form{
@@ -71,7 +85,7 @@ ul{
     justify-content: flex-end;
     max-width: 1140px;
     margin: 0 auto;
-    height: 50px;
+    min-height: 50px;
     padding: 12px;
 }
 
@@ -123,7 +137,13 @@ ul{
 }
 .room-container{
     width: 100%;
+    .room-content{
+        .room-description{
+
+        }
+    }
 }
+
 .gauche {
     padding: 4vh;
     height: 900px;
@@ -164,6 +184,9 @@ h2{
             background-color: #ffffff;
             &:hover{
                 background-color: #343a40;
+            }
+            a:hover,
+            a:active{
                 color: #fff;
             }
         }
@@ -194,6 +217,9 @@ h2{
 }
 
 @media screen and (max-width: 640px){
+    .img-responsive{
+        margin: 0 -15px;
+    }
     .tm-search-form {
         transform: none;
     }
@@ -216,7 +242,15 @@ h2{
 
 @media screen and (min-width: 641px){
     .header-title{
-        transform: translateY(100%);
+        transform: translateY(50%);
+    }
+    .room-container{
+        width: 100%;
+        .room-content{
+            .room-description{
+                height: 100px;
+            }
+        }
     }
     #footer{
         ul{

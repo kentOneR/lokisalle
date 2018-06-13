@@ -10,7 +10,7 @@ if(adminConnect()) :
 ?>
 
 <nav id="nav-admin">
-    <ul>
+    <ul class="d-flex flex-column flex-nowrap flex-sm-row">
         <li><a href="admin.php?action=stat">Statistique</a></li>
         <li><a href="admin.php?action=show-member">Liste des membres</a></li>
         <li><a href="admin.php?action=add-member">Ajouter un membre</a></li>
@@ -22,11 +22,17 @@ if(adminConnect()) :
 </nav>
 
 <div class="admin-container">
-    <?php require_once('template/admin/manage-stat.php'); ?>
-    <?php require_once('template/admin/manage-member.php'); ?>
-    <?php require_once('template/admin/manage-room.php'); ?>
-    <?php require_once('template/admin/manage-order.php'); ?>
-    <?php require_once('template/admin/manage-review.php'); ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 mt-3">
+                <?php require_once('template/admin/manage-stat.php'); ?>
+                <?php require_once('template/admin/manage-member.php'); ?>
+                <?php require_once('template/admin/manage-room.php'); ?>
+                <?php require_once('template/admin/manage-order.php'); ?>
+                <?php require_once('template/admin/manage-review.php'); ?>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php else:

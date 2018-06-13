@@ -49,7 +49,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 loginResultEl.innerHTML = this.responseText;
                 if(!this.responseText.includes('Erreur')){
-                    setTimeout(function(){ window.location.href = 'index.php'; }, 3000);
+                    setTimeout(function(){ window.location.href = 'index.php'; }, 1500);
                 }
             }
         }
