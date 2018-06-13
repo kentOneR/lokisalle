@@ -50,16 +50,16 @@
 <div class="room-additionnal-info">
     <h4>Informations complémentaire</h4>
     <div class="room-left-info">
-        <p>Capacité: <?= $roomReq['capacite'] ?></p>
-        <p>Catégorie: <?= $roomReq['categorie'] ?></p>
+        <p><i class="fas fa-user-friends"> <?= $roomReq['capacite'] ?> places</p>
+        <p><i class="fas fa-tags"></i> <?= $roomReq['categorie'] ?></p>
     </div>
     <div class="room-middle-info">
-        <p>Date d'arrivée: <?= $dateArrival ?></p>
-        <p>Date de départ: <?= $dateDeparture ?></p>
+        <p><i class="far fa-calendar-alt"></i> <?= $dateArrival ?></p>
+        <p><i class="far fa-calendar-alt"></i> <?= $dateDeparture ?></p>
     </div>
     <div class="room-right-info">
-        <p>Adresse: <?= $roomReq['adresse'].', '.$roomReq['cp'].' '.$roomReq['ville'] ?></p>
-        <p>Prix total: <?= calcNbOfDays($dateArrival, $dateDeparture) * $roomReq['prix'] ?> €</p>
+        <p><i class="fas fa-map-marker-alt"></i> <?= $roomReq['adresse'].', '.$roomReq['cp'].' '.$roomReq['ville'] ?></p>
+        <p><i class="fas fa-euro-sign"></i> <?= calcNbOfDays($dateArrival, $dateDeparture) * $roomReq['prix'] ?> €</p>
     </div>
 </div>
 <div class="confirm-booking">

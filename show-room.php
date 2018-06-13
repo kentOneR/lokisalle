@@ -53,8 +53,11 @@ if(isset($_POST) && isset($_POST['search-room'])){
         <p class="room-description">
           <?= $room['description'] ?>
         </p>
-        <span class="price">
-          <?= $room['prix'] ?> €/jour </span>
+        <p><i class="fas fa-map-marker-alt"></i> <?= $room['adresse'].' '.$room['cp'].' '.$room['ville'] ?>
+        </p>
+        <span class="category"><i class="fas fa-tags"></i> <?= $room['categorie'] ?></span>
+        <span class="capacity"><i class="fas fa-user-friends"> </i><?= $room['capacite'] ?> places</span>
+        <span class="price"><i class="fas fa-euro-sign"></i> <?= $room['prix'] ?> €/jour </span>
         <p>En savoir +</p>
         </a>
       </div>

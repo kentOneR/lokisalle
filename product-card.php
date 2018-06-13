@@ -33,28 +33,28 @@
                 <div class="room-additionnal-info">
                     <h4>Informations complémentaire</h4>
                     <div class="room-left-info">
-                        <p>Capacité:
-                            <?= $roomReq['capacite'] ?>
+                        <p><i class="fas fa-user-friends"></i>
+                            <?= $roomReq['capacite'] ?> places
                         </p>
-                        <p>Catégorie:
-                            <?= $roomReq['categorie'] ?>
+                        <p>
+                            <i class="fas fa-tags"></i> <?= $roomReq['categorie'] ?>
                         </p>
                     </div>
                     <div class="room-middle-info">
-                        <p>Adresse:
+                        <p><i class="fas fa-map-marker-alt"></i>
                             <?= $roomReq['adresse'].' '.$roomReq['cp'].' '.$roomReq['ville'] ?>
                         </p>
-                        <p>Prix:
+                        <p><i class="fas fa-euro-sign"></i>
                             <?= $roomReq['prix'] ?> €/jour</p>
                     </div>
                     <div class="room-right-info">
                         <form id="book-room" action="booking.php" method="post">
                             <input type="hidden" name='id-room' id='id-room' value="<?= $roomReq['id_salle'] ?>">
-                            <label for="arrival-date">Date d'arrivée</label>
+                            <label for="arrival-date"><i class="far fa-calendar-alt"></i> Arrivée</label>
                             <br>
                             <input type="text" id="inputBookIn" name="arrival-date" required autocomplete="off">
                             <br>
-                            <label for="departure-date">Date de départ</label>
+                            <label for="departure-date"><i class="far fa-calendar-alt"></i> Départ</label>
                             <br>
                             <input type="text" id="inputBookOut" name="departure-date" required autocomplete="off">
                             <input type="submit" id="booking" name="booking" value="réserver" <?=( !userConnect()) ? 'disabled' : '' ?> >
