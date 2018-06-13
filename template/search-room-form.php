@@ -44,11 +44,11 @@
                     <div class="form-group tm-form-group tm-form-group-1">
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                             <label for="arrival-date">Date d'arrivée</label>
-                            <input name="arrival-date" type="text" class="form-control" id="inputCheckIn" placeholder="Date arrivée" autocomplete="off" required> 
+                            <input name="arrival-date" type="text" class="form-control" id="inputCheckIn" value="<?= (isset($_POST['arrival-date'])) ? $_POST['arrival-date'] : '' ?>" placeholder="Date arrivée" autocomplete="off" required> 
                         </div>
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                             <label for="departure-date">Date de départ</label>
-                            <input name="departure-date" type="text" class="form-control" id="inputCheckOut" placeholder="Date départ" autocomplete="off" required>
+                            <input name="departure-date" type="text" class="form-control" id="inputCheckOut" value="<?= (isset($_POST['departure-date'])) ? $_POST['departure-date'] : '' ?>" placeholder="Date départ" autocomplete="off" required>
                         </div>
                     </div>
                 </div>
