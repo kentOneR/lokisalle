@@ -3,32 +3,22 @@
 
 if(isset($_POST) && isset($_POST['search-room'])){
 
-  $category = $_POST['category'];
-  $city = $_POST['city'];
+  ($_POST['category'] == 'all') ? $category='%%' : $category=$_POST['category'];
+  ($_POST['city'] == 'all') ? $city='%%' : $city=$_POST['city'];
   $price = $_POST['price'];
   $capacity = $_POST['capacity'];
   $arrivalDate = date('Y-m-d', strtotime($_POST['arrival-date']));
   $departureDate = date('Y-m-d', strtotime($_POST['departure-date']));
 
-  // var_dump($_POST);
+  $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.categorie LIKE :categorie && s.ville LIKE :ville  && s.prix <= :prix && capacite >= :capacite && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE s.id_salle=c.id_salle && c.date_depart >= :date_arrivee && c.date_arrivee <= :date_depart)");
+  $roomReq->execute(array(
+    'categorie' => $category, 
+    'ville' => $city, 
+    'prix' => $price,
+    'capacite' => $capacity,
+    'date_arrivee' => $arrivalDate, 
+    'date_depart' => $departureDate));
 
-  //SELECT CITY ONLY
-  if($category == 'all' && $city != 'all'){
-    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.ville = ? && s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
-    $roomReq->execute(array($city, $price, $capacity, $arrivalDate, $departureDate));
-  // SELECT CATEGORY ONLY
-  } elseif($city == 'all' && $category != 'all'){
-    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.categorie= ? && s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
-    $roomReq->execute(array($category, $price, $capacity, $arrivalDate, $departureDate));
-  // NOT SELECT CATEGORY & CITY
-  } elseif($category == 'all' && $city == 'all'){
-    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
-    $roomReq->execute(array($price, $capacity, $arrivalDate, $departureDate));
-  // SELECT CITY & CATEGORY
-  } else {
-    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.categorie= ? && s.ville = ? && s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
-    $roomReq->execute(array($category, $city, $price, $capacity, $arrivalDate, $departureDate));
-  }
   $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 
 } else {
