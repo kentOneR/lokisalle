@@ -1,3 +1,6 @@
+<script>
+    var priceValue = <?= (isset($price) ? $price : 500) ?>;
+</script>
 <div class="container-fluid">
         <div class="row tm-banner-row" id="tm-section-search">
             <form action="show-room.php" method="post" class="tm-search-form tm-section-pad-2">

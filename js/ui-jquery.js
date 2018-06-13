@@ -1,7 +1,7 @@
 $(function () {
     $("#slider-range-min").slider({
       range: "min",
-      value: 500,
+      value: priceValue,
       min: 1,
       max: 1000,
       slide: function (event, ui) {
