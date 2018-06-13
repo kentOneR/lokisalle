@@ -12,7 +12,7 @@
             <div class="carousel-inner" role="listbox">
                 <!-- 1er slide -->
                 <div class="carousel-item active" style="background-image: url('img/slider01.jpg')">
-                    <div class="carousel-caption d-none d-md-block">
+                    <div class="header-title">
                         <h2>Besoin d'un lieu pour vos événements?
                             <br>Réunions | séminaires | formations</h2>
                         <h4>
@@ -22,12 +22,10 @@
                 </div>
     </header>
     <!-- Fin du Header -->
-
-<div class="main-container">
     <!-- FORMULAIRE -->
     <?php include_once('template/search-room-form.php'); ?>
 
-
+<div class="main-container">
 
     <!-- Services -->
     <section id="services">
@@ -55,8 +53,6 @@
             </div>
         </div>
     </section>
-
-    <?php include_once('template/room-slider.php'); ?>
 </div>
-
+<?php include_once('template/room-slider.php'); ?>
 <?php include_once('inc/footer.php'); ?>

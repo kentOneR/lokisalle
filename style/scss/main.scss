@@ -38,6 +38,34 @@ ul{
     background: #f1f1f1; 
 }
 
+.main-container,
+.admin-container,
+.profil-container,
+.room-container{
+    max-width: 1140px;
+    margin: 50px auto;
+}
+
+.header-title{
+    padding-top: 50px;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 4vw;
+    color: #ffffff;
+}
+
+.tm-search-form {
+    background-color: #f5f6f6;
+    padding: 0px 25px 15px;
+    width: 100%;
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    transform: translateY(-30%);
+}
+
+
 #nav-admin>ul{
     display: flex;
     justify-content: flex-end;
@@ -49,14 +77,6 @@ ul{
 
 #nav-admin>ul>li{
     margin: 0 10px;
-}
-
-.main-container,
-.admin-container,
-.profil-container,
-.room-container{
-    max-width: 1140px;
-    margin: 50px auto;
 }
 
 .room-container{
@@ -71,21 +91,12 @@ ul{
 }
 
 .visual-header{
-    background-image: url('../img/product-card.jpg');
+    background-image: url('../../img/product-card.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     width: 100%;
     height: 300px;
-}
-
-.tm-search-form{
-    padding: 15px 25px;
-}
-
-.form-control {
-    font-size: 1rem;
-    padding: 5px 10px;
 }
 
 #connexion-overlay,
@@ -108,18 +119,6 @@ ul{
     width: 320px;
     padding: 15px;
     margin: 150px auto;
-}
-
-@media screen and (max-width: 640px){
-    #signup-overlay .form-wrapper {
-        margin: 30px auto;
-    }
-    #signup-form label{
-        display: none;
-    }
-    #signup-form input{
-        margin: 5px 0;
-    }
 }
 
 #rooms-slider,
@@ -167,22 +166,25 @@ h2{
     font-family: 'Quicksand', sans-serif;
 }
 
-.carousel-caption{
-    font-size: 5.9vw;
-    bottom: 30%;
-    color: #ffffff;
-}
 #footer{
     background: #05D1AF !important;
     font-family: 'Quicksand', sans-serif;
-    line-height: 5vh;
-    padding: 50px;
-}
-#footer a {
-    font-family: 'Quicksand', sans-serif;
-    text-decoration: none !important;
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
+    ul{
+        padding: 0;
+        li{
+            background-color: #ffffff;
+            &:hover{
+                background-color: #343a40;
+                color: #fff;
+            }
+        }
+    }
+    a {
+        font-family: 'Quicksand', sans-serif;
+        text-decoration: none !important;
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+    }
 }
 
 .col {
@@ -195,9 +197,53 @@ h2{
 }
 
 .ui-widget.ui-widget-content{
-    margin-top: 15px;
+    margin-top: 8px;
 }
 
 #price{
     background-color: transparent;
+}
+
+@media screen and (max-width: 640px){
+    .main-container,
+    .admin-container,
+    .profil-container,
+    .room-container{
+        margin: 50px 15px;
+    }
+    .tm-search-form {
+        transform: none;
+    }
+    #signup-overlay .form-wrapper {
+        margin: 30px auto;
+    }
+    #signup-form label{
+        display: none;
+    }
+    #signup-form input{
+        margin: 5px 0;
+    }
+}
+
+@media screen and (min-width: 641px){
+    .header-title{
+        transform: translateY(100%);
+    }
+    #footer{
+        ul{
+            li{
+                background-color: transparent;
+                &:hover{
+                    background-color: transparent;
+                    color: #343a40;
+                }
+            }
+        }
+        a {
+            font-family: 'Quicksand', sans-serif;
+            text-decoration: none !important;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+        }
+    }
 }

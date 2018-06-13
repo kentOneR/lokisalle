@@ -3,22 +3,22 @@
     <section id="footer">
         <div class="container">
             <!-- Colonne 1 -->
-            <div class="row text-center text-xs-center text-sm-left text-md-left">
-                <div class="col-xs-12 col-sm-4 col-md-4 ">
+            <div class="row d-flex flex-column flex-sm-row">
+                <div class="col-12 col-sm-4 text-center p-3">
                     <h3>[ L O K I S A L L E ]</h3>
                     <br>
                     <h5>Le service de location de salles qui vous simplifie l'organisation de tous vos événements.</h5>
                 </div>
                 <!-- Colonne 2 -->
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <ul>
-                        <li>
+                <div class="col-sm-8 mt-3">
+                    <ul class="d-flex flex-column justify-content-sm-end">
+                        <li class="footer-link p-2 m-1 text-center text-sm-left">
                             <a href="show-room.php">Nos salles</a>
                         </li>
-                        <li class="footer-link">
+                        <li class="footer-link p-2 m-1 text-center text-sm-left">
                             <a href="">Mentions Légales</a>
                         </li>
-                        <li class="footer-link">
+                        <li class="footer-link p-2 m-1 text-center text-sm-left">
                             <a href="">Conditions Générales de Vente</a>
                         </li>
                     </ul>

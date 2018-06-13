@@ -105,7 +105,7 @@
                 <?php } ?>
             </div>
         </div>
-
+    </div>
 
     <?php include_once('template/room-slider.php'); ?>
     <?php include_once('inc/footer.php'); ?>

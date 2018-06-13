@@ -4,11 +4,9 @@
         <div class="visual-header">
         </div>
     </header>
-
+    <!-- FORMULAIRE -->
+    <?php include_once('template/search-room-form.php'); ?>
     <div class="main-container">
-        <!-- FORMULAIRE -->
-        <?php include_once('template/search-room-form.php'); ?>
-
         <section class="container-fluid">
             <div class="row">
                 <h1>Lokisalle, la location sur demande</h1>

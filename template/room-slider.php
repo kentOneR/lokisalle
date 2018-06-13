@@ -1,6 +1,6 @@
     <!--ROOMS SLIDER -->
     
-    <h3>Toutes nos salles</h3>
+    <h3 class="p-2">Toutes nos salles</h3>
     <div id="rooms-slider">
             <?php
         $roomListReq = $pdo->prepare("SELECT * FROM salle");
