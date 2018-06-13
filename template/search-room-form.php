@@ -55,7 +55,7 @@
                 <div class="row d-flex flex-row-reverse">
                     <div class="col-12 col-sm-6">
                         <label for="btnSubmit">&nbsp;</label>
-                        <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" name="search-room" id="btnSubmit">Trouver une salle</button>
+                        <button type="submit" class="btn btn-green col-12" name="search-room" id="btnSubmit">Trouver une salle</button>
                     </div>
                 </div>
             </form>

@@ -24,7 +24,17 @@ img{
     }
 
 }
-
+.btn-green{
+    background: #05D1AF;
+    border: none;
+    transition: all .3s ease-in;
+    color:#fff;
+    text-transform: uppercase;
+    &:hover{
+        background: #343a40;
+        color: #fff;
+    }
+}
 form{
     margin: 10px 0;
 }
@@ -201,11 +211,6 @@ h2{
 
 .col {
     padding-top: 6vh;
-}
-
-#select-category,
-#select-city{ 
-    height: 45px; 
 }
 
 .ui-widget.ui-widget-content{

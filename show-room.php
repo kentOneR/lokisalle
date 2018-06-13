@@ -58,7 +58,7 @@ if(isset($_POST) && isset($_POST['search-room'])){
           <span class="capacity"><i class="fas fa-user-friends"></i> <?= $room['capacite'] ?> places</span>
           <span class="price"><i class="fas fa-euro-sign"></i> <?= $room['prix'] ?> €/jour </span>
           <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
-          <button type="button" class="btn btn-dark col-6 mt-3 offset-6">Réserver</button>
+          <button type="button" class="btn btn-green col-6 mt-3 offset-6">Réserver</button>
           </a>
         </div>
       </div>
