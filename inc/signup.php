@@ -9,7 +9,6 @@ require_once('init.inc.php');
 
 if($_POST){
     $error = false;
-
     foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlentities(addslashes($value));
     }

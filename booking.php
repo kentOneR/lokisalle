@@ -15,6 +15,11 @@
     } else {
         header('location:index.php');
     }
+    if(isset($_GET)){
+        foreach ($_GET as $key => $value) {
+            $_GET[$key] = htmlentities(addslashes($value));
+        }
+    }
     if(isset($_GET['id-room']) && !empty($_GET['id-room'])) {
         $roomReq = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ?");
         $roomReq->execute(array($_GET['id-room']));

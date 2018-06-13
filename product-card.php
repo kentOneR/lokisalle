@@ -1,6 +1,10 @@
 <?php
     include_once('inc/header.php');
     if(isset($_GET['id-room']) && !empty($_GET['id-room'])) {
+        foreach ($_GET as $key => $value) {
+            $_GET[$key] = htmlentities(addslashes($value));
+        }
+
         $roomReq = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ?");
         $roomReq->execute(array($_GET['id-room']));
         $roomReq = $roomReq->fetch(PDO::FETCH_ASSOC);

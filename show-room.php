@@ -2,6 +2,9 @@
 
 
 if(isset($_POST) && isset($_POST['search-room'])){
+  foreach ($_POST as $key => $value) {
+    $_POST[$key] = htmlentities(addslashes($value));
+  }
 
   ($_POST['category'] == 'all') ? $category='%%' : $category=$_POST['category'];
   ($_POST['city'] == 'all') ? $city='%%' : $city=$_POST['city'];

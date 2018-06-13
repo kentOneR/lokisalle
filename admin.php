@@ -1,6 +1,11 @@
 <?php require_once('inc/header.php'); 
 
 if(adminConnect()) :
+    if(isset($_GET)){
+        foreach ($_GET as $key => $value) {
+            $_GET[$key] = htmlentities(addslashes($value));
+        }
+    }
 
 ?>
 

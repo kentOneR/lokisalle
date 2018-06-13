@@ -3,6 +3,9 @@
 require_once('init.inc.php');
 
 if(isset($_POST)) {
+    foreach ($_POST as $key => $value) {
+        $_POST[$key] = htmlentities(addslashes($value));
+    }
 
     if(isset($_POST['booking'])){
         if(roomAvailable($_POST['id-room'], $_POST['arrival-date'], $_POST['departure-date'])){

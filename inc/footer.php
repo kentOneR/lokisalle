@@ -13,18 +13,13 @@
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <ul>
                         <li>
-                            <a href="">
-                                </i>Réserver</a>
-                        </li>
-                        <li>
-                            <a href="chambres.html">
-                                </i>Nos salles</a>
+                            <a href="show-room.php">Nos salles</a>
                         </li>
                         <li class="footer-link">
-                            <a href="http://">Mentions Légales</a>
+                            <a href="">Mentions Légales</a>
                         </li>
                         <li class="footer-link">
-                            <a href="http://">Conditions Générales de Vente</a>
+                            <a href="">Conditions Générales de Vente</a>
                         </li>
                     </ul>
                 </div>
