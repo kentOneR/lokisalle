@@ -12,17 +12,21 @@ if(isset($_POST) && isset($_POST['search-room'])){
 
   // var_dump($_POST);
 
+  //SELECT CITY ONLY
   if($category == 'all' && $city != 'all'){
-    $roomReq = $pdo->prepare("SELECT * FROM salle WHERE ville = ? && prix <= ? && capacite >= ? && id_salle NOT IN (SELECT id_salle FROM commande WHERE date_depart >= ? && date_arrivee <= ?)");
+    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.ville = ? && s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
     $roomReq->execute(array($city, $price, $capacity, $arrivalDate, $departureDate));
+  // SELECT CATEGORY ONLY
   } elseif($city == 'all' && $category != 'all'){
-    $roomReq = $pdo->prepare("SELECT * FROM salle WHERE categorie = ? && prix <= ? && capacite >= ? && id_salle NOT IN (SELECT id_salle FROM commande WHERE date_depart >= ? && date_arrivee <= ?)");
+    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.categorie= ? && s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
     $roomReq->execute(array($category, $price, $capacity, $arrivalDate, $departureDate));
+  // NOT SELECT CATEGORY & CITY
   } elseif($category == 'all' && $city == 'all'){
-    $roomReq = $pdo->prepare("SELECT * FROM salle WHERE prix <= ? && capacite >= ? && id_salle NOT IN (SELECT id_salle FROM commande WHERE date_depart >= ? && date_arrivee <= ?)");
+    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
     $roomReq->execute(array($price, $capacity, $arrivalDate, $departureDate));
+  // SELECT CITY & CATEGORY
   } else {
-    $roomReq = $pdo->prepare("SELECT * FROM salle WHERE categorie = ? && ville = ? && prix <= ? && capacite >= ? && id_salle NOT IN (SELECT id_salle FROM commande WHERE date_depart >= ? && date_arrivee <= ?)");
+    $roomReq = $pdo->prepare("SELECT s.* FROM salle s WHERE s.categorie= ? && s.ville = ? && s.prix <= ? && capacite >= ? && NOT EXISTS (SELECT c.id_salle FROM commande c WHERE S.id_salle=c.id_salle && c.date_depart >= ? && c.date_arrivee <= ?)");
     $roomReq->execute(array($category, $city, $price, $capacity, $arrivalDate, $departureDate));
   }
   $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
@@ -56,7 +60,7 @@ if(isset($_POST) && isset($_POST['search-room'])){
         <p><i class="fas fa-map-marker-alt"></i> <?= $room['adresse'].' '.$room['cp'].' '.$room['ville'] ?>
         </p>
         <span class="category"><i class="fas fa-tags"></i> <?= $room['categorie'] ?></span>
-        <span class="capacity"><i class="fas fa-user-friends"> </i><?= $room['capacite'] ?> places</span>
+        <span class="capacity"><i class="fas fa-user-friends"></i> <?= $room['capacite'] ?> places</span>
         <span class="price"><i class="fas fa-euro-sign"></i> <?= $room['prix'] ?> €/jour </span>
         <p>En savoir +</p>
         </a>

@@ -5,7 +5,7 @@ $(function () {
       min: 1,
       max: 1000,
       slide: function (event, ui) {
-        $("#price").val("€" + ui.value);
+        $("#price").val(ui.value);
       }
     });
     $("#price").val($("#slider-range-min").slider("value"));
