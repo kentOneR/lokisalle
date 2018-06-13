@@ -35,16 +35,15 @@
                     </p>
                 </div>
                 <div class="room-additionnal-info">
-                    <h4>Informations complémentaire</h4>
                     <div class="room-left-info">
-                        <p><i class="fas fa-user-friends"></i>
-                            <?= $roomReq['capacite'] ?> places
-                        </p>
                         <p>
-                            <i class="fas fa-tags"></i> <?= $roomReq['categorie'] ?>
+                            <span><i class="fas fa-user-friends"></i>
+                                <?= $roomReq['capacite'] ?> places
+                            </span>
+                            <span>
+                                <i class="fas fa-tags"></i> <?= $roomReq['categorie'] ?>
+                            </span>
                         </p>
-                    </div>
-                    <div class="room-middle-info">
                         <p><i class="fas fa-map-marker-alt"></i>
                             <?= $roomReq['adresse'].' '.$roomReq['cp'].' '.$roomReq['ville'] ?>
                         </p>
@@ -52,6 +51,7 @@
                             <?= $roomReq['prix'] ?> €/jour</p>
                     </div>
                     <div class="room-right-info">
+                        <h4>Sélectionnez vos dates</h4>
                         <form id="book-room" action="booking.php" method="post">
                             <input type="hidden" name='id-room' id='id-room' value="<?= $roomReq['id_salle'] ?>">
                             <label for="arrival-date"><i class="far fa-calendar-alt"></i> Arrivée</label>
@@ -96,7 +96,7 @@
                             <?php } ?>
                             <p><?= $review['commentaire'] ?></p>
                             <span><?= $review['pseudo'] ?></span>
-                            <span><?= $review['date_enregistrement'] ?></span>
+                            <span><?= date('d-m-Y', strtotime($review['date_enregistrement'])) ?></span>
                         </div>
                     <?php }
                 }
@@ -106,24 +106,6 @@
             </div>
         </div>
 
-        <h3>Autres salles</h3>
-        <div id="rooms-slider">
-            <?php
-        $roomListReq = $pdo->prepare("SELECT * FROM salle");
-        $roomListReq->execute();
-        $roomListReq = $roomListReq->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($roomListReq as $key => $room) { ?>
-                <div class="room-slide">
-                    <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
-                        <img src="img/room/<?= $room['photo'] ?>" alt="<?= $room['titre'] ?>">
-                    </a>
-                </div>
-                <?php } ?>
-        </div>
-
-    </div>
-
-
-
+    <?php include_once('template/room-slider.php'); ?>
     <?php include_once('inc/footer.php'); ?>

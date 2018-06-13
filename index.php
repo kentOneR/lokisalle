@@ -23,7 +23,7 @@
     </header>
     <!-- Fin du Header -->
 
-
+<div class="main-container">
     <!-- FORMULAIRE -->
     <?php include_once('template/search-room-form.php'); ?>
 
@@ -56,22 +56,7 @@
         </div>
     </section>
 
-    <!--ROOMS SLIDER -->
-    <div id="rooms-slider">
-            <?php
-        $roomListReq = $pdo->prepare("SELECT * FROM salle");
-        $roomListReq->execute();
-        $roomListReq = $roomListReq->fetchAll(PDO::FETCH_ASSOC);
-
-    foreach ($roomListReq as $key => $room) { ?>
-                <div class="room-slide">
-                    <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
-                        <img src="img/room/<?= $room['photo'] ?>" alt="<?= $room['titre'] ?>">
-                    </a>
-                </div>
-                <?php } ?>
-        </div>
-
-    </div>
+    <?php include_once('template/room-slider.php'); ?>
+</div>
 
 <?php include_once('inc/footer.php'); ?>
