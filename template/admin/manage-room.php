@@ -3,7 +3,7 @@
 // Suppression d'un membre
 if(isset($_GET['action']) && $_GET['action'] == 'delete-room' && isset($_GET['id_room'])){
     $deleteReq = $pdo->prepare("DELETE FROM salle WHERE id_salle = ?");
-    $deleteReq->execute(array($_GET['id_room']));
+    $deleteReq->execute(array(Crypting::decrypt($_GET['id_room'])));
 
     header('location:admin?action=show-room');
 
@@ -35,8 +35,8 @@ if(isset($_GET['action']) && $_GET['action'] == "show-room"):
                     <?php }
                     } ?>
                 <td>
-                    <a href="?action=edit-room&id_room=<?= $room['id_salle'] ?>"><i class="far fa-edit"></i></a>
-                    <a href="?action=delete-room&id_room=<?= $room['id_salle'] ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
+                    <a href="?action=edit-room&id_room=<?= Crypting::crypt($room['id_salle']) ?>"><i class="far fa-edit"></i></a>
+                    <a href="?action=delete-room&id_room=<?= Crypting::crypt($room['id_salle']) ?>" onClick="confirm(\'En êtes vous sur?\')"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
         <?php } ?>
@@ -51,7 +51,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-room" || $_GET['action'] =
     // récupération des membres
     if(isset($_GET['id_room'])) {
         $r = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ? ");
-        $r->execute(array($_GET['id_room']));
+        $r->execute(array(Crypting::decrypt($_GET['id_room'])));
         $room = $r->fetch(PDO::FETCH_ASSOC);
     }
 

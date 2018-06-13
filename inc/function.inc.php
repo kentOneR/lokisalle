@@ -34,7 +34,7 @@ function adminConnect() {
 class Crypting {
 
     // Algorithme utilisé pour le cryptage des blocs
-    private static $cipher  = MCRYPT_RIJNDAEL_128;
+    private static $cipher = MCRYPT_RIJNDAEL_128;
     
     // Clé de cryptage         
     private static $key = "MQWQWTerxSE4gJWZ";
@@ -48,8 +48,10 @@ class Crypting {
         $iv  = substr($keyHash, 0, mcrypt_get_block_size(self::$cipher, self::$mode));
      
         $data = mcrypt_encrypt(self::$cipher, $key, $data, self::$mode, $iv);
+        $data = base64_encode($data);
+        $data = str_replace('+', '-', $data);
         
-        return base64_encode($data);
+        return $data;
     }
      
     public static function decrypt($data){
@@ -57,6 +59,7 @@ class Crypting {
         $key = substr($keyHash, 0,   mcrypt_get_key_size(self::$cipher, self::$mode) );
         $iv  = substr($keyHash, 0, mcrypt_get_block_size(self::$cipher, self::$mode) );
     
+        $data = str_replace('-', '+', $data);
         $data = base64_decode($data);
         $data = mcrypt_decrypt(self::$cipher, $key, $data, self::$mode, $iv);
     

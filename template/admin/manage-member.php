@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Suppression d'un membre
 if(isset($_GET['action']) && $_GET['action'] == 'delete-member' && isset($_GET['id_member'])){
@@ -6,7 +6,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'delete-member' && isset($_GET['
     $deleteReq->execute(array(Crypting::decrypt($_GET['id_member'])));
 
     header('location:admin?action=show-member');
-
 }
 
 if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action'] == "edit-member")) :
