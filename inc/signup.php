@@ -48,7 +48,7 @@ if($_POST){
         '$city'
         )");
         $signupReq->execute(); ?>
-        <div class="alert alert-success">Inscription validée! <a href="'.URL.'connexion.php">Cliquez ici pour vous connecter</a></div>
+        <div class="alert alert-success">Inscription validée! Veuillez vous connecter</div>
         <?php
     }
 

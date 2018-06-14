@@ -38,16 +38,15 @@
             <br>
             <div class="row text-center">
                 <div class="col-md-4">
-                    <h4 class="service-heading">Rapide et efficace</h4>
-                    <p class="text-muted">Réservez votre espace de travail en 3 clics
-                        <br>parmis plus de 500 lieux vérifiés.</p>
+                    <h4 class="service-heading mt-3">Rapide et efficace</h4>
+                    <p class="text-muted">Réservez votre espace de travail en 3 clics parmis plus de 500 lieux vérifiés.</p>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="service-heading">Un service sur mesure</h4>
+                    <h4 class="service-heading mt-3">Un service sur mesure</h4>
                     <p class="text-muted">A l'heure, à la journée ou à la semaine, trouvez la salle qui vous correspond.</p>
                 </div>
                 <div class="col-md-4">
-                    <h4 class="service-heading">Des tarifs accessibles</h4>
+                    <h4 class="service-heading mt-3">Des tarifs accessibles</h4>
                     <p class="text-muted">Accedez à des locaux professionnels à des tarifs compétitifs grâce à notre réseau Lokisalle</p>
                 </div>
             </div>

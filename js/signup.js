@@ -34,7 +34,8 @@
         cityEl = document.getElementById('city'),
         signupResultEl = document.getElementById('signup-result'),
         closeSignupEl = document.getElementById('close-signup'),
-        showSignupEl = document.getElementById('show-signup');
+        showSignupEl = document.getElementById('show-signup'),
+        connexionOverlayEl = document.getElementById('connexion-overlay');
 
     if(signupLinkEl){
         signupLinkEl.addEventListener('click', function (e) {
@@ -57,6 +58,12 @@
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 signupResultEl.innerHTML = this.responseText;
+                if(this.responseText.includes('validée')){
+                    setTimeout(function(){ 
+                        signupOverlayEl.classList.add("hidden");
+                        connexionOverlayEl.classList.remove("hidden");
+                    }, 2000);
+                }
             }
         }
         xhr.open('POST', 'inc/signup.php', true);

@@ -26,7 +26,7 @@
         passwordCheckEl = document.getElementById('check-password'),
         loginResultEl = document.getElementById('login-result'),
         closeLoginEl = document.getElementById('close-login'),
-        showLoginEl = document.getElementById('show-login');
+        showLoginEls = document.getElementsByClassName('show-login');
 
     if(connexionLinkEl){
         connexionLinkEl.addEventListener('click', function (e) {
@@ -35,11 +35,13 @@
         });
     }
 
-    if(showLoginEl){
-        showLoginEl.addEventListener('click', function (e) {
-            e.preventDefault();
-            connexionOverlayEl.classList.toggle("hidden");
-        });
+    if(showLoginEls){
+        for(var i=0; showLoginEls[i]; i++){
+            showLoginEls[i].addEventListener('click', function (e) {
+                e.preventDefault();
+                connexionOverlayEl.classList.add("hidden");
+            });
+        }
     }
 
     function checkLogin() {
@@ -49,7 +51,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 loginResultEl.innerHTML = this.responseText;
                 if(!this.responseText.includes('Erreur')){
-                    setTimeout(function(){ window.location.href = 'index.php'; }, 1500);
+                    setTimeout(function(){ window.location.href = 'index.php'; }, 2000);
                 }
             }
         }

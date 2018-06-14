@@ -68,3 +68,7 @@
 
     <?php require_once('template/login.php'); ?>
     <?php require_once('template/signup.php'); ?>
+
+<script>
+    var priceValue = <?= (isset($price) ? $price : 500) ?>;
+</script>

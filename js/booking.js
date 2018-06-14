@@ -36,6 +36,9 @@
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 confirmResultEl.innerHTML = this.responseText;
+                if(this.responseText.contains('confirmer')){
+                    setTimeout(function(){ window.location.href = 'booking.php?id-room='+idRoomEl.value; }, 2000);
+                }
             }
         }
         xhr.open('POST', 'inc/function.booking.php', true);

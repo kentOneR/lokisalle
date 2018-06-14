@@ -41,8 +41,8 @@ if(isset($_POST) && isset($_POST['search-room'])){
 <div id="room-container" class="room-container d-flex flex-row flex-wrap">
   <?php
     foreach ($roomReq as $key => $room) { ?>
-      <div class="room-wrapper col-sm-6 col-lg-4 mt-3 p-sm-3" data-room-id="<?= $room['id_salle'] ?>" data-category="<?= $room['categorie'] ?>" data-city="<?= $room['ville'] ?>">
-        <h2>
+      <div class="room-wrapper col-sm-6 col-lg-4 mt-3 p-sm-3 pt-3 pb-3" data-room-id="<?= $room['id_salle'] ?>" data-category="<?= $room['categorie'] ?>" data-city="<?= $room['ville'] ?>">
+        <h2 class="text-uppercase">
           <?= $room['titre'] ?>
         </h2>
         <div class="img-responsive">

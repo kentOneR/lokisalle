@@ -83,7 +83,7 @@
                 <div id="room-result"></div>
                 <?php if(!userConnect()): ?>
                 <div class="alert alert-danger" role="alert">Veuillez vous
-                    <a id="show-login" href="">connecter</a> ou vous
+                    <a class="show-login" href="">connecter</a> ou vous
                     <a id="show-signup" href="">inscrire</a>
                 </div>
                 <?php endif; ?>
