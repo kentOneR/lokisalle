@@ -26,7 +26,7 @@
         <li><a href="profil.php?action=confirm-booking">Mes réservations confirmées</a></li>
     </ul>
 </nav>
-<div class="profil-container">
+<div class="profil-container container-fluid">
     <h1>Mon compte</h1>
     <div class="row">
         <div class="profil-wrapper col-lg-6">

@@ -4,13 +4,13 @@
         <div class="container">
             <!-- Colonne 1 -->
             <div class="row d-flex flex-column flex-sm-row">
-                <div class="col-12 col-sm-4 text-center p-3">
+                <div class="col-12 col-sm-6 col-lg-4 text-center p-3">
                     <h3>[ L O K I S A L L E ]</h3>
                     <br>
                     <h5>Le service de location de salles qui vous simplifie l'organisation de tous vos événements.</h5>
                 </div>
                 <!-- Colonne 2 -->
-                <div class="col-sm-8 mt-3">
+                <div class="col-sm-6 col-lg-4 mt-3">
                     <ul class="d-flex flex-column justify-content-sm-end">
                         <li class="footer-link p-2 m-1 text-center text-sm-left">
                             <a href="show-room.php">Nos salles</a>

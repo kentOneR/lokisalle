@@ -27,55 +27,104 @@
     }
 
 ?>
+    <div class="main-container container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4">
+                <h3>Vos informations</h3>
+                <p>Pseudo:
+                    <?= $memberReq['pseudo'] ?>
+                </p>
+                <p>Nom:
+                    <?= $memberReq['nom'] ?>
+                </p>
+                <p>Prenom:
+                    <?= $memberReq['prenom'] ?>
+                </p>
+                <p>Civilité:
+                    <?= ($memberReq['civilite'] == 'm') ? 'homme' : 'femme'; ?>
+                </p>
+                <p>Email:
+                    <?= $memberReq['email'] ?>
+                </p>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <h3>Adresse de facturation</h3>
+                <p>Adresse:
+                    <?= $memberReq['adresse'] ?>
+                </p>
+                <p>Code postale:
+                    <?= $memberReq['cp'] ?>
+                </p>
+                <p>Ville:
+                    <?= $memberReq['ville'] ?>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1>Confirmer votre réservation</h1>
+                <h2>
+                    <?= $roomReq['titre'] ?>
+                </h2>
+            </div>
+            <div class="col-12 col-sm-6">
+                <div class="room-main-picture">
+                    <img src="img/room/<?= $roomReq['photo'] ?>" alt="<?= $roomReq['titre']?>">
+                </div>
+            </div>
+            <div class="col-12 col-sm-6">
+                <div class="room-description-wrapper">
+                    <p>
+                        <?= $roomReq['description'] ?>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <?= $roomReq['adresse'].', '.$roomReq['cp'].' '.$roomReq['ville'] ?>
+                    </p>
+                    <p>
+                        <span class="mr-3">
+                            <i class="fas fa-user-friends"></i>
+                            <?= $roomReq['capacite'] ?> places
+                        </span>
+                        <span class="mr-3">
+                            <i class="fas fa-tags"></i>
+                            <?= $roomReq['categorie'] ?>
+                        </span>
+                        <span>
+                            <i class="fas fa-euro-sign"></i>
+                            <?= calcNbOfDays($dateArrival, $dateDeparture) * $roomReq['prix'] ?> €
+                        </span>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        <span class="mr-2">
+                            <i class="far fa-calendar-alt"></i>
+                            <?= $dateArrival ?>
+                        </span>
+                        <span>
+                            <i class="far fa-calendar-alt"></i>
+                            <?= $dateDeparture ?>
+                        </span>
+                    </p>
+                </div>
+                <div class="">
+                    <form id="confirm-booking" action="inc/function.booking.php" method="post">
+                        <input type="hidden" name="id-room" id="id-room" value="<?= $_GET['id-room'] ?>">
+                        <input type="hidden" name="id-member" id="id-member" value="<?= $id_member ?>">
+                        <input type="hidden" name="arrival-date" id="arrival-date" value="<?= $dateArrival ?>">
+                        <input type="hidden" name="departure-date" id="departure-date" value="<?= $dateDeparture ?>">
+                        <input class="form-control btn btn-green col-12 col-sm-8 offset-sm-4 col-lg-6 offset-lg-6" type="submit" name="confirm" value="Confirmer la réservation">
+                    </form>
+                    <div id="confirm-result"></div>
+            </div>
+            </div>
 
-<h1>Votre réservation</h1>
+        </div>
+    </div>
 
-<div class="profil-wrapper">
-    <h2>Vos informations</h2>
-    <p>Pseudo: <?= $memberReq['pseudo'] ?></p>
-    <p>Nom: <?= $memberReq['nom'] ?></p>
-    <p>Prenom: <?= $memberReq['prenom'] ?></p>
-    <p>Civilité: <?= ($memberReq['civilite'] == 'm') ? 'homme' : 'femme'; ?></p>
-    <p>Email: <?= $memberReq['email'] ?></p>
-</div>
-<div class="address-wrapper">
-    <h2>Adresse de facturation</h2>
-    <p>Adresse: <?= $memberReq['adresse'] ?></p>
-    <p>Code postale: <?= $memberReq['cp'] ?></p>
-    <p>Ville: <?= $memberReq['ville'] ?></p>
-</div>
-<div class="room-description-wrapper">
-    <h4>Description</h4>
-    <p><?= $roomReq['description'] ?></p>
-    <h4>Localisation</h4>
-    <div class="map-responsive">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20996.89965735575!2d2.37898935!3d48.86559999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e394fef5115%3A0x3ba0440da060f971!2sRichelieu+-+Drouot!5e0!3m2!1sfr!2sfr!4v1528460018566" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
-</div>
-<div class="room-additionnal-info">
-    <h4>Informations complémentaire</h4>
-    <div class="room-left-info">
-        <p><i class="fas fa-user-friends"> <?= $roomReq['capacite'] ?> places</p>
-        <p><i class="fas fa-tags"></i> <?= $roomReq['categorie'] ?></p>
-    </div>
-    <div class="room-middle-info">
-        <p><i class="far fa-calendar-alt"></i> <?= $dateArrival ?></p>
-        <p><i class="far fa-calendar-alt"></i> <?= $dateDeparture ?></p>
-    </div>
-    <div class="room-right-info">
-        <p><i class="fas fa-map-marker-alt"></i> <?= $roomReq['adresse'].', '.$roomReq['cp'].' '.$roomReq['ville'] ?></p>
-        <p><i class="fas fa-euro-sign"></i> <?= calcNbOfDays($dateArrival, $dateDeparture) * $roomReq['prix'] ?> €</p>
-    </div>
-</div>
-<div class="confirm-booking">
-    <form id="confirm-booking" action="inc/function.booking.php" method="post">
-        <input type="hidden" name="id-room" id="id-room" value="<?= $_GET['id-room'] ?>">
-        <input type="hidden" name="id-member" id="id-member" value="<?= $id_member ?>">
-        <input type="hidden" name="arrival-date" id="arrival-date" value="<?= $dateArrival ?>">
-        <input type="hidden" name="departure-date" id="departure-date" value="<?= $dateDeparture ?>">
-        <input class="form-control" type="submit" name="confirm" value="Confirmer la réservation">
-    </form>
-    <div id="confirm-result"></div>
-</div>
 
-<?php include_once('inc/footer.php'); ?>
+
+    <?php include_once('inc/footer.php'); ?>
