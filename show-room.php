@@ -32,9 +32,10 @@ if(isset($_POST) && isset($_POST['search-room'])){
 }
 
 ?>
-<header>
-  <div class="visual-header"></div>
-</header>
+    <header>
+        <div class="visual-header d-none d-sm-block">
+        </div>
+    </header>
 <!-- FORMULAIRE -->
 <?php include_once('template/search-room-form.php'); ?>
 

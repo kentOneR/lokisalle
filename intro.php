@@ -1,7 +1,7 @@
     <?php include_once('inc/header.php'); ?>
 
     <header>
-        <div class="visual-header">
+        <div class="visual-header d-none d-sm-block">
         </div>
     </header>
     <!-- FORMULAIRE -->

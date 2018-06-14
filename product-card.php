@@ -15,7 +15,7 @@
     }
 ?>
     <header>
-        <div class="visual-header">
+        <div class="visual-header d-none d-sm-block">
         </div>
     </header>
 
@@ -28,17 +28,15 @@
                     <?= $roomReq['titre'] ?>
                 </h1>
             </div>
-            <div class="w100 d-md-flex flex-wrap justify-content-center">
+            <div class="room-container d-md-flex flex-wrap justify-content-center">
                 <div class="col-12 col-md-6">
                     <div class="room-main-picture">
                         <img src="img/room/<?= $roomReq['photo'] ?>" alt="<?= $roomReq['titre']?>">
                     </div>
-                    <div class="">
+                    <div class="room-content">
                         <p>
                             <?= $roomReq['description'] ?>
                         </p>
-                    </div>
-                    <div class="">
                         <p>
                             <span class="mr-3">
                                 <i class="fas fa-user-friends"></i>
@@ -64,66 +62,66 @@
                         <iframe src="https://www.google.com/maps?q=<?= $roomReq['adresse'].' '.$roomReq['cp'].' '.$roomReq['ville'].' '.$roomReq['pays'] ?>&z=13&output=embed"
                             width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
+                    <div class="">
+                        <h4 class="mt-3">Sélectionnez vos dates</h4>
+                        <form id="book-room" class="d-flex flex-wrap" action="booking.php" method="post">
+                            <input type="hidden" name='id-room' id='id-room' value="<?= $roomReq['id_salle'] ?>">
+                            <div class="col-sm-6">
+                                <label for="arrival-date">
+                                    <i class="far fa-calendar-alt"></i> Arrivée</label>
+                                <br>
+                                <input class="form-control" type="text" id="inputBookIn" name="arrival-date" required autocomplete="off">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="departure-date">
+                                    <i class="far fa-calendar-alt"></i> Départ</label>
+                                <br>
+                                <input class="form-control" type="text" id="inputBookOut" name="departure-date" required autocomplete="off">
+                            </div>
+
+                            <input class="form-control btn btn-green mt-3 col-sm-6 offset-sm-6" type="submit" id="booking" name="booking" value="réserver" <?=( !userConnect())
+                                ? 'disabled' : '' ?> >
+                        </form>
+                        <div id="room-result" class=""></div>
+                        <?php if(!userConnect()): ?>
+                        <div class="alert alert-danger" role="alert">Veuillez vous
+                            <a class="show-login" href="">connecter</a> ou vous
+                            <a id="show-signup" href="">inscrire</a>
+                        </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="w100 d-md-flex flex-wrap justify-content-center">
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="">
-                        <h4>Sélectionnez vos dates</h4>
-                        <form id="book-room" action="booking.php" method="post">
-                            <input type="hidden" name='id-room' id='id-room' value="<?= $roomReq['id_salle'] ?>">
-                            <label for="arrival-date">
-                                <i class="far fa-calendar-alt"></i> Arrivée</label>
-                            <br>
-                            <input class="form-control" type="text" id="inputBookIn" name="arrival-date" required autocomplete="off">
-                            <br>
-                            <label for="departure-date">
-                                <i class="far fa-calendar-alt"></i> Départ</label>
-                            <br>
-                            <input class="form-control" type="text" id="inputBookOut" name="departure-date" required autocomplete="off">
-                            <input class="form-control btn btn-green col-12 col-sm-6 mt-3 offset-sm-6" type="submit" id="booking" name="booking" value="réserver"
-                                <?=( !userConnect()) ? 'disabled' : '' ?> >
-                        </form>
-                    </div>
-                    <div id="room-result" class=""></div>
-                    <?php if(!userConnect()): ?>
-                    <div class="alert alert-danger" role="alert">Veuillez vous
-                        <a class="show-login" href="">connecter</a> ou vous
-                        <a id="show-signup" href="">inscrire</a>
-                    </div>
-                    <?php endif; ?>
-                </div>
-                <div class="col-12 col-sm-6 col-md-8">
-                    <div class="">
-                        <h3>Avis</h3>
-                        <?php if(empty($reviewReq)) { ?>
-                        <p>Aucun avis pour cette salle</p>
-                        <?php } else {
+                <div class="col-sm-12 col-lg-8">
+                    <h3>Avis</h3>
+                    <?php if(empty($reviewReq)) { ?>
+                    <p>Aucun avis pour cette salle</p>
+                    <?php } else {
                                     foreach ($reviewReq as $key => $review) { ?>
-                        <div class="review-wrapper">
-                            <?php for ($i=0; $i < $review['note']; $i++) { ?>
-                            <i class="fas fa-star"></i>
-                            <?php } ?>
-                            <p>
-                                <?= $review['commentaire'] ?>
-                            </p>
-                            <span>
-                                <?= $review['pseudo'] ?>
-                            </span>
-                            <span>
-                                <?= date('d-m-Y', strtotime($review['date_enregistrement'])) ?>
-                            </span>
-                        </div>
-                        <?php }
+                    <div class="review-wrapper">
+                        <?php for ($i=0; $i < $review['note']; $i++) { ?>
+                        <i class="fas fa-star"></i>
+                        <?php } ?>
+                        <p>
+                            <?= $review['commentaire'] ?>
+                        </p>
+                        <span>
+                            <?= $review['pseudo'] ?>
+                        </span>
+                        <span>
+                            <?= date('d-m-Y', strtotime($review['date_enregistrement'])) ?>
+                        </span>
+                    </div>
+                    <?php }
                                 }
                                 if(userConnect()) {?>
-                        <a href="profil.php?action=add-review&id-room=<?= $roomReq['id_salle'] ?>">
-                            <button type="button" class="btn btn-green col-8 col-sm-6 mt-3 offset-4 offset-sm-6">Laisser un avis</button>
-                        </a>
-                        <?php } ?>
-                    </div>
+                    <a href="profil.php?action=add-review&id-room=<?= $roomReq['id_salle'] ?>">
+                        <button type="button" class="btn btn-green col-8 col-sm-4 mt-3 offset-4 offset-sm-8">Laisser un avis</button>
+                    </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>

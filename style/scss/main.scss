@@ -67,11 +67,11 @@ ul{
 .profil-container,
 .room-container{
     max-width: 1140px;
-    margin: 100px auto;
+    margin: 100px auto 50px;
 }
 
 .header-title{
-    padding-top: 50px;
+    padding: 80px 10px 20px;
     max-width: 600px;
     text-align: center;
     margin: 0 auto;
@@ -109,14 +109,20 @@ ul{
     margin: 0;
     padding: 0;
 }
-
+.visual-index-header{
+    background-image: url('../../img/slider01.jpg');
+    height: 450px;
+}
 .visual-header{
-    background-image: url('../../img/product-card.jpg');
+    background-image: url('../../img/slider01.jpg');
+    height: 300px;
+}
+.visual-header,
+.visual-index-header{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     width: 100%;
-    height: 300px;
 }
 
 #connexion-overlay,
@@ -225,7 +231,15 @@ h2{
     background-color: transparent;
 }
 
-@media screen and (max-width: 640px){
+@media screen and (max-width: 575px){
+    .mt-xs-50{
+        margin-top: 50px;
+    }
+    .home-page{
+        .tm-banner-row{
+            margin-top: 0;
+        }
+    }
     .img-responsive{
         margin: 0 -15px;
     }
@@ -249,7 +263,7 @@ h2{
     }
 }
 
-@media screen and (min-width: 641px){
+@media screen and (min-width: 576px){
     .header-title{
         transform: translateY(50%);
     }
@@ -261,6 +275,16 @@ h2{
             .room-description{
                 height: 100px;
             }
+        }
+    }
+    #tm-section-search{
+        transform: translateY(-50px);
+    }
+    .room-main-picture{
+        max-height: 300px;
+        overflow: hidden;
+        img{
+            transform: translateY(-15%);
         }
     }
     #footer{
@@ -278,16 +302,6 @@ h2{
             text-decoration: none !important;
             background-color: transparent;
             -webkit-text-decoration-skip: objects;
-        }
-    }
-}
-
-@media screen and (min-width: 769px){
-    .room-main-picture{
-        max-height: 250px;
-        overflow: hidden;
-        img{
-            transform: translateY(-25%);
         }
     }
 }

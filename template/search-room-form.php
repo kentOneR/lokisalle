@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-        <div class="row tm-banner-row" id="tm-section-search">
+        <div class="row tm-banner-row mt-xs-50" id="tm-section-search">
             <form action="show-room.php" method="post" class="tm-search-form tm-section-pad-2">
                 <div class="col-lg-12 text-center">
                     <h3 class="section-subheading text-muted">Trouvez la salle qui vous convient</h3>
