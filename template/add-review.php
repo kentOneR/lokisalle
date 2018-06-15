@@ -4,11 +4,11 @@
         <input class="form-control" type="hidden" name="id-room" value="<?= $_GET['id-room'] ?>">
         <label for="note">Note:</label>
         <select class="form-control" name="note">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">5</option>
-            <option value="3">4</option>
-            <option value="5" selected>5</option>
+            <?php for ($i=1; $i < 6; $i++) { ?>
+                <option value="<?= $i ?>">
+                    <?php for ($a=0; $a<3; $a++) { ?> <i class="fas fa-star"></i> <?php } ?>
+                </option>
+            <?php } ?>
         </select>
         <label for="review">Commentaire:</label>
         <textarea class="form-control" name="review" cols="10" rows="5"></textarea><br>
