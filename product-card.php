@@ -1,16 +1,17 @@
 <?php
     include_once('inc/header.php');
-    if(isset($_GET['id-room']) && !empty($_GET['id-room'])) {
-        foreach ($_GET as $key => $value) {
-            $_GET[$key] = htmlentities(addslashes($value));
+    if(isset($_POST['id-room']) || isset($_GET['id-room'])) {
+        (isset($_POST['id-room'])) ? $rooms = $_POST : $rooms = $_GET;
+        foreach ($rooms as $key => $value) {
+            $rooms[$key] = htmlentities(addslashes($value));
         }
 
         $roomReq = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ?");
-        $roomReq->execute(array($_GET['id-room']));
+        $roomReq->execute(array($rooms['id-room']));
         $roomReq = $roomReq->fetch(PDO::FETCH_ASSOC);
 
         $reviewReq = $pdo->prepare("SELECT a.commentaire, a.note, a.date_enregistrement, m.pseudo FROM avis a, membre m WHERE a.id_salle = ? && a.id_membre = m.id_membre");
-        $reviewReq->execute(array($_GET['id-room']));
+        $reviewReq->execute(array($rooms['id-room']));
         $reviewReq = $reviewReq->fetchAll(PDO::FETCH_ASSOC);
     }
 ?>
@@ -23,12 +24,10 @@
 
     <div class="main-container container-fluid mt-4">
         <div class="row">
-            <div class="col-12">
-                <h1>
-                    <?= $roomReq['titre'] ?>
-                </h1>
-            </div>
             <div class="room-container d-md-flex flex-wrap justify-content-center">
+                <div class="col-12">
+                    <h1><?= $roomReq['titre'] ?></h1>
+                </div>
                 <div class="col-12 col-md-6">
                     <div class="room-main-picture">
                         <img src="img/room/<?= $roomReq['photo'] ?>" alt="<?= $roomReq['titre']?>">
@@ -38,11 +37,11 @@
                             <?= $roomReq['description'] ?>
                         </p>
                         <p>
-                            <span class="mr-3">
+                            <span class="mr-2">
                                 <i class="fas fa-user-friends"></i>
                                 <?= $roomReq['capacite'] ?> places
                             </span>
-                            <span class="mr-3">
+                            <span class="mr-2">
                                 <i class="fas fa-tags"></i>
                                 <?= $roomReq['categorie'] ?>
                             </span>
@@ -70,13 +69,13 @@
                                 <label for="arrival-date">
                                     <i class="far fa-calendar-alt"></i> Arrivée</label>
                                 <br>
-                                <input class="form-control" type="text" id="inputBookIn" name="arrival-date" required autocomplete="off">
+                                <input class="form-control" type="text" id="inputBookIn" value="<?= (isset($_POST['arrival-date'])) ? $_POST['arrival-date'] : '' ?>" name="arrival-date" required autocomplete="off">
                             </div>
                             <div class="col-sm-6">
                                 <label for="departure-date">
                                     <i class="far fa-calendar-alt"></i> Départ</label>
                                 <br>
-                                <input class="form-control" type="text" id="inputBookOut" name="departure-date" required autocomplete="off">
+                                <input class="form-control" type="text" id="inputBookOut" value="<?= (isset($_POST['departure-date'])) ? $_POST['departure-date'] : '' ?>" name="departure-date" required autocomplete="off">
                             </div>
 
                             <input class="form-control btn btn-green mt-3 col-sm-6 offset-sm-6" type="submit" id="booking" name="booking" value="réserver" <?=( !userConnect())

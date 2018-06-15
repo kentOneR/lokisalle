@@ -35,6 +35,9 @@ img{
         color: #fff;
     }
 }
+i.fa-star{
+    color: #05D1AF;
+}
 form{
     margin: 10px 0;
 }
@@ -155,6 +158,9 @@ ul{
 .ui-menu { width: 200px; }
 .ui-widget-header { padding: 0.2em; 
 }
+#ui-datepicker-div{
+    z-index: 10 !important;
+}
 .column-search{
     width: 100%;
 }
@@ -265,7 +271,7 @@ h2{
 
 @media screen and (min-width: 576px){
     .header-title{
-        transform: translateY(50%);
+        transform: translateY(25%);
     }
     .room-container{
         width: 100%;

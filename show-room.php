@@ -58,9 +58,15 @@ if(isset($_POST) && isset($_POST['search-room'])){
           <span class="category"><i class="fas fa-tags"></i> <?= $room['categorie'] ?></span>
           <span class="capacity"><i class="fas fa-user-friends"></i> <?= $room['capacite'] ?> places</span>
           <span class="price"><i class="fas fa-euro-sign"></i> <?= $room['prix'] ?> €/jour </span>
-          <a href="product-card.php?id-room=<?= $room['id_salle'] ?>">
-          <button type="button" class="btn btn-green col-6 mt-3 offset-6">Réserver</button>
-          </a>
+          <form action="product-card.php" method="post">
+            <input type="hidden" name="id-room" value="<?= $room['id_salle'] ?>">
+            <input type="hidden" name="category" value="<?= (isset($_POST['category'])) ? $_POST['category'] : '' ?>">
+            <input type="hidden" name="city" value="<?= (isset($_POST['city'])) ? $_POST['city'] : '' ?>">
+            <input type="hidden" name="capacity" value="<?= (isset($_POST['capacity'])) ? $_POST['capacity'] : '' ?>">
+            <input type="hidden" name="arrival-date" value="<?= (isset($_POST['arrival-date'])) ? $_POST['arrival-date'] : '' ?>">
+            <input type="hidden" name="departure-date" value="<?= (isset($_POST['departure-date'])) ? $_POST['departure-date'] : '' ?>">
+            <input type="submit" class="btn btn-green col-6 mt-3 offset-6" value="Réserver">
+          </form>
         </div>
       </div>
     <?php } ?>

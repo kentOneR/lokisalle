@@ -39,7 +39,7 @@
         for(var i=0; showLoginEls[i]; i++){
             showLoginEls[i].addEventListener('click', function (e) {
                 e.preventDefault();
-                connexionOverlayEl.classList.add("hidden");
+                connexionOverlayEl.classList.remove("hidden");
             });
         }
     }
@@ -51,7 +51,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 loginResultEl.innerHTML = this.responseText;
                 if(!this.responseText.includes('Erreur')){
-                    setTimeout(function(){ window.location.href = 'index.php'; }, 2000);
+                    setTimeout(function(){ connexionOverlayEl.classList.remove("hidden"); }, 2000);
                 }
             }
         }
