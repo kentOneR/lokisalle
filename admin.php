@@ -1,4 +1,4 @@
-<?php require_once('inc/header.php'); 
+<?php require_once('view/header.php'); 
 
 if(adminConnect()) :
     if(isset($_GET)){
@@ -41,4 +41,4 @@ if(adminConnect()) :
 
 endif; ?>
 
-<?php require_once('inc/footer.php'); ?>
+<?php require_once('view/footer.php'); ?>

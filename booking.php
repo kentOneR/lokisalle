@@ -1,5 +1,6 @@
 <?php
-    include_once('inc/header.php');
+    require_once('controller/frontend.php');
+    require_once('view/header.php');
 
     if(userConnect()) {
         $id_member = $_SESSION['membre']['id_membre'];
@@ -127,4 +128,4 @@
 
 
 
-    <?php include_once('inc/footer.php'); ?>
+    <?php include_once('view/footer.php'); ?>

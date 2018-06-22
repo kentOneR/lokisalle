@@ -1,5 +1,7 @@
 <?php
-    include_once('inc/header.php');
+    require_once('controller/frontend.php');
+    require_once('view/header.php');
+
     if(isset($_POST['id-room']) || isset($_GET['id-room'])) {
         (isset($_POST['id-room'])) ? $rooms = $_POST : $rooms = $_GET;
         foreach ($rooms as $key => $value) {
@@ -20,7 +22,7 @@
         </div>
     </header>
 
-    <?php include_once('template/search-room-form.php')?>
+    <?php include_once('view/search-room-form.php')?>
 
     <div class="main-container container-fluid mt-4">
         <div class="row">
@@ -128,5 +130,5 @@
 
     </div>
 
-    <?php include_once('template/room-slider.php'); ?>
-    <?php include_once('inc/footer.php'); ?>
+    <?php include_once('view/room-slider.php'); ?>
+    <?php include_once('view/footer.php'); ?>

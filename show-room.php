@@ -1,4 +1,7 @@
-<?php require_once('inc/header.php');
+<?php
+
+require_once('controller/frontend.php');
+require_once('view/header.php'); 
 
 
 if(isset($_POST) && isset($_POST['search-room'])){
@@ -26,8 +29,7 @@ if(isset($_POST) && isset($_POST['search-room'])){
 
 } else {
   // IF NO POST GET ALL ROOMS
-  $roomReq = $pdo->prepare("SELECT * FROM salle");
-  $roomReq->execute();
+  $roomReq = showAllRooms();
   $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -37,7 +39,7 @@ if(isset($_POST) && isset($_POST['search-room'])){
         </div>
     </header>
 <!-- FORMULAIRE -->
-<?php include_once('template/search-room-form.php'); ?>
+<?php include_once('view/search-room-form.php'); ?>
 
 <div id="room-container" class="room-container d-flex flex-row flex-wrap">
   <?php
@@ -76,4 +78,4 @@ if(isset($_POST) && isset($_POST['search-room'])){
 
 
 
-<?php require_once('inc/footer.php'); ?>
+<?php require_once('view/footer.php'); ?>

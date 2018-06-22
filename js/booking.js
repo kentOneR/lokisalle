@@ -41,7 +41,7 @@
                 }
             }
         }
-        xhr.open('POST', 'inc/function.booking.php', true);
+        xhr.open('POST', 'model/booking.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }

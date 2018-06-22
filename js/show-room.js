@@ -24,7 +24,7 @@
         roomWrapperEls = document.querySelectorAll('.room-wrapper');
 
     if (selectCategoryEls) {
-        for (var i = 0; selectCategoryEls[i]; i++) {
+        for(var i = 0; selectCategoryEls[i]; i++) {
             selectCategoryEls[i].addEventListener('change', function (e) {
                 var radio = e.target;
                 showElements(roomWrapperEls, 'data-category', radio.value);
@@ -59,7 +59,7 @@
                 roomContainerEl.innerHTML = this.responseText;
             }
         }
-        xhr.open('POST', 'inc/function.select.room.php', true);
+        xhr.open('POST', 'model/select.room.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send("select=" + data);
     }

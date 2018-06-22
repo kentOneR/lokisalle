@@ -66,7 +66,7 @@
                 }
             }
         }
-        xhr.open('POST', 'inc/signup.php', true);
+        xhr.open('POST', 'model/signup.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }

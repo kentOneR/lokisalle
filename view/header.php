@@ -1,5 +1,3 @@
-<?php require_once('init.inc.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,8 +64,8 @@
         </div>
     </nav>
 
-    <?php require_once('template/login.php'); ?>
-    <?php require_once('template/signup.php'); ?>
+    <?php require_once('login.php'); ?>
+    <?php require_once('signup.php'); ?>
 
 <script>
     var priceValue = <?= (isset($price) ? $price : 500) ?>;

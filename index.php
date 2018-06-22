@@ -1,7 +1,8 @@
 <?php
-    include_once('inc/header.php');
+    require_once('controller/frontend.php');
+    require_once('view/header.php');
 
-    $roomReq = $pdo->prepare("SELECT * FROM salle");
+    $roomReq = showAllRooms();
     $roomReq->execute();
     $roomReq = $roomReq->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -22,7 +23,7 @@
     <!-- FORMULAIRE -->
     <div class="home-page">
 
-        <?php include_once('template/search-room-form.php'); ?>
+        <?php include_once('view/search-room-form.php'); ?>
 
         <div class="main-container">
 
@@ -52,6 +53,6 @@
                 </div>
             </section>
         </div>
-        <?php include_once('template/room-slider.php'); ?>
-        <?php include_once('inc/footer.php'); ?>
+        <?php include_once('view/room-slider.php'); ?>
+        <?php include_once('view/footer.php'); ?>
     </div>

@@ -1,11 +1,14 @@
-    <?php include_once('inc/header.php'); ?>
+    <?php 
+    require_once('controller/frontend.php');
+    require_once('view/header.php'); 
+    ?>
 
     <header>
         <div class="visual-header d-none d-sm-block">
         </div>
     </header>
     <!-- FORMULAIRE -->
-    <?php include_once('template/search-room-form.php'); ?>
+    <?php require_once('view/search-room-form.php'); ?>
     <div class="main-container">
         <section class="container-fluid">
             <div class="row">
@@ -17,5 +20,5 @@
             </div>
         </section>
     </div>
-    <?php include_once('template/room-slider.php'); ?>
-    <?php include_once('inc/footer.php'); ?>
+    <?php require_once('view/room-slider.php'); ?>
+    <?php require_once('view/footer.php'); ?>

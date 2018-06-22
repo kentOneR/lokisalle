@@ -67,6 +67,13 @@ class Crypting {
     }
 }
 
+// FUNCTION ALL ROOMS
+function showAllRooms(){
+    $req = $GLOBALS['pdo']->prepare("SELECT * FROM salle");
+    $req->execute();
+    return $req;
+}
+
 // FUNCTION CALCULATE PRICE
 
 function calcNbOfDays($a, $b){

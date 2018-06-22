@@ -1,5 +1,5 @@
 <?php
-    include_once('inc/header.php');
+    include_once('view/header.php');
 
     if(userConnect()) {
         $id_member = $_SESSION['membre']['id_membre'];
@@ -51,4 +51,4 @@
 </div>
 
 
-<?php include_once('inc/footer.php'); ?>
+<?php include_once('view/footer.php'); ?>
