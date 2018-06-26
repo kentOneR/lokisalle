@@ -1,10 +1,10 @@
 <?php
+    require_once('controller/frontend.php');
     include_once('view/header.php');
 
     if(userConnect()) {
         $id_member = $_SESSION['membre']['id_membre'];
-        $memberReq = $pdo->prepare("SELECT * FROM membre WHERE id_membre = ?");
-        $memberReq->execute(array($id_member));
+        $memberReq = thisMemberInfo($id_member);
         $memberReq = $memberReq->fetchAll(PDO::FETCH_ASSOC);
         $memberReq = $memberReq[0];
 
@@ -48,6 +48,7 @@
     <?php include_once('view/pending-booking.php'); ?>
     <?php include_once('view/confirm-booking.php'); ?>
     <?php include_once('view/add-review.php'); ?>
+    <?php include_once('view/manage-profil.php'); ?>
 </div>
 
 

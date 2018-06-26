@@ -74,6 +74,13 @@ function showAllRooms(){
     return $req;
 }
 
+// FUNCTION THIS MEMBER INFO
+function thisMemberInfo($id){
+    $req = $GLOBALS['pdo']->prepare("SELECT * FROM membre WHERE id_membre = $id");
+    $req->execute();
+    return $req;
+}
+
 // FUNCTION CALCULATE PRICE
 
 function calcNbOfDays($a, $b){
