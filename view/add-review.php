@@ -1,6 +1,6 @@
 <?php if(isset($_GET['action']) && $_GET['action'] == 'add-review' && isset($_GET['id-room'])) { ?>
 
-    <form class="col-sm-6" action="inc/function.review.php" method="post">
+    <form class="col-sm-6" action="model/manage.review.php" method="post">
         <input class="form-control" type="hidden" name="id-room" value="<?= $_GET['id-room'] ?>">
         <label for="note">Note:</label>
         <select class="form-control" name="note">

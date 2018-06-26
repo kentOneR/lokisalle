@@ -59,7 +59,7 @@ if(isset($_GET['action'])):
     $reviewNote = (isset($thisReviewReq['note'])) ? $thisReviewReq['note'] : '';
     ?>
 
-    <form class="col-sm-6" action="inc/function.review.php" method="post">
+    <form class="col-sm-6" action="model/manage.review.php" method="post">
         <input type="hidden" class="form-control" name="id-review" value="<?= $idReview ?>">
         <label for="id-member">Id membre</label><br>
         <input class="form-control" type="text" name="id-member" value="<?= $idMember ?>">

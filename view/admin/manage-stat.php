@@ -1,25 +1,23 @@
 <?php
 
+require_once('model/manage.stat.php');
+
 if(isset($_GET['action']) && $_GET['action'] == 'stat'):
 
 // TOP 5 BEST ROOMS BY REVIEW
-$topRoomReq = $pdo->prepare("SELECT a.id_salle, s.titre, ROUND(AVG(a.note), 1) as avg_note FROM avis a, salle s WHERE s.id_salle=a.id_salle GROUP BY id_salle ORDER BY avg_note DESC LIMIT 5");
-$topRoomReq->execute();
+$topRoomReq = topRoomsStat(5);
 $topRoomReq = $topRoomReq->fetchAll(PDO::FETCH_ASSOC);
 
 // TOP 5 BEST ROOMS BY NB ORDER
-$topOrderReq = $pdo->prepare("SELECT c.id_salle, s.titre, COUNT(c.id_commande) as nb_order FROM commande c, salle s WHERE s.id_salle=c.id_salle GROUP BY id_salle ORDER BY nb_order DESC LIMIT 5");
-$topOrderReq->execute();
+$topOrderReq = topOrdersStat(5);
 $topOrderReq = $topOrderReq->fetchAll(PDO::FETCH_ASSOC);
 
 // TOP 5 BEST MEMBERS BY NB OF ORDER
-$topMemberOrderReq = $pdo->prepare("SELECT c.id_membre, m.pseudo, COUNT(c.id_commande) as nb_order FROM commande c, membre m WHERE c.id_membre=m.id_membre GROUP BY id_membre ORDER BY nb_order DESC LIMIT 5");
-$topMemberOrderReq->execute();
+$topMemberOrderReq = topMembersOrderStat(5);
 $topMemberOrderReq = $topMemberOrderReq->fetchAll(PDO::FETCH_ASSOC);
 
 // TOP 5 BEST MEMBERS BY PRICE
-$topMemberBuyReq = $pdo->prepare("SELECT c.id_membre, m.pseudo, SUM((DATEDIFF(c.date_depart, c.date_arrivee)*s.prix)) as total_price FROM commande c, salle s, membre m WHERE s.id_salle=c.id_salle && m.id_membre=c.id_membre GROUP BY id_membre ORDER BY total_price DESC LIMIT 5");
-$topMemberBuyReq->execute();
+$topMemberBuyReq = topMembersOriceStat(5);
 $topMemberBuyReq = $topMemberBuyReq->fetchAll(PDO::FETCH_ASSOC);
 
 ?>

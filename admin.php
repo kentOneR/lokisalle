@@ -1,4 +1,6 @@
-<?php require_once('view/header.php'); 
+<?php 
+require_once('controller/frontend.php');
+require_once('view/header.php'); 
 
 if(adminConnect()) :
     if(isset($_GET)){
@@ -25,11 +27,11 @@ if(adminConnect()) :
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 mt-3">
-                <?php require_once('template/admin/manage-stat.php'); ?>
-                <?php require_once('template/admin/manage-member.php'); ?>
-                <?php require_once('template/admin/manage-room.php'); ?>
-                <?php require_once('template/admin/manage-order.php'); ?>
-                <?php require_once('template/admin/manage-review.php'); ?>
+                <?php require_once('view/admin/manage-stat.php'); ?>
+                <?php require_once('view/admin/manage-member.php'); ?>
+                <?php require_once('view/admin/manage-room.php'); ?>
+                <?php require_once('view/admin/manage-order.php'); ?>
+                <?php require_once('view/admin/manage-review.php'); ?>
             </div>
         </div>
     </div>

@@ -71,10 +71,10 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-room" || $_GET['action'] =
 
 <h2>Gestion des salles</h2>
 
-<form class="col-sm-6" action="inc/function.room.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" class="form-control" name="id-room" id="id-room" value="<?= $id_room ?>">
+<form class="col-sm-6" action="model/manage.room.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" class="form-control" name="id-room" value="<?= $id_room ?>">
     <label for="title">Titre</label><br>
-    <input type="text" class="form-control" name="title" id="title" value="<?= $title ?>">
+    <input type="text" class="form-control" name="title" value="<?= $title ?>">
     <label for="description">Description</label><br>
     <input type="text" class="form-control" name="description" id="description" value="<?= $description ?>">
     <?php if($photo != '') { ?>
@@ -82,24 +82,24 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-room" || $_GET['action'] =
         <input type="hidden" name="photo-old" id="photo-old" value="<?= $photo ?>">
     <?php } ?>
     <label for="photo">Photo</label>
-    <input type="file" class="form-control" name="photo" id="photo" value="<?= $photo ?>">
+    <input type="file" class="form-control" name="photo" value="<?= $photo ?>">
     <label for="description">Pays</label><br>
-    <input type="text" class="form-control" name="country" id="country" value="<?= $country ?>">
+    <input type="text" class="form-control" name="country" value="<?= $country ?>">
     <label for="city">Ville</label><br>
-    <input type="text" class="form-control" name="city" id="city" value="<?= $city ?>">
+    <input type="text" class="form-control" name="city" value="<?= $city ?>">
     <label for="address">Adresse</label><br>
-    <input type="text" class="form-control" name="address" id="address" value="<?= $address ?>">
+    <input type="text" class="form-control" name="address" value="<?= $address ?>">
     <label for="cp">CP</label><br>
-    <input type="text" class="form-control" name="cp" id="cp" value="<?= $cp ?>">
+    <input type="text" class="form-control" name="cp" value="<?= $cp ?>">
     <label for="capacity">Capacité</label><br>
-    <input type="text" class="form-control" name="capacity" id="capacity" value="<?= $capacity ?>">
+    <input type="text" class="form-control" name="capacity" value="<?= $capacity ?>">
     <label for="category">Categorie</label><br>
-    <select class="form-control" name="category" id="category" value="<?= $category ?>">
+    <select class="form-control" name="category" value="<?= $category ?>">
         <option value="réunion" class="form-control">réunion</option>
         <option value="séminaire" class="form-control">séminaire</option>
         <option value="formation" class="form-control">formation</option>
     <select>
-    <input type="submit" class="btn btn-default" name="managemember" id="managemember" value="Valider">
+    <input type="submit" class="btn btn-default" name="managemember" value="Valider">
 </form>
 
 <?php endif; ?>

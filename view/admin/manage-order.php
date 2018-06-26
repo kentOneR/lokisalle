@@ -54,7 +54,7 @@ if(isset($_GET['action'])):
 
     ?>
     <h2>Modifier la commande id: <?= $thisOrderReq['id_commande'] ?></h2>
-    <form class="col-sm-6" action="inc/function.review.php" method="post">
+    <form class="col-sm-6" action="model/manage.review.php" method="post">
         <input type="hidden" class="form-control" name="id-order" value="<?= $thisOrderReq['id_commande'] ?>">
         <label for="id-member">Id membre</label><br>
         <input class="form-control" type="text" name="id-member" value="<?= $thisOrderReq['id_membre'] ?>">

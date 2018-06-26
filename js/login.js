@@ -51,7 +51,10 @@
             if (this.readyState == 4 && this.status == 200) {
                 loginResultEl.innerHTML = this.responseText;
                 if(!this.responseText.includes('Erreur')){
-                    setTimeout(function(){ connexionOverlayEl.classList.add("hidden"); }, 2000);
+                    setTimeout(function(){ 
+                        connexionOverlayEl.classList.add("hidden");
+                        window.location.reload(); 
+                    }, 2000);
                 }
             }
         }

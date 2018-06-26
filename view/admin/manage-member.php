@@ -28,7 +28,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
 ?>
     <h2>Gestion des membres</h2>
 
-    <form class="col-sm-6" action="inc/function.member.php" method="post">
+    <form class="col-sm-6" action="model/manage.member.php" method="post">
         <input type="hidden" class="form-control" name="admin-id-member" id="admin-id-member" placeholder="Votre pseudo" value="<?= $id_member ?>" autocomplete="family-name">
         <label for="adminpseudo">Pseudo</label><br>
         <input type="text" class="form-control" name="adminpseudo" id="adminpseudo" placeholder="Votre pseudo" value="<?= $pseudo ?>">

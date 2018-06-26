@@ -38,7 +38,7 @@
                 roomResultEl.innerHTML = this.responseText;
             }
         }
-        xhr.open('POST', 'modal/booking.php', true);
+        xhr.open('POST', 'model/booking.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send(params);
     }
