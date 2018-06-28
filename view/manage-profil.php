@@ -8,8 +8,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'edit-profil') {
 <form action="model/manage.profil.php" method="post">
             <label for="pseudo">Pseudo</label>
             <input type="text" class="form-control" name="pseudo" placeholder="Votre pseudo" autocomplete="choose your pseudo" required value="<?= $memberReq['pseudo'] ?>">
-            <label for="password">Mot de passe</label>
-            <input type="password" class="form-control" name="password" placeholder="Votre mot de passe" autocomplete="choose your password" required>
             <label for="name">Nom</label>
             <input type="text" class="form-control" name="name" placeholder="Votre nom" autocomplete="family-name" required value="<?= $memberReq['nom'] ?>">
             <label for="firstname">Prénom</label>
