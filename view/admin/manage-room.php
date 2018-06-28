@@ -2,16 +2,14 @@
 
 // Suppression d'un membre
 if(isset($_GET['action']) && $_GET['action'] == 'delete-room' && isset($_GET['id_room'])){
-    $deleteReq = $pdo->prepare("DELETE FROM salle WHERE id_salle = ?");
-    $deleteReq->execute(array(Crypting::decrypt($_GET['id_room'])));
+    deleteThisRoom($_GET['id_room']);
 
     header('location:admin?action=show-room');
 
 }
 
 if(isset($_GET['action']) && $_GET['action'] == "show-room"):
-    $r = $pdo->prepare("SELECT * FROM salle");
-    $r->execute();
+    $r = showAllRooms();
     $roomList = $r->fetchAll(PDO::FETCH_ASSOC);
     $columnRoomList = $r->columnCount();
 

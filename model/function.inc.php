@@ -67,22 +67,79 @@ class Crypting {
     }
 }
 
-// FUNCTION ALL ROOMS
+// FUNCTION ROOM
 function showAllRooms(){
     $req = $GLOBALS['pdo']->prepare("SELECT * FROM salle");
     $req->execute();
     return $req;
 }
 
-// FUNCTION THIS MEMBER INFO
+// FUNCTION ORDER
+function getAllOrders(){
+    $req = $GLOBALS['pdo']->prepare("SELECT c.*, s.prix FROM commande c, salle s WHERE c.id_salle=s.id_salle");
+    $req->execute();
+    return $req;
+}
+
+function getThisOrder($id){
+    $req = $GLOBALS['pdo']->prepare("SELECT * FROM commande WHERE id_commande = ? ");
+    $req->execute(array(Crypting::decrypt($id)));
+    return $req;
+}
+
+function deleteThisOrder($id){
+    $req = $GLOBALS['pdo']->prepare("DELETE FROM commande WHERE id_commande = ?");
+    $req->execute(array(Crypting::decrypt($id)));
+    return $req;
+}
+
+// FUNCTION REVIEW
+function showAllReviews(){
+    $req = $GLOBALS['pdo']->prepare("SELECT * FROM avis");
+    $req->execute();
+    return $req;
+}
+
+function getThisReview($id){
+    $req = $GLOBALS['pdo']->prepare("SELECT * FROM avis WHERE id_avis = ? ");
+    $req->execute(array($id));
+    return $req;
+}
+
+function deleteThisReview($id){
+    $req = $GLOBALS['pdo']->prepare("DELETE FROM avis WHERE id_avis = ?");
+    $req->execute(array($id));
+    return $req;
+}
+
+// FUNCTION MEMBER
+function getAllMembers(){
+    $req = $GLOBALS['pdo']->prepare("SELECT * FROM membre");
+    $req->execute();
+    return $req;
+}
+
 function thisMemberInfo($id){
     $req = $GLOBALS['pdo']->prepare("SELECT * FROM membre WHERE id_membre = $id");
     $req->execute();
     return $req;
 }
 
-// FUNCTION CALCULATE PRICE
+function deleteThisMember(){
+    $req = $GLOBALS['pdo']->prepare("DELETE FROM membre WHERE id_membre = ?");
+    $req->execute(array(Crypting::decrypt($id)));
+    return $req;
+}
 
+// FUNCTION ROOM
+function deleteThisRoom($id){
+    $req = $GLOBALS['pdo']->prepare("DELETE FROM salle WHERE id_salle = ?");
+    $req->execute(array(Crypting::decrypt($id)));
+    return $req;
+}
+
+
+// FUNCTION CALCULATE PRICE
 function calcNbOfDays($a, $b){
     $a = strtotime($a);
     $b = strtotime($b);

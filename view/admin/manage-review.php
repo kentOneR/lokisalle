@@ -2,8 +2,7 @@
 if(isset($_GET['action'])):
 
     if($_GET['action'] == "show-review" || $_GET['action'] == "delete-review"){
-        $r = $pdo->prepare("SELECT * FROM avis");
-        $r->execute();
+        $r = showAllReviews();
         $columnReview = $r->columnCount();
         $reviewReq = $r->fetchAll(PDO::FETCH_ASSOC);
 
@@ -39,16 +38,14 @@ if(isset($_GET['action'])):
         </table>
 
     <?php } elseif($_GET['action'] == "delete-review"){
-        $deleteReviewReq = $pdo->prepare("DELETE FROM avis WHERE id_avis = ?");
-        $deleteReviewReq->execute(array($_GET['id_review']));
+        deleteThisReview($_GET['id_review']);
         
     }
     elseif(isset($_GET['action']) && $_GET['action'] == "edit-review"){
 
         // Récupéation de l'avis
         if(isset($_GET['id_review'])) {
-            $r = $pdo->prepare("SELECT * FROM avis WHERE id_avis = ? ");
-            $r->execute(array($_GET['id_review']));
+            $r = getThisReview($_GET['id_review']);
             $thisReviewReq = $r->fetch(PDO::FETCH_ASSOC);
         }
 

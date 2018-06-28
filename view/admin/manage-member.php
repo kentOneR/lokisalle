@@ -2,8 +2,7 @@
 
 // Suppression d'un membre
 if(isset($_GET['action']) && $_GET['action'] == 'delete-member' && isset($_GET['id_member'])){
-    $deleteReq = $pdo->prepare("DELETE FROM membre WHERE id_membre = ?");
-    $deleteReq->execute(array(Crypting::decrypt($_GET['id_member'])));
+    deleteThisMember($_GET['id_member']);
 
     header('location:admin?action=show-member');
 }
@@ -12,8 +11,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
 
     // récupération du membre
     if(isset($_GET['id_member'])) {
-        $r = $pdo->prepare("SELECT * FROM membre WHERE id_membre = ? ");
-        $r->execute(array(Crypting::decrypt($_GET['id_member'])));
+        $r = thisMemberInfo(Crypting::decrypt($_GET['id_member']));
         $member = $r->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -52,8 +50,7 @@ if(isset($_GET['action']) && ($_GET['action'] == "add-member" || $_GET['action']
     </form>
 
 <?php elseif(isset($_GET['action']) && $_GET['action'] == "show-member"):
-    $r = $pdo->prepare("SELECT * FROM membre");
-    $r->execute();
+    $r = getAllMembers();
     $memberList = $r->fetchAll(PDO::FETCH_ASSOC);
     $columnMembreList = $r->columnCount();
 

@@ -2,8 +2,7 @@
 if(isset($_GET['action'])):
 
     if($_GET['action'] == "show-order" || $_GET['action'] == "delete-order"){
-        $r = $pdo->prepare("SELECT c.*, s.prix FROM commande c, salle s WHERE c.id_salle=s.id_salle");
-        $r->execute();
+        $r = getAllOrders();
         $columnReview = $r->columnCount();
         $orderReq = $r->fetchAll(PDO::FETCH_ASSOC);
 
@@ -37,18 +36,13 @@ if(isset($_GET['action'])):
         </table>
 
     <?php } elseif($_GET['action'] == "delete-order"){
-        $idOrder = Crypting::decrypt($_GET['id_order']);
-        $deleteOrderReq = $pdo->prepare("DELETE FROM commande WHERE id_commande = ?");
-        $deleteOrderwReq->execute(array($idOrder));
-        
+        deleteThisOrder($_GET['id_order']);
     }
     elseif(isset($_GET['action']) && $_GET['action'] == "edit-order"){
 
         // Récupéation de l'avis
         if(isset($_GET['id_order'])) {
-            $idOrder = Crypting::decrypt($_GET['id_order']);
-            $r = $pdo->prepare("SELECT * FROM commande WHERE id_commande = ? ");
-            $r->execute(array($idOrder));
+            $r = getThisOrder($_GET['id_order']);
             $thisOrderReq = $r->fetch(PDO::FETCH_ASSOC);
         }
 

@@ -3,8 +3,7 @@
     <h3 class="p-2">Toutes nos salles</h3>
     <div id="rooms-slider">
             <?php
-        $roomListReq = $pdo->prepare("SELECT * FROM salle");
-        $roomListReq->execute();
+        $roomListReq = showAllRooms();
         $roomListReq = $roomListReq->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($roomListReq as $key => $room) { ?>
