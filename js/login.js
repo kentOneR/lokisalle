@@ -67,12 +67,12 @@
         connexionFormEl.addEventListener('submit', function (e) {
             e.preventDefault();
             checkLogin();
+            connexionFormEl.reset();
         });
         closeLoginEl.addEventListener('click', function(e){
             connexionOverlayEl.classList.add("hidden");
+            connexionFormEl.reset();
         });
     }
-
-
 
 })();

@@ -26,6 +26,10 @@ if($_POST){
         <div class="alert alert-danger">Erreur taille pseudo</div>
     <?php $error = true;
     }
+    if(!preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{6,}$#', $password)) { ?>
+        <div class="alert alert-danger">Le mot de passe doit contenir min 8 caractères, dont 1 chiffre, 1 majuscule, 1 minuscule et 1 caractère spécial</div>
+    <?php $error = true;
+	}
     $r = $pdo->prepare("SELECT * FROM membre WHERE pseudo = ? ");
     $r->execute(array($pseudo));
     if($r->rowCount() >= 1) { ?>

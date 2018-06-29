@@ -73,11 +73,17 @@
 
     signupFormEl.addEventListener('submit', function (e) {
         e.preventDefault();
-        signup();
+        if(passwordEl.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{6,}$/)){
+            signup();
+            signupFormEl.reset();
+        } else {
+            signupResultEl.innerHTML = '<div class="alert alert-danger">Le mot de passe doit contenir min 8 caractères, dont 1 chiffre, 1 majuscule, 1 minuscule et 1 caractère spécial</div>';
+        }
     });
 
     closeSignupEl.addEventListener('click', function(e){
         signupOverlayEl.classList.add("hidden");
+        signupFormEl.reset();
     });
 
 })();

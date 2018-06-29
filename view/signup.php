@@ -8,7 +8,8 @@
             <label for="pseudo">Pseudo</label>
             <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Votre pseudo" autocomplete="choose your pseudo" required>
             <label for="password">Mot de passe</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Votre mot de passe" autocomplete="choose your password" required>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Votre mot de passe" autocomplete="choose your password" required 
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{6,}$" title="Le mot de passe doit contenir min 6 caractères, dont 1 chiffre, 1 majuscule, 1 minuscule et 1 caractère spécial"></title>
             <label for="name">Nom</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Votre nom" autocomplete="family-name" required>
             <label for="firstname">Prénom</label>
