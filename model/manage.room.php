@@ -1,6 +1,7 @@
 <?php
 
 require_once('init.inc.php');
+require_once('../controller/config.php');
 
 if($_POST){
     $photoDB = '';
@@ -19,7 +20,7 @@ if($_POST){
             $legalSize = "1000000"; // 1000000 Octets = 1 MO
 
             $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-            $photoName = $_POST['id-room'].'_'strtolower($_POST['title']).'_'.$newName.'.'.$extension;
+            $photoName = $_POST['id-room'].'_'.strtolower($_POST['title']).'_'.$newName.'.'.$extension;
             $photoFolder = 'www/lokisalle/img/room/'.$photoName;
             $photoDB = $photoName;
 
@@ -46,8 +47,6 @@ if($_POST){
 
                         if(ftp_pasv($conn_id, true)) // La valeur « true » signifie qu'on l'active, false qu'on le désactive
                         {
-                            var_dump($tempFile);
-                            var_dump($photoFolder);
                             // Charge un fichier
                             if (ftp_put($conn_id, $photoFolder, $tempFile, FTP_BINARY)) {
                             echo "Le fichier a té chargé avec succès\n";
@@ -99,7 +98,7 @@ if($_POST){
                 "category" => $_POST['category']
             ));
         }
-        // header('location:../admin?action=show-room');
+        header('location:../admin?action=show-room');
     }
 } else {
 
