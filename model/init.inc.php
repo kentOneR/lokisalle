@@ -30,7 +30,7 @@ if (isset($_COOKIE['ticket']) && isset($_SESSION['ticket']) && $_COOKIE['ticket'
 
 // CONNEXION DB
 try {
-	$pdo = new pdo('mysql:host=localhost; dbname=lokisalle', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+	$pdo = new pdo('mysql:host=localhost; dbname=lokisalle', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 	$pdo->exec("SET NAMES 'UTF8'");
 } catch(PDOException $e) {
     die('Erreur de connexion à la DB: '.$e->getMessage());

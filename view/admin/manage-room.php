@@ -46,10 +46,9 @@ if(isset($_GET['action']) && $_GET['action'] == "show-room"):
 
 if(isset($_GET['action']) && ($_GET['action'] == "add-room" || $_GET['action'] == "edit-room")) :
 
-    // récupération des membres
+    // récupération de la salle
     if(isset($_GET['id_room'])) {
-        $r = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ? ");
-        $r->execute(array(Crypting::decrypt($_GET['id_room'])));
+        $r = getThisRoom(Crypting::decrypt($_GET['id_room']));
         $room = $r->fetch(PDO::FETCH_ASSOC);
     }
 

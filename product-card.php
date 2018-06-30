@@ -8,13 +8,11 @@
             $rooms[$key] = htmlentities(addslashes($value));
         }
 
-        $roomReq = $pdo->prepare("SELECT * FROM salle WHERE id_salle = ?");
-        $roomReq->execute(array($rooms['id-room']));
-        $roomReq = $roomReq->fetch(PDO::FETCH_ASSOC);
+        $req = getThisRoom($_GET['id-room']);
+        $roomReq = $req->fetch(PDO::FETCH_ASSOC);
 
-        $reviewReq = $pdo->prepare("SELECT a.commentaire, a.note, a.date_enregistrement, m.pseudo FROM avis a, membre m WHERE a.id_salle = ? && a.id_membre = m.id_membre");
-        $reviewReq->execute(array($rooms['id-room']));
-        $reviewReq = $reviewReq->fetchAll(PDO::FETCH_ASSOC);
+        $req = getThisRoomReviews($_GET['id-room']);
+        $reviewReq = $req->fetchAll(PDO::FETCH_ASSOC);
     }
 ?>
     <header>

@@ -74,6 +74,18 @@ function showAllRooms(){
     return $req;
 }
 
+function getThisRoom($id){
+    $req = $GLOBALS['pdo']->prepare("SELECT * FROM salle WHERE id_salle = ? ");
+    $req->execute(array($id));
+    return $req;
+}
+
+function getThisRoomReviews($id){
+    $req = $GLOBALS['pdo']->prepare("SELECT a.commentaire, a.note, a.date_enregistrement, m.pseudo FROM avis a, membre m WHERE a.id_salle = ? && a.id_membre = m.id_membre");
+    $req->execute(array($id));
+    return $req;
+}
+
 // FUNCTION ORDER
 function getAllOrders(){
     $req = $GLOBALS['pdo']->prepare("SELECT c.*, s.prix FROM commande c, salle s WHERE c.id_salle=s.id_salle");
