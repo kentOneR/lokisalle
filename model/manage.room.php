@@ -19,8 +19,8 @@ if($_POST){
             $legalSize = "1000000"; // 1000000 Octets = 1 MO
 
             $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-            $photoName = $_POST['title'].'_'.$newName.'.'.$extension;
-            $photoFolder = $_SERVER['DOCUMENT_ROOT'].'/back_php_project\/photo\/'.$photoName;
+            $photoName = $_POST['id-room'].'_'strtolower($_POST['title']).'_'.$newName.'.'.$extension;
+            $photoFolder = 'www/lokisalle/img/room/'.$photoName;
             $photoDB = $photoName;
 
             // On s'assure que le fichier n'est pas vide
@@ -37,7 +37,27 @@ if($_POST){
             if (!$error) {
                 if ($actualSize < $legalSize) {
                     if (in_array($extension, $legalExtensions)) {
-                        copy($tempFile, $photoFolder);
+                        // copy($tempFile, $photoFolder);
+
+                        // Mise en place d'une connexion
+                        $conn_id = ftp_connect($ftp_server) or die("Impossible de se connecter au serveur $ftp_server");
+                        // Identification avec un nom d'utilisateur et un mot de passe
+                        $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) or die("Impossible de s'identifier $ftp_server");
+
+                        if(ftp_pasv($conn_id, true)) // La valeur « true » signifie qu'on l'active, false qu'on le désactive
+                        {
+                            var_dump($tempFile);
+                            var_dump($photoFolder);
+                            // Charge un fichier
+                            if (ftp_put($conn_id, $photoFolder, $tempFile, FTP_BINARY)) {
+                            echo "Le fichier a té chargé avec succès\n";
+                            } else {
+                            echo "Il y a eu un problème lors du chargement du fichier $file\n";
+                            }
+                        }
+
+                        // Fermeture de la connexion
+                        ftp_close($conn_id);
                     }
                 }
             } else {
@@ -79,7 +99,7 @@ if($_POST){
                 "category" => $_POST['category']
             ));
         }
-        header('location:../admin?action=show-room');
+        // header('location:../admin?action=show-room');
     }
 } else {
 
