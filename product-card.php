@@ -8,10 +8,10 @@
             $rooms[$key] = htmlentities(addslashes($value));
         }
 
-        $req = getThisRoom($_GET['id-room']);
+        $req = getThisRoom($rooms['id-room']);
         $roomReq = $req->fetch(PDO::FETCH_ASSOC);
 
-        $req = getThisRoomReviews($_GET['id-room']);
+        $req = getThisRoomReviews($rooms['id-room']);
         $reviewReq = $req->fetchAll(PDO::FETCH_ASSOC);
     }
 ?>
