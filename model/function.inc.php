@@ -156,6 +156,9 @@ function calcNbOfDays($a, $b){
     $a = strtotime($a);
     $b = strtotime($b);
     $datediff = $b - $a;
+    if ($datediff <= 0) {
+        $datediff = 60 * 60 * 24;
+    }
     return round($datediff / (60 * 60 * 24));
 }
 
